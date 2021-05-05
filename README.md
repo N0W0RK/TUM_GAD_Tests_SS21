@@ -11,6 +11,7 @@ For every exercise that has tests, there will be a separate folder. The gad in t
 To use the tests in your IDE you have to create a symlink to your src folder.
 
 ### Windows:
+This has to be executed in the command line, run as administrator.
 ```
 $ mklink /J \path\to\repository\tests \path\to\src\tests
 ```
