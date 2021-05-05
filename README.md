@@ -13,12 +13,12 @@ To use the tests in your IDE you have to create a symlink to your src folder.
 ### Windows:
 This has to be executed in the command line, run as administrator.
 ```
-$ mklink /J \path\to\repository\tests \path\to\src\tests
+$ mklink /J \path\to\src\tests \path\to\repository\tests
 ```
 
 ### Linux/MacOS
 ```
-$ ln -s /path/to/repository/tests /path/to/src/tests
+$ ln -s /path/to/src/tests /path/to/repository/tests
 ```
 
 After that you just have to include JUnit in your project and you're good to go.
