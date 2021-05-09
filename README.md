@@ -27,4 +27,5 @@ To include JUnit you will just need to Alt+Enter on one of the red underlined @T
 
 ## Collaboration
 
-I will probably only add test cases from the problem statements and ones from issues I am experiencing. If you have cases yourself, be sure to create a pull request.
+I will probably only add test cases from the problem statements and ones from issues I am experiencing. If you have cases yourself, be sure to create a pull request.  
+If you are unsure of how to create a pullrequest, take a look in the [GitHub Documentation](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
