@@ -1,4 +1,4 @@
-package test.binarysearch;
+package tests.binarysearch;
 
 import gad.binarysearch.Result;
 
