@@ -16,7 +16,7 @@ class HashtableTest {
         assertEquals(1, Hashtable.getNextPowerOfTwo(-1));
 
         //PROPER VALUES
-        assertEquals(0, Hashtable.getNextPowerOfTwo(0));
+        assertEquals(1, Hashtable.getNextPowerOfTwo(0));
         assertEquals( 1 , Hashtable.getNextPowerOfTwo( 1 ));
         assertEquals( 2 , Hashtable.getNextPowerOfTwo( 2 ));
         assertEquals( 4 , Hashtable.getNextPowerOfTwo( 3 ));

@@ -29,8 +29,8 @@ class HashtableTester {
 		assertEquals(3500 % 1024, Hashtable.fastModulo(3500, 1024));
 		assertEquals(3954 - 2048, Hashtable.fastModulo(3954, 2048));
 		assertEquals(5540 - 4096, Hashtable.fastModulo(5540, 4096));
-		assertEquals((Integer.MAX_VALUE / 5) % 5, Hashtable.fastModulo(Integer.MAX_VALUE / 5, 5));
-		assertEquals(Integer.MAX_VALUE % 5, Hashtable.fastModulo(Integer.MAX_VALUE, 5));
+		assertEquals((Integer.MAX_VALUE / 5) % 8, Hashtable.fastModulo(Integer.MAX_VALUE / 5, 8));
+		assertEquals(Integer.MAX_VALUE % 8, Hashtable.fastModulo(Integer.MAX_VALUE, 8));
 
 		Hashtable<Integer, Integer> hashmap = new Hashtable<>(8, new int[] { 5, 6, 2, 7, 1, 4, 3 });
 		// testing insert via find()
