@@ -2,6 +2,9 @@ package gad.simplehash;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+import java.util.function.Function;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class HashtableTest {
@@ -605,6 +608,73 @@ class HashtableTest {
         System.out.println("---------------------");
         table.remove(1, null);
         table.stream().forEach(System.out::println);
+    }
+
+
+    @org.junit.jupiter.api.Test
+    void fastModuloMikhail() {
+        for (int i = Integer.MAX_VALUE; i > Integer.MAX_VALUE - 100000; i--) {
+            assertEquals(Math.floorMod(i, (int)Math.pow(2,30)) ,Hashtable.fastModulo(i, (int)Math.pow(2,30)), "failed on "+i);
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    void ints() {
+        testInterval(0, 30000, integer -> integer, integer -> integer);
+    }
+
+    @org.junit.jupiter.api.Test
+    void stringKeys() {
+        testInterval(0, 1000, "a"::repeat, i -> i);
+    }
+
+    <K, V> void testInterval(int from, int to, Function<Integer, K> getKey, Function<Integer, V> getValue) {
+        Hashtable<K, V> ht = new Hashtable<>(200, new int[]{1,2,3,4}) ;
+
+        // insert all
+        for (int i = from; i < to; i++) {
+            ht.insert(getKey.apply(i), getValue.apply(i), null);
+        }
+
+        // find all
+        for (int i = from; i < to; i++) {
+            K k = getKey.apply(i);
+            assertEquals(ht.find(k, null), Optional.of(getValue.apply(i)), "Couldn't retrieve value for key " + k);
+        }
+
+        // remove all
+        for (int i = from; i < to; i++) {
+            K k = getKey.apply(i);
+            assertTrue(!ht.find(k, null).isPresent() || ht.remove(k, null), "Wrong remove return value for " + k);
+        }
+
+        // remove all again
+        for (int i = from; i < to; i++) {
+            K k = getKey.apply(i);
+            assertFalse(ht.remove(k, null), "Wrong remove return value for " + k);
+        }
+
+        // find all again
+        for (int i = from; i > to; i++) {
+            K k = getKey.apply(i);
+            assertTrue(ht.find(k, null).isEmpty(), "Removed but found " + k);
+        }
+    }
+
+    @org.junit.jupiter.api.Test
+    void simple() {
+        Hashtable<Integer, Integer> table = new Hashtable<>(5, new int[] { 1, 2, 3, 4 });
+        table.insert(1, 1, null);
+        table.insert(1, 2, null);
+        table.insert(1, 3, null);
+        table.insert(2, 69, null);
+        table.insert(3, 420, null);
+        table.insert(2, 230, null);
+
+        assertTrue(table.remove(1, null));
+        assertFalse(table.remove(1, null));
+        assertTrue(table.remove(2, null));
+        assertTrue(table.remove(3, null));
     }
 
 }
