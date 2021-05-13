@@ -139,6 +139,10 @@ public class HashTableTests {
             else if (averageMeanHashTickDeviation > 10.0)
                 fail("The average mean deviation of hashTick() is greater than 5%!");
         }
+	//NOTE : IF THESE TESTS FAIL, TRY RUNNING IT AGAIN, IT'S WEIRD! I KNOW, BUT I MIGHT NOT HAVE IMPLEMENTED THEM CORRECTLY
+	//Normally, you need a big sample size, for these tests to give accurate results (if they are correct in the first place that is)
+	//If you fail these tests consistently but pass those on Artemis, lemme know, I'll fix it.
+	//If this part of the test annoys you, just comment it out
     }
 
     @Test
