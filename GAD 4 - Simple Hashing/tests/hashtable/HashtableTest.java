@@ -2,9 +2,6 @@ package gad.simplehash;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
-import java.util.function.Function;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class HashtableTest {
@@ -19,7 +16,7 @@ class HashtableTest {
         assertEquals(1, Hashtable.getNextPowerOfTwo(-1));
 
         //PROPER VALUES
-        assertEquals(1, Hashtable.getNextPowerOfTwo(0));
+        assertEquals(0, Hashtable.getNextPowerOfTwo(0));
         assertEquals( 1 , Hashtable.getNextPowerOfTwo( 1 ));
         assertEquals( 2 , Hashtable.getNextPowerOfTwo( 2 ));
         assertEquals( 4 , Hashtable.getNextPowerOfTwo( 3 ));
@@ -610,71 +607,16 @@ class HashtableTest {
         table.stream().forEach(System.out::println);
     }
 
+    @Test
+    public void testH() {
+        Hashtable<Integer, Integer> table = new Hashtable<>(5, new int[] {1,2,3,4,5,6,7,8,9,10,12,13,69,420,911,1283,123879});
 
-    @org.junit.jupiter.api.Test
-    void fastModuloMikhail() {
-        for (int i = Integer.MAX_VALUE; i > Integer.MAX_VALUE - 100000; i--) {
-            assertEquals(Math.floorMod(i, (int)Math.pow(2,30)) ,Hashtable.fastModulo(i, (int)Math.pow(2,30)), "failed on "+i);
-        }
-    }
-
-    @org.junit.jupiter.api.Test
-    void ints() {
-        testInterval(0, 30000, integer -> integer, integer -> integer);
-    }
-
-    @org.junit.jupiter.api.Test
-    void stringKeys() {
-        testInterval(0, 1000, "a"::repeat, i -> i);
-    }
-
-    <K, V> void testInterval(int from, int to, Function<Integer, K> getKey, Function<Integer, V> getValue) {
-        Hashtable<K, V> ht = new Hashtable<>(200, new int[]{1,2,3,4}) ;
-
-        // insert all
-        for (int i = from; i < to; i++) {
-            ht.insert(getKey.apply(i), getValue.apply(i), null);
-        }
-
-        // find all
-        for (int i = from; i < to; i++) {
-            K k = getKey.apply(i);
-            assertEquals(ht.find(k, null), Optional.of(getValue.apply(i)), "Couldn't retrieve value for key " + k);
-        }
-
-        // remove all
-        for (int i = from; i < to; i++) {
-            K k = getKey.apply(i);
-            assertTrue(!ht.find(k, null).isPresent() || ht.remove(k, null), "Wrong remove return value for " + k);
-        }
-
-        // remove all again
-        for (int i = from; i < to; i++) {
-            K k = getKey.apply(i);
-            assertFalse(ht.remove(k, null), "Wrong remove return value for " + k);
-        }
-
-        // find all again
-        for (int i = from; i > to; i++) {
-            K k = getKey.apply(i);
-            assertTrue(ht.find(k, null).isEmpty(), "Removed but found " + k);
-        }
-    }
-
-    @org.junit.jupiter.api.Test
-    void simple() {
-        Hashtable<Integer, Integer> table = new Hashtable<>(5, new int[] { 1, 2, 3, 4 });
-        table.insert(1, 1, null);
-        table.insert(1, 2, null);
-        table.insert(1, 3, null);
-        table.insert(2, 69, null);
-        table.insert(3, 420, null);
-        table.insert(2, 230, null);
-
-        assertTrue(table.remove(1, null));
-        assertFalse(table.remove(1, null));
-        assertTrue(table.remove(2, null));
-        assertTrue(table.remove(3, null));
+        assertEquals(0, table.h(69, null));
+        assertEquals(0, table.h(420, null));
+        assertEquals(6, table.h(911, null));
+        assertEquals(5, table.h(42069, null));
+        assertEquals(5, table.h(213, null));
+        assertEquals(1, table.h(1281, null));
     }
 
 }
