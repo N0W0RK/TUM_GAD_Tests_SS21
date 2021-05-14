@@ -338,5 +338,48 @@ public class HashTableTests {
         assertEquals(26, doubleHashTable.collisions());
         assertEquals(67, doubleHashTable.maxRehashes());
     }
+	
+	ArrayList<Integer> usedInts = new ArrayList<>();
 
+	public int uniqueRandomInt() {
+		int x = ThreadLocalRandom.current().nextInt(0, 900);
+		while (usedInts.contains(x))
+			x = ThreadLocalRandom.current().nextInt(0, 900);
+		usedInts.add(x);
+		return x;
+	}
+
+	@Test
+	public void testInsertAndFind() { //bis jetzt nur mit ints
+		int size = 157;
+		DoubleHashTable<Integer, Integer> x = new DoubleHashTable<>(size, new IntHashableFactory());
+		Map<Integer, Integer> success = new HashMap<Integer, Integer>();
+		for (int i = 0; i < size; i++) {
+			int one = uniqueRandomInt();
+			int two = ThreadLocalRandom.current().nextInt(0, 900);
+			if (x.insert(one, two))
+				success.put(one, two);
+		}
+		for (int i = 0; i < 500; i++) {
+			int one = ThreadLocalRandom.current().nextInt(0, 900);
+			int two = ThreadLocalRandom.current().nextInt(0, 900);
+			if (x.insert(one, two))
+				success.put(one, two);
+		}
+		System.out.println("inserted " + success);
+
+		for (Integer y : success.keySet()) {
+			System.out.println();
+			System.out.println("searching for: " + y);
+			if (x.find(y).equals(Optional.empty())) {
+				System.out.println("got " + x.find(y) + ", should be " + success.get(y));
+
+			} else {
+				System.out.println("got " + x.find(y).get() + ", should be " + success.get(y));
+
+			}
+			assertTrue(x.find(y).get().equals(success.get(y)));
+		}
+		System.out.println("success");
+	}
 }
