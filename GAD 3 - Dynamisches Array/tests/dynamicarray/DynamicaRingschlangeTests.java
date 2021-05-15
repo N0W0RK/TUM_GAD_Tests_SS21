@@ -392,4 +392,33 @@ public class DynamicaRingschlangeTests {
 
 		assertThrows(IndexOutOfBoundsException.class, queue::remove, "IndexOutOfBounds Exceptions should be thrown when removing element from empty queue");
 	}
+
+	@Test
+	public void reportUsageLength() {
+
+		Random random = new Random();
+		Interval interval = EmptyInterval.getEmptyInterval();
+		TestResult result = new TestResult();
+
+		int growthFactor = 3;
+		int maxoverhead = 4;
+		DynamicArray array = new DynamicArray(growthFactor, maxoverhead);
+
+		for (int i = 0; i < 200; i++) {
+			array.reportArray(result);
+			int length = result.getArray().length;
+			int newMin = random.nextInt(250);
+			array.reportUsage(interval,newMin);
+			array.reportArray(result);
+
+			if (newMin*maxoverhead < length) {
+				assertEquals(newMin*growthFactor, result.getArray().length, String.format("Expected array to be reduced because minLength*maxOverhead => %d*%d = %d was smaller then the previous length %d and should now be minLength*growthfactor => %d*%d = %d", newMin,maxoverhead,newMin*maxoverhead,length,newMin,growthFactor,growthFactor*newMin));
+			} else if (newMin > length) {
+				assertEquals(newMin*growthFactor,result.getArray().length, String.format("Expected Array to grow because minLength %d is bigger then length %d. New length should be minLength*growthFactor => %d*%d = %d", newMin, length, newMin, growthFactor, newMin*growthFactor));
+			} else {
+				assertEquals(length, result.getArray().length, String.format("Array length should not have changed. minLength %d is neither bigger then length %d nor is minLength*maxOverhead %d*%d = %d smaller then length %d", newMin, length, newMin, maxoverhead, newMin*maxoverhead, length));
+			}
+
+		}
+	}
 }
