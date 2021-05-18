@@ -81,6 +81,7 @@ class HashtableTester {
 
 
 
+	//Tests fastModulo, insert, find, add and remove (basically everything)
 	@Test
 	void test() {
 
@@ -174,6 +175,7 @@ class HashtableTester {
 	}
 
 
+	//Test taken from SimonK from Zulip which tests adding values with the same key and then removing it
 	@Test
 	public void simonK() {
 		Hashtable<Integer, Integer> table = new Hashtable<>(3, new int[] { 0 });
@@ -198,6 +200,7 @@ class HashtableTester {
 		}
 	}
 
+	//Test for testing the known hasing of known words in a brute force fashion (10/10 English skills right there)
 	@Test
 	public void testH() {
 
