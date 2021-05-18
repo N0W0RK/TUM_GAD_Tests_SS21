@@ -21,5 +21,6 @@ Please use JUnit 5.7.0 and not 4 for its extend feature Set and unified imports.
 
 ## Tests
 Please try to use a descriptive name for your test. Try to describe either where your tests come from or what they intend to achieve.  
-Also pleasw try to use the assert methods most suitable to the comparison. Comparing arrays or testing if Exceptions are thrown can be achieved with dedicated methods and allow for easier debugging.  
+Also please try to use the assert methods most suitable to the comparison. Comparing arrays or testing if Exceptions are thrown can be achieved with dedicated methods and allow for easier debugging.  
 Each assertion should also contain a message that describes the source of the expected value.
+String comparisons should be avoided. The user will be able to change their toString() method.
