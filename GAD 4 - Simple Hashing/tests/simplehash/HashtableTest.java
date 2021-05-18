@@ -1,5 +1,7 @@
-package gad.simplehash;
+package tests.simplehash;
 
+import gad.simplehash.Hashtable;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,7 +12,7 @@ class HashtableTest {
     public void getNextPowerOfTwo() {
         //TODO IF THE NEGATIVE VALUES DON'T WORK, THAT'S FINE, IT DOESN'T HAVE TO, REMOVE IT IN THAT CASE
         //I GOT THESE OUTPUTS FROM MY IMPLEMENTATION
-        assertEquals(1, Hashtable.getNextPowerOfTwo(-4));
+        Assertions.assertEquals(1, Hashtable.getNextPowerOfTwo(-4));
         assertEquals(1, Hashtable.getNextPowerOfTwo(-3));
         assertEquals(1, Hashtable.getNextPowerOfTwo(-2));
         assertEquals(1, Hashtable.getNextPowerOfTwo(-1));
