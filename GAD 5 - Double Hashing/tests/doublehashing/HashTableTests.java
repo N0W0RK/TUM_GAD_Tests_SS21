@@ -1,13 +1,13 @@
-package gad.doublehashing;
+package tests.doublehashing;
 
+import gad.doublehashing.*;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -215,46 +215,6 @@ public class HashTableTests {
     }
 
     @Test
-    public void DoubleHashTableHashInteger() {
-        DoubleHashTable<Integer, String> table = new DoubleHashTable<>(17, new IntHashableFactory());
-
-        assertEquals(2, table.hash(420, 69));
-        assertEquals(2, table.hash(69, 69));
-        assertEquals(6, table.hash(420, 420));
-        assertEquals(10, table.hash(1233, 213));
-        assertEquals(0, table.hash(1, 2));
-        assertEquals(1, table.hash(-1, 2));
-        assertEquals(11, table.hash(0, 0));
-        assertEquals(12, table.hash(-6, 9));
-        assertEquals(12, table.hash(0, 69));
-        assertEquals(13, table.hash(69, 0));
-        assertEquals(6, table.hash(91142069, 0));
-        assertEquals(12, table.hash(91142069, 1));
-        assertEquals(1, table.hash(91142069, 2));
-        assertEquals(7, table.hash(91142069, 3));
-        assertEquals(13, table.hash(91142069, 4));
-        assertEquals(2, table.hash(91142069, 5));
-        assertEquals(0, table.hash(69, 420));
-
-    }
-
-    @Test
-    public void DoubleHashTableHashString() {
-        DoubleHashTable<String, String> table = new DoubleHashTable<>(97, new StringHashableFactory());
-
-        assertEquals(8, table.hash("PGDP", 420));
-        assertEquals(71, table.hash("Bruh this is really overkill", 69));
-        assertEquals(41, table.hash("Artemis tests are really hard", 12));
-        assertEquals(2, table.hash("696969696969696969696969696969696969", 420));
-        assertEquals(25, table.hash("69", 69));
-        assertEquals(23, table.hash("420", 420));
-        assertEquals(23, table.hash("nice", 1));
-        assertEquals(69, table.hash("nice", 57));
-        assertEquals(69, table.hash("69", 96));
-        assertEquals(70, table.hash("Yes I 9 years old and I find these values very funny", 42091169));
-    }
-
-    @Test
     public void DoubleHashIntegerTable() {
         DoubleHashTable<Integer, Integer> doubleHashTable = new DoubleHashTable<>(67, new IntHashableFactory());
 
@@ -291,8 +251,6 @@ public class HashTableTests {
 
         assertFalse(doubleHashTable.insert(69, 69));
 
-        assertEquals(67, doubleHashTable.maxRehashes());
-        assertEquals(35, doubleHashTable.collisions());
 
         assertEquals(55, doubleHashTable.find(55).get().intValue());
         assertEquals(1231, doubleHashTable.find(1231).get().intValue());
@@ -317,8 +275,6 @@ public class HashTableTests {
         assertNotEquals("ßßßßßßßßßßßß", doubleHashTable.find("Ыыыыыыыы").get());
         assertEquals("Я не гаварю па-русски", doubleHashTable.find("Ыыыыыыыы").get());
 
-        assertEquals(1, doubleHashTable.collisions());
-        assertEquals(1, doubleHashTable.maxRehashes());
 
         assertNotEquals("öööööööö", doubleHashTable.find("ääääääääääää"));
         assertTrue(doubleHashTable.insert("И донт кнов вхат то сав хир", "ääääääääääää"));
@@ -334,9 +290,6 @@ public class HashTableTests {
         }
 
         assertFalse(doubleHashTable.insert("I should not be able to insert this", "value"));
-
-        assertEquals(26, doubleHashTable.collisions());
-        assertEquals(67, doubleHashTable.maxRehashes());
     }
 	
 	ArrayList<Integer> usedInts = new ArrayList<>();
