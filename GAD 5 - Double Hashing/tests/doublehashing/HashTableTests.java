@@ -108,8 +108,15 @@ public class HashTableTests {
                 distributionHashTick[i] = round((((double) offsetHashTick[i] / varianceHashTick[i]) * 100.0));
         }
 
+
         double averageMeanHashDeviation = Math.abs(round(Arrays.stream(distributionHash).summaryStatistics().getAverage()));
-        double averageMeanHashTickDeviation = Math.abs(round(Arrays.stream(distributionHashTick).summaryStatistics().getAverage()));
+        double maxHashDeviation = Math.abs(round(Arrays.stream(distributionHash).summaryStatistics().getMax()));
+        double minHashDeviation = Math.abs(round(Arrays.stream(distributionHash).summaryStatistics().getMin()));
+
+        double averageMeanHashTickDeviation = Math.abs(round(Arrays.stream(Arrays.copyOfRange(distributionHashTick, 1, prime-1)).summaryStatistics().getAverage()));
+        double maxHashTickDeviation = Math.abs(round(Arrays.stream(Arrays.copyOfRange(distributionHashTick, 1, prime-1)).summaryStatistics().getMax()));
+        double minHashTickDeviation = Math.abs(round(Arrays.stream(Arrays.copyOfRange(distributionHashTick, 1, prime-1)).summaryStatistics().getMin()));
+
 
         System.out.println("Sum of the hashes     = " + sumHash);
         System.out.println("Average value of hash = " + averageHash);
@@ -121,24 +128,23 @@ public class HashTableTests {
         System.out.println("Mean hash deviation array        = " + Arrays.toString(offsetHash));
         System.out.println("Hash Deviation in %              = " + Arrays.toString(distributionHash));
         System.out.println("Average mean hash deviation      = " + averageMeanHashDeviation + "%");
+        System.out.println("Minimum hash deviation      = " + minHashDeviation + "%");
+        System.out.println("Maximum hash deviation      = " + maxHashDeviation + "%");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------");
         System.out.println("Statistical Analysis for Hash Tick");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------");
         System.out.println("Mean hash tick deviation array   = " + Arrays.toString(offsetHashTick));
         System.out.println("Hash Tick Deviation in %         = " + Arrays.toString(distributionHashTick));
         System.out.println("Average mean hash tick deviation = " + averageMeanHashTickDeviation + "%");
+        System.out.println("Minimum hash tick deviation      = " + minHashTickDeviation + "%");
+        System.out.println("Maximum hash tick deviation      = " + maxHashTickDeviation + "%");
 
-        if (isInt) {
-            if (averageMeanHashDeviation > 5.0)
-                fail("The average mean deviation of hash() is greater than 5%!");
-            else if (averageMeanHashTickDeviation > 5.0)
-                fail("The average mean deviation of hashTick() is greater than 5%!");
-        } else {
-            if (averageMeanHashDeviation > 10.0)
-                fail("The average mean deviation of hash() is greater than 5%!");
-            else if (averageMeanHashTickDeviation > 10.0)
-                fail("The average mean deviation of hashTick() is greater than 5%!");
-        }
+        double lim = isInt?5.0:10.0;
+
+        assertTrue(maxHashDeviation < lim, String.format("Your maximum deviation of hash() of %5.2f%% is greater than %1.0f%%!", maxHashDeviation, lim));
+        assertTrue(maxHashTickDeviation < lim, String.format("Your maximum deviation of hashTick() of %5.2f%% is greater than %1.0f%%!", maxHashDeviation, lim));
+
+
 	//NOTE : IF THESE TESTS FAIL, TRY RUNNING IT AGAIN, IT'S WEIRD! I KNOW, BUT I MIGHT NOT HAVE IMPLEMENTED THEM CORRECTLY
 	//Normally, you need a big sample size, for these tests to give accurate results (if they are correct in the first place that is)
 	//If you fail these tests consistently but pass those on Artemis, lemme know, I'll fix it.
@@ -153,7 +159,7 @@ public class HashTableTests {
         int[] varianceHash = new int[prime];
         int[] varianceHashTick = new int[prime];
 
-        for (int i = -100; i < 100001; i++) {
+        for (int i = -100; i < 1000001; i++) {
             try {
                 varianceHash[test.hash(i)]++;
             } catch (IndexOutOfBoundsException e) {
@@ -162,7 +168,7 @@ public class HashTableTests {
             }
         }
 
-        for (int i = -100; i < 100001; i++) {
+        for (int i = -100; i < 1000001; i++) {
             try {
                 varianceHashTick[test.hashTick(i)]++; // hash() function of DoubleHashInt
             } catch (IndexOutOfBoundsException e) {
@@ -171,10 +177,9 @@ public class HashTableTests {
             }
         }
 
-        if (varianceHashTick[0] != 0)
-            fail("Your HashTick returned a value of 0, according to the lecture script formula, this should not have happened!" +
+        assertEquals(0, varianceHashTick[0],"Your HashTick returned a value of 0, according to the lecture script formula, this should not have happened!" +
                     "NOTE: This does not guarantee, that your hash tick may actually be wrong! Artemis tests are final tests" +
-                    "This is just an assumption based on the formula of the lecture script");
+                    "Because double hashing scales along h' a case of h'(x) = 0 would not resolve collisions");
 
         printStatistics(varianceHash, varianceHashTick, prime, true);
     }
@@ -188,7 +193,7 @@ public class HashTableTests {
         int[] varianceHash = new int[prime];
         int[] varianceHashTick = new int[prime];
 
-        for (int i = -100; i < 10001; i++) {
+        for (int i = -100; i < 100001; i++) {
             try {
                 varianceHash[test.hash(generateRandomString(prime))]++;
             } catch (IndexOutOfBoundsException e) {
@@ -197,7 +202,7 @@ public class HashTableTests {
             }
         }
 
-        for (int i = -100; i < 10001; i++) {
+        for (int i = -100; i < 100001; i++) {
             try {
                 varianceHashTick[test.hashTick(generateRandomString(prime))]++; // hash() function of DoubleHashInt
             } catch (IndexOutOfBoundsException e) {
@@ -206,10 +211,9 @@ public class HashTableTests {
             }
         }
 
-        if (varianceHashTick[0] != 0)
-            fail("Your HashTick returned a value of 0, according to the lecture script formula, this should not have happened!" +
+        assertEquals(0, varianceHashTick[0], "Your HashTick returned a value of 0, according to the lecture script formula, this should not have happened!" +
                     "NOTE: This does not guarantee, that your hash tick may actually be wrong! Artemis tests are final tests" +
-                    "This is just an assumption based on the formula of the lecture script");
+                    "Because double hashing scales along h' a case of h'(x) = 0 would not resolve collisions");
 
         printStatistics(varianceHash, varianceHashTick, prime, false);
     }
@@ -324,6 +328,7 @@ public class HashTableTests {
 		for (Integer y : success.keySet()) {
 			System.out.println();
 			System.out.println("searching for: " + y);
+			Optional<Integer> opt = x.find(y);
 			if (x.find(y).equals(Optional.empty())) {
 				System.out.println("got " + x.find(y) + ", should be " + success.get(y));
 
