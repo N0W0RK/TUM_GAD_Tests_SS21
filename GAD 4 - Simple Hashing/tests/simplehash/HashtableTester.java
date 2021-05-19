@@ -1,9 +1,7 @@
 package tests.simplehash;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import gad.simplehash.Hashtable;
 import gad.simplehash.Pair;
@@ -54,6 +52,7 @@ class HashtableTester {
 				int mod = j%div;
 				int finalJ = j;
 				long start = System.nanoTime();
+				//Duration may need to be adjustet to fit your execution times
 				assertTimeout(Duration.ofMillis(500),() -> {
 					assertEquals(mod, Hashtable.fastModulo(finalJ,div), String.format("Modulo of %d%%%d should be %d", finalJ,div,mod));
 				}, "Fast modulo operation took too long");
@@ -125,6 +124,72 @@ class HashtableTester {
 	}
 
 	@Test
+	void randomInsertRemove() {
+
+		Map<Integer, List<Integer>> map = new HashMap<>();
+		Random random = new Random();
+		Hashtable<Integer, Integer> hashtable = new Hashtable<>(128, new int[]{1,2,3,4,5,6,7,8,9,69});
+
+		for (int i = 0; i < 1e4; i++) {
+
+			int key = random.nextInt((int) 1e5);
+			int val = random.nextInt();
+			hashtable.insert(key, val, mH);
+
+			if (map.containsKey(key)) {
+				map.get(key).add(val);
+			} else {
+				List<Integer> list = new ArrayList<>();
+				list.add(val);
+				map.put(key, list);
+			}
+		}
+
+		for (int key : map.keySet()) {
+			assertArrayEquals(map.get(key).toArray(), hashtable.findAll(key, mH).toArray(), String.format("findAll(%d) did not return expected values", key));
+		}
+
+		//remove 10 random keys
+
+		for (int i = 0; i < 10; i++) {
+			int key = (Integer)map.keySet().toArray()[random.nextInt(map.size())];
+			map.remove(key);
+			hashtable.remove(key, mH);
+		}
+
+
+		for (int key : map.keySet()) {
+			assertArrayEquals(map.get(key).toArray(), hashtable.findAll(key, mH).toArray(), String.format("findAll(%d) did not return expected values", key));
+		}
+	}
+
+	@Test
+	void testRandomInsertions() {
+
+		Random random = new Random();
+		//dependend on h()
+
+		int[] a = new int[10];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = random.nextInt((int) Math.sqrt(Integer.MAX_VALUE));
+		}
+		Hashtable<Integer, Integer> hashtable = new Hashtable<>(16, a);
+
+		for (int i = 0; i < 1e5; i++) {
+			int key = random.nextInt(Integer.MAX_VALUE);
+			int val = random.nextInt();
+			int hash = hashtable.h(key,mH);
+
+			List<Pair<Integer, Integer>> listH = new ArrayList<>(hashtable.getTable()[hash]);
+
+			hashtable.insert(key,val,mH);
+			listH.add(new Pair<>(key, val));
+
+			assertArrayEquals(hashtable.getTable()[hash].toArray(), listH.toArray(), String.format("List at table index %d not updated as expected", hash));
+		}
+	}
+
+	@Test
 	void fastModulo() {
 		assertEquals(36, Hashtable.fastModulo(420, 128));
 		assertEquals(85, Hashtable.fastModulo(42069, 256));
@@ -172,7 +237,6 @@ class HashtableTester {
 
 		table.stream().forEach(System.out::println);
 	}
-
 
 	@Test
 	public void simonK() {
