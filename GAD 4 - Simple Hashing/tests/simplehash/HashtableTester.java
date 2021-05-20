@@ -1,9 +1,7 @@
 package tests.simplehash;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import gad.simplehash.Hashtable;
 import gad.simplehash.Pair;
@@ -54,6 +52,7 @@ class HashtableTester {
 				int mod = j%div;
 				int finalJ = j;
 				long start = System.nanoTime();
+				//Duration may need to be adjustet to fit your execution times
 				assertTimeout(Duration.ofMillis(500),() -> {
 					assertEquals(mod, Hashtable.fastModulo(finalJ,div), String.format("Modulo of %d%%%d should be %d", finalJ,div,mod));
 				}, "Fast modulo operation took too long");
@@ -125,6 +124,382 @@ class HashtableTester {
 	}
 
 	@Test
+	void randomInsertRemove() {
+
+		Map<Integer, List<Integer>> map = new HashMap<>();
+		Random random = new Random();
+		Hashtable<Integer, Integer> hashtable = new Hashtable<>(128, new int[]{1,2,3,4,5,6,7,8,9,69});
+
+		for (int i = 0; i < 1e4; i++) {
+
+			int key = random.nextInt((int) 1e5);
+			int val = random.nextInt();
+			hashtable.insert(key, val, mH);
+
+			if (map.containsKey(key)) {
+				map.get(key).add(val);
+			} else {
+				List<Integer> list = new ArrayList<>();
+				list.add(val);
+				map.put(key, list);
+			}
+		}
+
+		for (int key : map.keySet()) {
+			assertArrayEquals(map.get(key).toArray(), hashtable.findAll(key, mH).toArray(), String.format("findAll(%d) did not return expected values", key));
+		}
+	}
+
+	@Test
+	void testRandomInsertions() {
+
+		Random random = new Random();
+		//dependend on h()
+
+		int[] a = new int[10];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = random.nextInt((int) Math.sqrt(Integer.MAX_VALUE));
+		}
+		Hashtable<Integer, Integer> hashtable = new Hashtable<>(16, a);
+
+		for (int i = 0; i < 1e5; i++) {
+			int key = random.nextInt(Integer.MAX_VALUE);
+			int val = random.nextInt();
+			int hash = hashtable.h(key,mH);
+
+			List<Pair<Integer, Integer>> listH = new ArrayList<>(hashtable.getTable()[hash]);
+
+			hashtable.insert(key,val,mH);
+			listH.add(new Pair<>(key, val));
+
+			assertArrayEquals(hashtable.getTable()[hash].toArray(), listH.toArray(), String.format("List at table index %d not updated as expected", hash));
+		}
+	}
+
+	@Test
+	void precalculatedInserts() {
+
+		Hashtable<Integer, Integer> hashtable = new Hashtable<>(4, new int[] {1,2,3,4});
+		List<Pair<Integer, Integer>>[] controlTable = new List[4];
+
+		for (int i = 0; i < controlTable.length; i++) {
+			controlTable[i] = new ArrayList<>();
+		}
+
+		hashtable.insert(212534970, 0, mH);
+		controlTable[0].add(new Pair<>(212534970, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(707377108, 0, mH);
+		controlTable[0].add(new Pair<>(707377108, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(586986483, 0, mH);
+		controlTable[2].add(new Pair<>(586986483, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1309368880, 0, mH);
+		controlTable[2].add(new Pair<>(1309368880, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(838820326, 0, mH);
+		controlTable[3].add(new Pair<>(838820326, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(2145033582, 0, mH);
+		controlTable[3].add(new Pair<>(2145033582, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1831522046, 0, mH);
+		controlTable[1].add(new Pair<>(1831522046, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(291465426, 0, mH);
+		controlTable[1].add(new Pair<>(291465426, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(789296130, 0, mH);
+		controlTable[2].add(new Pair<>(789296130, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1076901949, 0, mH);
+		controlTable[0].add(new Pair<>(1076901949, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(235528489, 0, mH);
+		controlTable[2].add(new Pair<>(235528489, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(2080976692, 0, mH);
+		controlTable[0].add(new Pair<>(2080976692, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1465569820, 0, mH);
+		controlTable[1].add(new Pair<>(1465569820, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1364700421, 0, mH);
+		controlTable[0].add(new Pair<>(1364700421, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(881236295, 0, mH);
+		controlTable[1].add(new Pair<>(881236295, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1146496453, 0, mH);
+		controlTable[2].add(new Pair<>(1146496453, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(864775393, 0, mH);
+		controlTable[1].add(new Pair<>(864775393, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1070085018, 0, mH);
+		controlTable[2].add(new Pair<>(1070085018, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(621995847, 0, mH);
+		controlTable[3].add(new Pair<>(621995847, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(764433472, 0, mH);
+		controlTable[2].add(new Pair<>(764433472, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1360722012, 0, mH);
+		controlTable[3].add(new Pair<>(1360722012, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1723338882, 0, mH);
+		controlTable[2].add(new Pair<>(1723338882, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(833396419, 0, mH);
+		controlTable[1].add(new Pair<>(833396419, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(326680025, 0, mH);
+		controlTable[2].add(new Pair<>(326680025, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1580731869, 0, mH);
+		controlTable[3].add(new Pair<>(1580731869, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(83447335, 0, mH);
+		controlTable[0].add(new Pair<>(83447335, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(2008707253, 0, mH);
+		controlTable[1].add(new Pair<>(2008707253, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1439407618, 0, mH);
+		controlTable[0].add(new Pair<>(1439407618, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1977993717, 0, mH);
+		controlTable[3].add(new Pair<>(1977993717, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1414959033, 0, mH);
+		controlTable[3].add(new Pair<>(1414959033, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(620334664, 0, mH);
+		controlTable[3].add(new Pair<>(620334664, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1733257178, 0, mH);
+		controlTable[0].add(new Pair<>(1733257178, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1687144605, 0, mH);
+		controlTable[0].add(new Pair<>(1687144605, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(477362078, 0, mH);
+		controlTable[1].add(new Pair<>(477362078, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1422485196, 0, mH);
+		controlTable[3].add(new Pair<>(1422485196, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(181670451, 0, mH);
+		controlTable[0].add(new Pair<>(181670451, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1145471350, 0, mH);
+		controlTable[1].add(new Pair<>(1145471350, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1010678679, 0, mH);
+		controlTable[1].add(new Pair<>(1010678679, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(21500612, 0, mH);
+		controlTable[2].add(new Pair<>(21500612, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1427561022, 0, mH);
+		controlTable[1].add(new Pair<>(1427561022, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1280697899, 0, mH);
+		controlTable[1].add(new Pair<>(1280697899, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1571659888, 0, mH);
+		controlTable[3].add(new Pair<>(1571659888, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1460215322, 0, mH);
+		controlTable[0].add(new Pair<>(1460215322, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1297565398, 0, mH);
+		controlTable[1].add(new Pair<>(1297565398, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1172587762, 0, mH);
+		controlTable[0].add(new Pair<>(1172587762, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1758082915, 0, mH);
+		controlTable[3].add(new Pair<>(1758082915, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(400130931, 0, mH);
+		controlTable[3].add(new Pair<>(400130931, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1512887909, 0, mH);
+		controlTable[1].add(new Pair<>(1512887909, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(484806962, 0, mH);
+		controlTable[1].add(new Pair<>(484806962, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1071011595, 0, mH);
+		controlTable[2].add(new Pair<>(1071011595, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(874433180, 0, mH);
+		controlTable[2].add(new Pair<>(874433180, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1903780215, 0, mH);
+		controlTable[1].add(new Pair<>(1903780215, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(302994495, 0, mH);
+		controlTable[3].add(new Pair<>(302994495, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1565846016, 0, mH);
+		controlTable[0].add(new Pair<>(1565846016, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(810019, 0, mH);
+		controlTable[1].add(new Pair<>(810019, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1338694617, 0, mH);
+		controlTable[3].add(new Pair<>(1338694617, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(565946432, 0, mH);
+		controlTable[2].add(new Pair<>(565946432, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1416416531, 0, mH);
+		controlTable[1].add(new Pair<>(1416416531, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1095318531, 0, mH);
+		controlTable[2].add(new Pair<>(1095318531, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(633323117, 0, mH);
+		controlTable[3].add(new Pair<>(633323117, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1089322802, 0, mH);
+		controlTable[2].add(new Pair<>(1089322802, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(251270951, 0, mH);
+		controlTable[2].add(new Pair<>(251270951, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1808891255, 0, mH);
+		controlTable[1].add(new Pair<>(1808891255, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1940652941, 0, mH);
+		controlTable[3].add(new Pair<>(1940652941, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(990943237, 0, mH);
+		controlTable[2].add(new Pair<>(990943237, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(97895594, 0, mH);
+		controlTable[1].add(new Pair<>(97895594, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1560404463, 0, mH);
+		controlTable[1].add(new Pair<>(1560404463, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(24199194, 0, mH);
+		controlTable[3].add(new Pair<>(24199194, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(548447204, 0, mH);
+		controlTable[1].add(new Pair<>(548447204, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1160929455, 0, mH);
+		controlTable[0].add(new Pair<>(1160929455, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1727083808, 0, mH);
+		controlTable[2].add(new Pair<>(1727083808, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(2027619104, 0, mH);
+		controlTable[3].add(new Pair<>(2027619104, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(461061522, 0, mH);
+		controlTable[0].add(new Pair<>(461061522, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1073472938, 0, mH);
+		controlTable[1].add(new Pair<>(1073472938, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1805785142, 0, mH);
+		controlTable[3].add(new Pair<>(1805785142, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1685669415, 0, mH);
+		controlTable[1].add(new Pair<>(1685669415, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1650128112, 0, mH);
+		controlTable[2].add(new Pair<>(1650128112, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(59944903, 0, mH);
+		controlTable[0].add(new Pair<>(59944903, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1347489317, 0, mH);
+		controlTable[1].add(new Pair<>(1347489317, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1585797145, 0, mH);
+		controlTable[3].add(new Pair<>(1585797145, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1471533211, 0, mH);
+		controlTable[1].add(new Pair<>(1471533211, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(77396711, 0, mH);
+		controlTable[1].add(new Pair<>(77396711, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1481489181, 0, mH);
+		controlTable[2].add(new Pair<>(1481489181, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1199197387, 0, mH);
+		controlTable[0].add(new Pair<>(1199197387, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1002620850, 0, mH);
+		controlTable[0].add(new Pair<>(1002620850, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1403520567, 0, mH);
+		controlTable[2].add(new Pair<>(1403520567, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(831219996, 0, mH);
+		controlTable[1].add(new Pair<>(831219996, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1230019370, 0, mH);
+		controlTable[2].add(new Pair<>(1230019370, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1472058805, 0, mH);
+		controlTable[2].add(new Pair<>(1472058805, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(478779247, 0, mH);
+		controlTable[0].add(new Pair<>(478779247, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(310641565, 0, mH);
+		controlTable[3].add(new Pair<>(310641565, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1667052547, 0, mH);
+		controlTable[1].add(new Pair<>(1667052547, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(680929928, 0, mH);
+		controlTable[1].add(new Pair<>(680929928, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1334065060, 0, mH);
+		controlTable[1].add(new Pair<>(1334065060, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1917443182, 0, mH);
+		controlTable[3].add(new Pair<>(1917443182, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1313799022, 0, mH);
+		controlTable[0].add(new Pair<>(1313799022, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(111679639, 0, mH);
+		controlTable[2].add(new Pair<>(111679639, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(448537547, 0, mH);
+		controlTable[3].add(new Pair<>(448537547, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1272425375, 0, mH);
+		controlTable[2].add(new Pair<>(1272425375, 0));
+		tableinsertionTester(controlTable, hashtable);
+		hashtable.insert(1414147800, 0, mH);
+		controlTable[2].add(new Pair<>(1414147800, 0));
+		tableinsertionTester(controlTable, hashtable);
+
+
+	}
+	
+	void tableinsertionTester(List<Pair<Integer, Integer>>[] compare, Hashtable<Integer, Integer> hashtable) {
+
+		List<Pair<Integer, Integer>>[] table = hashtable.getTable();
+
+		for (int i = 0; i < table.length; i++) {
+			assertArrayEquals(compare[i].toArray(), table[i].toArray(), String.format("The internal structure of the hashtable is not as expected. Table index %d is not as expected", i));
+		}
+	}
+
+	@Test
 	void fastModulo() {
 		assertEquals(36, Hashtable.fastModulo(420, 128));
 		assertEquals(85, Hashtable.fastModulo(42069, 256));
@@ -172,7 +547,6 @@ class HashtableTester {
 
 		table.stream().forEach(System.out::println);
 	}
-
 
 	@Test
 	public void simonK() {
