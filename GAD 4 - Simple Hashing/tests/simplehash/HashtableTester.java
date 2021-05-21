@@ -499,6 +499,10 @@ class HashtableTester {
 		}
 	}
 
+	/**
+	 * This test uses predefines values to check the module of 2 numbers
+	 * Note, this does not check the speed of the modulo
+	 */
 	@Test
 	void fastModulo() {
 		assertEquals(36, Hashtable.fastModulo(420, 128));
@@ -514,6 +518,11 @@ class HashtableTester {
 			assertArrayEquals(vals.stream().filter(x -> x.one()==k).map(x -> x.two()).toArray(), table.findAll(k,mH).toArray(), "Elements in the table dont match the expected elements");
 		}
 	}
+
+	/**
+	 * This test adds certain values to the HashTable  and then removes them
+	 * to see if the expected behaviour matches the one required by the question
+	 */
 
 	@Test
 	void insert() {
@@ -548,6 +557,12 @@ class HashtableTester {
 		table.stream().forEach(System.out::println);
 	}
 
+	/**
+	 * This test is taken from SimonK from Zulip
+	 * And does a very basic check of adding values with 1 key
+	 * and then removing it
+	 * A very helpful test to start off with
+	 */
 	@Test
 	public void simonK() {
 		Hashtable<Integer, Integer> table = new Hashtable<>(3, new int[] { 0 });
@@ -572,6 +587,10 @@ class HashtableTester {
 		}
 	}
 
+	/**
+	 * This test uses predefines values to check hash values with a predifines ModuleHelper
+	 * This brute forces through all the combinations possible
+	 */
 	@Test
 	public void testH() {
 

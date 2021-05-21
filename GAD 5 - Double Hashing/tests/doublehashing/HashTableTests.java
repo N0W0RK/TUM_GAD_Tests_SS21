@@ -13,8 +13,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class HashTableTests {
 
+    /**
+     * Class taken from <a href="#{@link}">{@link https://stackoverflow.com/a/24006293}</a>
+     * and modified to generate prime numbers in different ranges
+     * @author Aamin
+     */
     public static class Prime_Number_Generator {
 
+        /**
+         * A function to generate random relatively big prime numbers
+         * north of 10007
+         * @author Aamin
+         * @return integer prime number in the range of [10007, 2147483647]
+         */
         public static int getBigPrime() {
             int num;
             Random rand = new Random(); // generate a random number
@@ -27,6 +38,12 @@ public class HashTableTests {
             return num;
         }
 
+        /**
+         * A function to generate random relatively small prime numbers
+         * no greater than 10099
+         * @author Aamin
+         * @return integer prime number in the range of [2, 10099]
+         */
         public static int getSmallPrime() {
             int num;
             Random rand = new Random(); // generate a random number
@@ -39,6 +56,12 @@ public class HashTableTests {
             return num;
         }
 
+        /**
+         * A function to generate random relatively very small prime numbers
+         * no greater than 109, useful for generating arrays of prime size
+         * @author Aamin
+         * @return integer prime number in the range of [2, 109]
+         */
         public static int getVerySmallPrime() {
             int num;
             Random rand = new Random(); // generate a random number
@@ -52,9 +75,9 @@ public class HashTableTests {
         }
 
         /**
+         * @author Aamin
          * Checks to see if the requested value is prime.
          */
-
         private static boolean isNotPrime(int inputNum){
             if (inputNum <= 3 || inputNum % 2 == 0)
                 return inputNum != 2 && inputNum != 3; //this returns false if number is <=1 & true if number = 2 or 3
@@ -65,18 +88,42 @@ public class HashTableTests {
         }
     }
 
+    /**
+     * A method to generate a random string of UTF8 chars of a specified length
+     * Code taken from <a href="#{@link}">{@link https://www.baeldung.com/java-random-string}</a>
+     * @author Aamin
+     * @param length which will generate a string of that exact length
+     * @return String of the specified length
+     */
     private String generateRandomString(int length) {
         byte[] array = new byte[length]; // length is bounded by 7
         new Random().nextBytes(array);
         return new String(array, StandardCharsets.UTF_8);
     }
 
+    /**
+     * Method to round off doubles (for the purpose of the outputs) up to 2 decimal places
+     * Code taken from <a href="#{@link}">{@link https://stackoverflow.com/a/2808648}</a>
+     * @author Aamin
+     * @param value to be rounded off
+     * @return double the value rounded off up to 2 decimal places
+     */
     private double round(double value) {
         BigDecimal bd = BigDecimal.valueOf(value);
         bd = bd.setScale(2, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
 
+    /**
+     * Method to display all the statistics of the processed hashes in a hopefully sensible manner
+     * In general you should get a variance of less than 5% for integers and 10% of the strings
+     * I recommend running the tests multiple times and hope that average of the average of averages is less than the required percentages
+     * @author Aamin
+     * @param varianceHash the array with the variance from the average hash value
+     * @param varianceHashTick the array with the variance from the average hash tick value
+     * @param prime the size of the array (which is a prime number)
+     * @param isInt boolean specifier to see if the variance calculated is for a Int or String
+     */
     private void printStatistics(int[] varianceHash, int[] varianceHashTick, int prime, boolean isInt) {
         int[] offsetHash = new int[prime];
         double[] distributionHash = new double[prime];
@@ -151,6 +198,13 @@ public class HashTableTests {
 	//If this part of the test annoys you, just comment it out
     }
 
+    /**
+     * A Test which runs millions of random numbers and sees the average variance of the hashed
+     * In general, the variance should be less than 5% (according to my algorithm)
+     * Run the tests multiple times to attain assurance
+     * @author Aamin
+     * @throws java.lang.IndexOutOfBoundsException when you return an illegal hash value
+     */
     @Test
     public void testHashingInt() {
         //This test is taken from Maximilian from Zulip and modified a bit to be more random and test both hash and hash tick
@@ -184,6 +238,13 @@ public class HashTableTests {
         printStatistics(varianceHash, varianceHashTick, prime, true);
     }
 
+    /**
+     * A Test which 100K+ of random strings and sees the average variance of the hashed values of the strings
+     * In general, the variance should be less than 10% (according to my algorithm)
+     * Run the tests multiple times to attain assurance
+     * @author Aamin
+     * @throws java.lang.IndexOutOfBoundsException when you return an illegal hash value
+     */
     @Test
     public void testHashingString() {
         //NOTE THIS TEST IS EXTREMELY SLOW (takes roughly 15s on my computer)
@@ -218,6 +279,70 @@ public class HashTableTests {
         printStatistics(varianceHash, varianceHashTick, prime, false);
     }
 
+
+    /**
+     * A test to check your hashing algorithm of integers against the expected values
+     * IF YOU HAVE USED THE EXACT ALGORITHM MENTIONS IN THE LECTURE + SLIDES
+     * NOTE: YOU DO NOT HAVE TO HAVE PASSED. YOU CAN ALSO FAIL THIS TEST EVEN WITH A VALID HASHING ALGORITHM
+     * IT ONLY WORKS IF YOUR HASHING ALGORITHM IS 100% SIMILAR TO THE ONE FROM THE LECTURE + SLIDES
+     * @author Aamin
+     */
+    @Test
+    public void DoubleHashTableHashInteger() {
+        DoubleHashTable<Integer, String> table = new DoubleHashTable<>(17, new IntHashableFactory());
+
+        assertEquals(2, table.hash(420, 69));
+        assertEquals(2, table.hash(69, 69));
+        assertEquals(6, table.hash(420, 420));
+        assertEquals(10, table.hash(1233, 213));
+        assertEquals(0, table.hash(1, 2));
+        assertEquals(1, table.hash(-1, 2));
+        assertEquals(11, table.hash(0, 0));
+        assertEquals(12, table.hash(-6, 9));
+        assertEquals(12, table.hash(0, 69));
+        assertEquals(13, table.hash(69, 0));
+        assertEquals(6, table.hash(91142069, 0));
+        assertEquals(12, table.hash(91142069, 1));
+        assertEquals(1, table.hash(91142069, 2));
+        assertEquals(7, table.hash(91142069, 3));
+        assertEquals(13, table.hash(91142069, 4));
+        assertEquals(2, table.hash(91142069, 5));
+        assertEquals(0, table.hash(69, 420));
+
+    }
+
+    /**
+     * A test to check your hashing algorithm of strings against the expected values
+     * IF YOU HAVE USED THE EXACT ALGORITHM MENTIONS IN THE LECTURE + SLIDES
+     * NOTE: YOU DO NOT HAVE TO HAVE PASSED. YOU CAN ALSO FAIL THIS TEST EVEN WITH A VALID HASHING ALGORITHM
+     * IT ONLY WORKS IF YOUR HASHING ALGORITHM IS 100% SIMILAR TO THE ONE FROM THE LECTURE + SLIDES
+     * @author Aamin
+     */
+    @Test
+    public void DoubleHashTableHashString() {
+        DoubleHashTable<String, String> table = new DoubleHashTable<>(97, new StringHashableFactory());
+
+        assertEquals(8, table.hash("PGDP", 420));
+        assertEquals(71, table.hash("Bruh this is really overkill", 69));
+        assertEquals(41, table.hash("Artemis tests are really hard", 12));
+        assertEquals(2, table.hash("696969696969696969696969696969696969", 420));
+        assertEquals(25, table.hash("69", 69));
+        assertEquals(23, table.hash("420", 420));
+        assertEquals(23, table.hash("nice", 1));
+        assertEquals(69, table.hash("nice", 57));
+        assertEquals(69, table.hash("69", 96));
+        assertEquals(70, table.hash("Yes I 9 years old and I find these values very funny", 42091169));
+    }
+
+
+    /**
+     * Test to try adding random Integer values and see if that table can add the integers
+     * regarding the size constrains. Also sees if the table was able to retrieve the added value after adding
+     * Additionally, it checks the number of collisions in the hashing algorithm and the number of maxRehashes
+     * NOTE: If you fail this test, it can also mean that your hashing method may by wrong, but there's a 60% chance
+     * that you've messed insert or a 35% chance that you've messed up get()
+     * @author Aamin
+     */
     @Test
     public void DoubleHashIntegerTable() {
         DoubleHashTable<Integer, Integer> doubleHashTable = new DoubleHashTable<>(67, new IntHashableFactory());
@@ -264,6 +389,15 @@ public class HashTableTests {
 
     }
 
+    /**
+     * Test to try adding random strings (intentionally non ASCII) values and see if that table can add the integers
+     * regarding the size constrains. Also sees if the table was able to retrieve the added value after adding
+     * Additionally, it checks the number of collisions in the hashing algorithm and the number of maxRehashes
+     * NOTE: If you fail this test, it can also mean that your hashing method may by wrong, but there's a 60% chance
+     * that you've messed insert or a 35% chance that you've messed up get()
+     * NOTE NOTE: You may also fail the tests because of the non ASCII characters, I just wanted to spice things up, lol sorry
+     * @author Aamin
+     */
     @Test
     public void DoubleHashStringTable() {
         DoubleHashTable<String, String> doubleHashTable = new DoubleHashTable<>(67, new StringHashableFactory());
