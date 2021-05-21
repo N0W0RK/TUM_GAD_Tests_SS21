@@ -30,3 +30,4 @@ To include JUnit you will just need to Alt+Enter on one of the red underlined @T
 I will probably only add test cases from the problem statements and ones from issues I am experiencing. If you have cases yourself, be sure to create a pull request and check out the [contributing guidelines](https://github.com/N0W0RK/TUM_GAD_Tests_SS21/blob/main/CONTRIBUTING.md).  
 If you are unsure of how to create a pullrequest, take a look in the [GitHub Documentation](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
 Please use JUnit 5.7 when writing your own Tests. existing tests will be modified when I find the time.
+GPLv3 will be added in the near future. All new contributions imply that they accept that they will be placed under this license once existing contributors agree.
