@@ -1,9 +1,14 @@
 package tests.simplesort;
 
 import gad.simplesort.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.Random;
+import java.util.stream.IntStream;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PivotFinderTester {
 
@@ -31,8 +36,7 @@ class PivotFinderTester {
     @Test
     void medianPivotDistributed() {
     }
-    
-    
+
     /**
         Beware: These tests are in some regards *stricter* than the Artemis tests. Good for finding exceptions and general edge cases regardless.
         
@@ -60,7 +64,6 @@ class PivotFinderTester {
         printLine();
     }
 
-
     /**
         Beware: This test helper is in some regards *stricter* than the Artemis tests. Good for finding exceptions and general edge cases regardless.
         maxArrayLength 30 is recommended for general testing, 3 for the small array tests.
@@ -81,12 +84,9 @@ class PivotFinderTester {
             }
             final int result = f.findPivot(a, from, to);
             assertTrue(result >= from && result <= to,
-                    "Bounds check failed for Array: " + Arrays.toString(a) + "\tfrom " + from + " to " + to +
-                            ":\tfindPivot returned:"
-                            + result);
-//            System.out.println("Array: " + Arrays.toString(a) + "\tfrom " + from + " to " + to +
-//                    ":\tfindPivot returned:" + result);
+                    "Bounds check failed for Array: " + Arrays.toString(a)
+                            + "\tfrom " + from + " to " + to
+                            + ":\tfindPivot returned:" + result);
         }
     }
-    
 }
