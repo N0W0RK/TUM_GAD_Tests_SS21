@@ -51,24 +51,21 @@ class TesterDualQuicksortResult implements Result {
 
     private void analyseLogsOfDualPivot(int[] endResult) {
         if (startResult == null || endResult == null) {
-            throw new IllegalArgumentException("Array: " + Arrays.toString(endResult) + "\n" +
-                                    "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] + "\n" +
-                                "\nLogged partial Arrays without logging startResult or endResult");
+            throw new IllegalArgumentException("Array: " + Arrays.toString(endResult) + "\n" + "\nIn range: " + indicesOfLog[0] +
+                    " to " + indicesOfLog[5] + "\n" + "\nLogged partial Arrays without logging startResult or endResult");
         }
 
         Arrays.sort(startResult);
         int[] copyEndResult = Arrays.copyOfRange(endResult, indicesOfLog[0], indicesOfLog[5] + 1);
         Arrays.sort(copyEndResult);
 
-        assertEquals(startResult.length, copyEndResult.length, "Array: " + Arrays.toString(endResult) +
-                "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
-            "\nThe arrays before and after the sort dont have the same length anymore, " +
-                    "you probably changed the to or from pointer");
+        assertEquals(startResult.length, copyEndResult.length, "Array: " + Arrays.toString(endResult) + "\nIn range: "
+                + indicesOfLog[0] + " to " + indicesOfLog[5] + "\nThe arrays before and after the sort dont have the same length anymore, " +
+                "you probably changed the to or from pointer");
 
 
-        assertArrayEquals(copyEndResult, startResult, "Array: " + Arrays.toString(endResult) +
-                "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
-                "\nThe arrays before and after the sort have different numbers");
+        assertArrayEquals(copyEndResult, startResult, "Array: " + Arrays.toString(endResult) + "\nIn range: " +
+                indicesOfLog[0] + " to " + indicesOfLog[5] + "\nThe arrays before and after the sort have different numbers");
 
 
         int pivotOne = endResult[indicesOfLog[1] + 1];
@@ -80,26 +77,20 @@ class TesterDualQuicksortResult implements Result {
 
         for (int i = indicesOfLog[0]; i <= indicesOfLog[1]; i++) {
             if (endResult[i] > pivotOne)
-                fail("Array: " + Arrays.toString(endResult) +
-                    "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
-                    "\nIn the first part is at index " + (indicesOfLog[0] + i) +
-                    " a number bigger than the first pivot");
+                fail("Array: " + Arrays.toString(endResult) + "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
+                        "\nIn the first part is at index " + (indicesOfLog[0] + i) + " a number bigger than the first pivot");
         }
 
         for (int i = indicesOfLog[2]; i <= indicesOfLog[3]; i++) {
             if (endResult[i] < pivotOne || endResult[i] > pivotTwo)
-                fail("Array: " + Arrays.toString(endResult) +
-                        "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
-                        "\nIn the second part is at index " + (indicesOfLog[2] + i) +
-                        " a number than shouldn't be there");
+                fail("Array: " + Arrays.toString(endResult) + "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
+                        "\nIn the second part is at index " + (indicesOfLog[2] + i) + " a number than shouldn't be there");
         }
 
         for (int i = indicesOfLog[4]; i <= indicesOfLog[5]; i++) {
             if (endResult[i] < pivotTwo)
-                fail("Array: " + Arrays.toString(endResult) +
-                    "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
-                    "\nIn the third part is at index " + (indicesOfLog[4] + i) +
-                    " a number smaller than the second pivot");
+                fail("Array: " + Arrays.toString(endResult) + "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
+                        "\nIn the third part is at index " + (indicesOfLog[4] + i) + " a number smaller than the second pivot");
         }
     }
 }

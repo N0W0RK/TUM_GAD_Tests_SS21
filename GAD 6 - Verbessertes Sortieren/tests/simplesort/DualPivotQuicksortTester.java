@@ -24,7 +24,7 @@ class DualPivotQuicksortTester {
 
     @Nested
     @DisplayName("Repetitive Random Tests")
-    class repetitive_random_tests {
+    class repetitiveRandomTests {
         /**
          The concept is that you can extend the tests as much as you want, by simply adding
          new Arguments.arguments in the corresponding Stream. Which place is which parameter
@@ -33,9 +33,9 @@ class DualPivotQuicksortTester {
 
 
         /**
-         * LAST PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS
+         * FIRST-LAST PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS
          */
-        static Stream<Arguments> test_correct_sorting_last() {
+        static Stream<Arguments> testCorrectSortingLast() {
             return Stream.of(
                     Arguments.arguments(1, 42, 100, 1, 0, 100),
                     Arguments.arguments(1, 43, 100, 10, 1, 100),
@@ -49,7 +49,7 @@ class DualPivotQuicksortTester {
         /**
          * RANDOM PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS
          */
-        static Stream<Arguments> test_correct_sorting_random() {
+        static Stream<Arguments> testCorrectSortingRandom() {
             return Stream.of(
                     Arguments.arguments(1, 42, 100, 1, 0, 100),
                     Arguments.arguments(1, 43, 100, 10, 1, 100),
@@ -63,7 +63,7 @@ class DualPivotQuicksortTester {
         /**
          * MEDIAN FRONT PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, CONSIDERED_ELEMENTS, MAX_LENGTH, MIN_LENGTH, NUMBERS
          */
-        static Stream<Arguments> test_correct_sorting_median_front() {
+        static Stream<Arguments> testCorrectSortingMedianFront() {
             return Stream.of(
                     Arguments.arguments(1, 42, 100, 2, 1, 0, 100),
                     Arguments.arguments(1, 43, 100, 2, 10, 1, 100),
@@ -77,7 +77,7 @@ class DualPivotQuicksortTester {
         /**
          * MEDIAN DISTRIBUTED PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, CONSIDERED_ELEMENTS, MAX_LENGTH, MIN_LENGTH, NUMBERS
          */
-        static Stream<Arguments> test_correct_sorting_median_dist() {
+        static Stream<Arguments> testCorrectSortingMedianDist() {
             return Stream.of(
                     Arguments.arguments(1, 42, 100, 2, 1, 0, 100),
                     Arguments.arguments(1, 43, 100, 2, 10, 1, 100),
@@ -88,76 +88,71 @@ class DualPivotQuicksortTester {
             );
         }
 
-        void random_test_factory(DualPivotFinder pivotFinder, int selectSortSize, int seed, int iterations,
-                                 int maxLength, int minLength, int numbers) {
-            try {
-                DualPivotQuicksort quicksort = new DualPivotQuicksort(pivotFinder, selectSortSize);
-                Random random = new Random(seed);
+        void randomTestFactory (DualPivotFinder pivotFinder, int selectSortSize, int seed, int iterations,
+                                int maxLength, int minLength, int numbers) {
+            DualPivotQuicksort quicksort = new DualPivotQuicksort(pivotFinder, selectSortSize);
+            Random random = new Random(seed);
 
-                assertAll("", IntStream.range(0, iterations).mapToObj(i -> () -> {
-                    int arrLen = random.nextInt(maxLength - minLength) + minLength;
-                    int[] arr = IntStream.range(0, arrLen).map(x -> random.nextInt(numbers) - numbers / 2).toArray();
-                    int[] arrSorted = Arrays.copyOf(arr, arr.length);
-                    int[] arrOriginal = Arrays.copyOf(arr, arr.length);
+            assertAll("", IntStream.range(0, iterations).mapToObj(i -> () -> {
+                int arrLen = random.nextInt(maxLength - minLength) + minLength;
+                int[] arr = IntStream.range(0, arrLen).map(x -> random.nextInt(numbers) - numbers / 2).toArray();
+                int[] arrSorted = Arrays.copyOf(arr, arr.length);
+                int[] arrOriginal = Arrays.copyOf(arr, arr.length);
 
-                    Arrays.sort(arrSorted);
-                    quicksort.sort(arr, new TesterDualQuicksortResult());
+                Arrays.sort(arrSorted);
+                quicksort.sort(arr, new TesterDualQuicksortResult());
 
-                    if (!Arrays.equals(arrSorted, arr))
-                        fail("\nThe given array was: " + Arrays.toString(arrOriginal) +
-                                "\nYou array was:     " + Arrays.toString(arr) + "\nBut should be: "
-                                + Arrays.toString(arrSorted) + "\nPivot was: " + pivotFinder);
-                }));
-            } catch (Error e) {
-                System.out.println(e.toString());
-            }
+                if (!Arrays.equals(arrSorted, arr))
+                    fail("\nThe given array was: " + Arrays.toString(arrOriginal) + "\nYou array was:     " + Arrays.toString(arr) +
+                            "\nBut should be: " + Arrays.toString(arrSorted) + "\nPivot was: " + pivotFinder);
+            }));
         }
 
         @DisplayName("First-Last Index")
         @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {0}, Iterations: {2}")
         @MethodSource
-        void test_correct_sorting_last(int selectSortSize, int seed, int iterations,
-                                       int maxLength, int minLength, int numbers) {
-            random_test_factory(DualPivotFinder.getFirstLastPivot(), selectSortSize, seed, iterations,
+        void testCorrectSortingLast(int selectSortSize, int seed, int iterations,
+                                    int maxLength, int minLength, int numbers) {
+            randomTestFactory(DualPivotFinder.getFirstLastPivot(), selectSortSize, seed, iterations,
                     maxLength, minLength, numbers);
         }
 
         @DisplayName("Random Index")
         @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {0}, Iterations: {2}")
         @MethodSource
-        void test_correct_sorting_random(int selectSortSize, int seed, int iterations,
-                                         int maxLength, int minLength, int numbers) {
-            random_test_factory(DualPivotFinder.getRandomPivot(seed), selectSortSize, seed, iterations,
+        void testCorrectSortingRandom(int selectSortSize, int seed, int iterations,
+                                      int maxLength, int minLength, int numbers) {
+            randomTestFactory(DualPivotFinder.getRandomPivot(seed), selectSortSize, seed, iterations,
                     maxLength, minLength, numbers);
         }
 
         @DisplayName("Median Front Index")
         @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {0}, Iterations: {2}")
         @MethodSource
-        void test_correct_sorting_median_front(int selectSortSize, int seed, int iterations, int considered,
-                                               int maxLength, int minLength, int numbers) {
-            random_test_factory(DualPivotFinder.getMedianPivotFront(considered), selectSortSize, seed, iterations,
+        void testCorrectSortingMedianFront(int selectSortSize, int seed, int iterations, int considered,
+                                           int maxLength, int minLength, int numbers) {
+            randomTestFactory(DualPivotFinder.getMedianPivotFront(considered), selectSortSize, seed, iterations,
                     maxLength, minLength, numbers);
         }
 
         @DisplayName("Median Distributed Index")
         @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {0}, Iterations: {2}")
         @MethodSource
-        void test_correct_sorting_median_dist(int selectSortSize, int seed, int iterations, int considered,
-                                              int maxLength, int minLength, int numbers) {
-            random_test_factory(DualPivotFinder.getMedianPivotDistributed(considered), selectSortSize, seed, iterations,
+        void testCorrectSortingMedianDist(int selectSortSize, int seed, int iterations, int considered,
+                                          int maxLength, int minLength, int numbers) {
+            randomTestFactory(DualPivotFinder.getMedianPivotDistributed(considered), selectSortSize, seed, iterations,
                     maxLength, minLength, numbers);
         }
     }
 
     @Nested
     @DisplayName("Tests for Stack Overflows - YOU MIGHT PASS ARTEMIS WITHOUT THEM!")
-    class stack_overflow_test {
+    class stackOverflowTest {
         /**
          * Add more stack overflow candidates:
          * ARRAY_LEN, GENERATOR FOR ARRAY (OPERAND IS A RISING NUMBER), SHORT DESCRIPTION
          */
-        static Stream<Arguments> test_for_stack_overflows() {
+        static Stream<Arguments> testForStackOverflows() {
             Random random = new Random(420);
 
             return Stream.of(
@@ -169,7 +164,7 @@ class DualPivotQuicksortTester {
         }
 
 
-        void test_factory_with_pivots(int arrLen, IntUnaryOperator mapper, String whatsThat) {
+        void testFactoryWithPivots(int arrLen, IntUnaryOperator mapper, String whatsThat) {
 
             assertAll("", Stream.of(DualPivotFinder.getFirstLastPivot(),
                     DualPivotFinder.getRandomPivot(42), DualPivotFinder.getRandomPivot(69),
@@ -188,11 +183,11 @@ class DualPivotQuicksortTester {
                     }));
         }
 
-        @DisplayName("Random Index")
+        @DisplayName("Basic Edge Cases")
         @ParameterizedTest(name = "{index} | Array length: {0} with: {2}")
         @MethodSource
-        void test_for_stack_overflows(int arrLen, IntUnaryOperator mapper, String text) {
-            test_factory_with_pivots(arrLen, mapper, text);
+        void testForStackOverflows(int arrLen, IntUnaryOperator mapper, String text) {
+            testFactoryWithPivots(arrLen, mapper, text);
         }
     }
 }

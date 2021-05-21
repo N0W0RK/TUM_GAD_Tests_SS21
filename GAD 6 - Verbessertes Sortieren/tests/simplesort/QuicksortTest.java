@@ -21,17 +21,17 @@ class QuicksortTest {
 
     @Nested
     @DisplayName("Repetitive Random Tests")
-    class repetitive_random_tests {
+    class repetitiveRandomTests {
         /**
-         The concept is that you can extend the tests as much as you want, by simply adding
-         new Arguments.arguments in the corresponding Stream. Which place is which parameter
-         is stated in the header.
+         * The concept is that you can extend the tests as much as you want, by simply adding
+         * new Arguments.arguments in the corresponding Stream. Which place is which parameter
+         * is stated in the header.
          */
 
         /**
          * LAST PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS
          */
-        static Stream<Arguments> test_correct_sorting_last() {
+        static Stream<Arguments> testCorrectSortingLast() {
             return Stream.of(
                     Arguments.arguments(1, 42, 100, 1, 0, 100),
                     Arguments.arguments(1, 43, 100, 10, 1, 100),
@@ -45,7 +45,7 @@ class QuicksortTest {
         /**
          * MID PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS
          */
-        static Stream<Arguments> test_correct_sorting_mid() {
+        static Stream<Arguments> testCorrectSortingMid() {
             return Stream.of(
                     Arguments.arguments(1, 42, 100, 1, 0, 100),
                     Arguments.arguments(1, 43, 100, 10, 1, 100),
@@ -59,7 +59,7 @@ class QuicksortTest {
         /**
          * RANDOM PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS
          */
-        static Stream<Arguments> test_correct_sorting_random() {
+        static Stream<Arguments> testCorrectSortingRandom() {
             return Stream.of(
                     Arguments.arguments(1, 42, 100, 1, 0, 100),
                     Arguments.arguments(1, 43, 100, 10, 1, 100),
@@ -73,7 +73,7 @@ class QuicksortTest {
         /**
          * MEDIAN FRONT PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, CONSIDERED_ELEMENTS, MAX_LENGTH, MIN_LENGTH, NUMBERS
          */
-        static Stream<Arguments> test_correct_sorting_median_front() {
+        static Stream<Arguments> testCorrectSortingMedianFront() {
             return Stream.of(
                     Arguments.arguments(1, 42, 100, 2, 1, 0, 100),
                     Arguments.arguments(1, 43, 100, 2, 10, 1, 100),
@@ -87,7 +87,7 @@ class QuicksortTest {
         /**
          * MEDIAN DISTRIBUTED PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, CONSIDERED_ELEMENTS, MAX_LENGTH, MIN_LENGTH, NUMBERS
          */
-        static Stream<Arguments> test_correct_sorting_median_dist() {
+        static Stream<Arguments> testCorrectSortingMedianDist() {
             return Stream.of(
                     Arguments.arguments(1, 42, 100, 2, 1, 0, 100),
                     Arguments.arguments(1, 43, 100, 2, 10, 1, 100),
@@ -98,73 +98,63 @@ class QuicksortTest {
             );
         }
 
-        void random_test_factory(PivotFinder pivotFinder, int selectSortSize, int seed, int iterations,
-                                 int maxLength, int minLength, int numbers) {
-            try {
-                Quicksort quicksort = new Quicksort(pivotFinder, selectSortSize);
-                Random random = new Random(seed);
+        void randomTestFactory(PivotFinder pivotFinder, int selectSortSize, int seed, int iterations,
+                               int maxLength, int minLength, int numbers) {
+            Quicksort quicksort = new Quicksort(pivotFinder, selectSortSize);
+            Random random = new Random(seed);
 
-                assertAll("", IntStream.range(0, iterations).mapToObj(i -> () -> {
-                    int arrLen = random.nextInt(maxLength - minLength) + minLength;
-                    int[] arr = IntStream.range(0, arrLen).map(x -> random.nextInt(numbers) - numbers / 2).toArray();
-                    int[] arrSorted = Arrays.copyOf(arr, arr.length);
-                    int[] arrOriginal = Arrays.copyOf(arr, arr.length);
+            assertAll("", IntStream.range(0, iterations).mapToObj(i -> () -> {
+                int arrLen = random.nextInt(maxLength - minLength) + minLength;
+                int[] arr = IntStream.range(0, arrLen).map(x -> random.nextInt(numbers) - numbers / 2).toArray();
+                int[] arrSorted = Arrays.copyOf(arr, arr.length);
+                int[] arrOriginal = Arrays.copyOf(arr, arr.length);
 
-                    Arrays.sort(arrSorted);
-                    quicksort.sort(arr, new SilentResult());
+                Arrays.sort(arrSorted);
+                quicksort.sort(arr, new SilentResult());
 
-                    if (!Arrays.equals(arrSorted, arr))
-                        fail("\nThe given array was: " + Arrays.toString(arrOriginal) +
-                                "\nYou array was:     " + Arrays.toString(arr) + "\nBut should be: "
-                                + Arrays.toString(arrSorted) + "\nPivot was: " + pivotFinder);
-                }));
-            } catch (Error e) {
-                System.out.println(e.getLocalizedMessage());
-            }
+                if (!Arrays.equals(arrSorted, arr))
+                    fail("\nThe given array was: " + Arrays.toString(arrOriginal) + "\nYou array was: " + Arrays.toString(arr)
+                            + "\nBut should be: " + Arrays.toString(arrSorted) + "\nPivot was: " + pivotFinder);
+            }));
+
         }
 
         @DisplayName("Last Index")
         @ParameterizedTest(name = "{index} | Sorts correct: Pivot: {0}, SelectionSize: {1}, Iterations: {3}")
         @MethodSource
-        void test_correct_sorting_last(int selectSortSize, int seed, int iterations,
-                                       int maxLength, int minLength, int numbers) {
-            random_test_factory(PivotFinder.getLastPivot(), selectSortSize, seed, iterations,
-                    maxLength, minLength, numbers);
+        void testCorrectSortingLast(int selectSortSize, int seed, int iterations, int maxLength, int minLength, int numbers) {
+            randomTestFactory(PivotFinder.getLastPivot(), selectSortSize, seed, iterations, maxLength, minLength, numbers);
         }
 
         @DisplayName("Middle Index")
         @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {1}, Iterations: {3}")
         @MethodSource
-        void test_correct_sorting_mid(int selectSortSize, int seed, int iterations,
-                                      int maxLength, int minLength, int numbers) {
-            random_test_factory(PivotFinder.getMidPivot(), selectSortSize, seed, iterations,
-                    maxLength, minLength, numbers);
+        void testCorrectSortingMid(int selectSortSize, int seed, int iterations, int maxLength, int minLength, int numbers) {
+            randomTestFactory(PivotFinder.getMidPivot(), selectSortSize, seed, iterations, maxLength, minLength, numbers);
         }
 
         @DisplayName("Random Index")
         @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {1}, Iterations: {3}")
         @MethodSource
-        void test_correct_sorting_random(int selectSortSize, int seed, int iterations,
-                                         int maxLength, int minLength, int numbers) {
-            random_test_factory(PivotFinder.getRandomPivot(seed), selectSortSize, seed, iterations,
-                    maxLength, minLength, numbers);
+        void testCorrectSortingRandom(int selectSortSize, int seed, int iterations, int maxLength, int minLength, int numbers) {
+            randomTestFactory(PivotFinder.getRandomPivot(seed), selectSortSize, seed, iterations, maxLength, minLength, numbers);
         }
 
         @DisplayName("Median Front Index")
         @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {1}, Iterations: {3}")
         @MethodSource
-        void test_correct_sorting_median_front(int selectSortSize, int seed, int iterations, int considered,
-                                               int maxLength, int minLength, int numbers) {
-            random_test_factory(PivotFinder.getMedianPivotFront(considered), selectSortSize, seed, iterations,
-                    maxLength, minLength, numbers);
+        void testCorrectSortingMedianFront(int selectSortSize, int seed, int iterations, int considered, int maxLength,
+                                           int minLength, int numbers) {
+            randomTestFactory(PivotFinder.getMedianPivotFront(considered), selectSortSize, seed, iterations, maxLength,
+                    minLength, numbers);
         }
 
         @DisplayName("Median Distributed Index")
         @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {1}, Iterations: {3}")
         @MethodSource
-        void test_correct_sorting_median_dist(int selectSortSize, int seed, int iterations, int considered,
-                                              int maxLength, int minLength, int numbers) {
-            random_test_factory(PivotFinder.getMedianPivotDistributed(considered), selectSortSize, seed, iterations,
+        void testCorrectSortingMedianDist(int selectSortSize, int seed, int iterations, int considered, int maxLength,
+                                          int minLength, int numbers) {
+            randomTestFactory(PivotFinder.getMedianPivotDistributed(considered), selectSortSize, seed, iterations,
                     maxLength, minLength, numbers);
         }
     }
