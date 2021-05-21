@@ -1,26 +1,23 @@
 package tests.simplesort;
 
-import gad.simplesort.*;
-import org.junit.jupiter.api.*;
+import gad.simplesort.PivotFinder;
+import gad.simplesort.Quicksort;
+import gad.simplesort.SilentResult;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.Random;
-import java.util.function.IntUnaryOperator;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.fail;
 
-class DualPivotQuicksortTester {
-
-    @BeforeEach
-    void printLine() {
-        System.out.println("-------------------------");
-    }
+class QuicksortTest {
 
     @Nested
     @DisplayName("Repetitive Random Tests")
@@ -30,7 +27,6 @@ class DualPivotQuicksortTester {
          new Arguments.arguments in the corresponding Stream. Which place is which parameter
          is stated in the header.
          */
-
 
         /**
          * LAST PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS
@@ -42,7 +38,21 @@ class DualPivotQuicksortTester {
                     Arguments.arguments(2, 44, 100, 100, 1, 100),
                     Arguments.arguments(2, 45, 100, 1000, 1, 100),
                     Arguments.arguments(3, 46, 100, 69, 1, 100),
-                    Arguments.arguments(10, 47, 100, 1000, 1, 100)
+                    Arguments.arguments(10, 47, 100, 10000, 1, 100)
+            );
+        }
+
+        /**
+         * MID PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS
+         */
+        static Stream<Arguments> test_correct_sorting_mid() {
+            return Stream.of(
+                    Arguments.arguments(1, 42, 100, 1, 0, 100),
+                    Arguments.arguments(1, 43, 100, 10, 1, 100),
+                    Arguments.arguments(2, 44, 100, 100, 1, 100),
+                    Arguments.arguments(2, 45, 100, 1000, 1, 100),
+                    Arguments.arguments(3, 46, 100, 69, 1, 100),
+                    Arguments.arguments(10, 47, 100, 10000, 1, 100)
             );
         }
 
@@ -56,7 +66,7 @@ class DualPivotQuicksortTester {
                     Arguments.arguments(2, 44, 100, 100, 1, 100),
                     Arguments.arguments(2, 45, 100, 1000, 1, 100),
                     Arguments.arguments(3, 46, 100, 69, 1, 100),
-                    Arguments.arguments(10, 47, 100, 1000, 1, 100)
+                    Arguments.arguments(10, 47, 100, 10000, 1, 100)
             );
         }
 
@@ -70,7 +80,7 @@ class DualPivotQuicksortTester {
                     Arguments.arguments(2, 44, 100, 3, 100, 1, 100),
                     Arguments.arguments(2, 45, 100, 3, 1000, 1, 100),
                     Arguments.arguments(3, 46, 100, 5, 69, 1, 100),
-                    Arguments.arguments(10, 47, 100, 5, 100, 1, 100)
+                    Arguments.arguments(10, 47, 100, 5, 10000, 1, 100)
             );
         }
 
@@ -88,10 +98,10 @@ class DualPivotQuicksortTester {
             );
         }
 
-        void random_test_factory(DualPivotFinder pivotFinder, int selectSortSize, int seed, int iterations,
+        void random_test_factory(PivotFinder pivotFinder, int selectSortSize, int seed, int iterations,
                                  int maxLength, int minLength, int numbers) {
             try {
-                DualPivotQuicksort quicksort = new DualPivotQuicksort(pivotFinder, selectSortSize);
+                Quicksort quicksort = new Quicksort(pivotFinder, selectSortSize);
                 Random random = new Random(seed);
 
                 assertAll("", IntStream.range(0, iterations).mapToObj(i -> () -> {
@@ -101,7 +111,7 @@ class DualPivotQuicksortTester {
                     int[] arrOriginal = Arrays.copyOf(arr, arr.length);
 
                     Arrays.sort(arrSorted);
-                    quicksort.sort(arr, new TesterDualQuicksortResult());
+                    quicksort.sort(arr, new SilentResult());
 
                     if (!Arrays.equals(arrSorted, arr))
                         fail("\nThe given array was: " + Arrays.toString(arrOriginal) +
@@ -109,90 +119,53 @@ class DualPivotQuicksortTester {
                                 + Arrays.toString(arrSorted) + "\nPivot was: " + pivotFinder);
                 }));
             } catch (Error e) {
-                System.out.println(e.toString());
+                System.out.println(e.getLocalizedMessage());
             }
         }
 
-        @DisplayName("First-Last Index")
-        @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {0}, Iterations: {2}")
+        @DisplayName("Last Index")
+        @ParameterizedTest(name = "{index} | Sorts correct: Pivot: {0}, SelectionSize: {1}, Iterations: {3}")
         @MethodSource
         void test_correct_sorting_last(int selectSortSize, int seed, int iterations,
                                        int maxLength, int minLength, int numbers) {
-            random_test_factory(DualPivotFinder.getFirstLastPivot(), selectSortSize, seed, iterations,
+            random_test_factory(PivotFinder.getLastPivot(), selectSortSize, seed, iterations,
+                    maxLength, minLength, numbers);
+        }
+
+        @DisplayName("Middle Index")
+        @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {1}, Iterations: {3}")
+        @MethodSource
+        void test_correct_sorting_mid(int selectSortSize, int seed, int iterations,
+                                      int maxLength, int minLength, int numbers) {
+            random_test_factory(PivotFinder.getMidPivot(), selectSortSize, seed, iterations,
                     maxLength, minLength, numbers);
         }
 
         @DisplayName("Random Index")
-        @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {0}, Iterations: {2}")
+        @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {1}, Iterations: {3}")
         @MethodSource
         void test_correct_sorting_random(int selectSortSize, int seed, int iterations,
                                          int maxLength, int minLength, int numbers) {
-            random_test_factory(DualPivotFinder.getRandomPivot(seed), selectSortSize, seed, iterations,
+            random_test_factory(PivotFinder.getRandomPivot(seed), selectSortSize, seed, iterations,
                     maxLength, minLength, numbers);
         }
 
         @DisplayName("Median Front Index")
-        @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {0}, Iterations: {2}")
+        @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {1}, Iterations: {3}")
         @MethodSource
         void test_correct_sorting_median_front(int selectSortSize, int seed, int iterations, int considered,
                                                int maxLength, int minLength, int numbers) {
-            random_test_factory(DualPivotFinder.getMedianPivotFront(considered), selectSortSize, seed, iterations,
+            random_test_factory(PivotFinder.getMedianPivotFront(considered), selectSortSize, seed, iterations,
                     maxLength, minLength, numbers);
         }
 
         @DisplayName("Median Distributed Index")
-        @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {0}, Iterations: {2}")
+        @ParameterizedTest(name = "{index} | Sorts correct: SelectionSize: {1}, Iterations: {3}")
         @MethodSource
         void test_correct_sorting_median_dist(int selectSortSize, int seed, int iterations, int considered,
                                               int maxLength, int minLength, int numbers) {
-            random_test_factory(DualPivotFinder.getMedianPivotDistributed(considered), selectSortSize, seed, iterations,
+            random_test_factory(PivotFinder.getMedianPivotDistributed(considered), selectSortSize, seed, iterations,
                     maxLength, minLength, numbers);
-        }
-    }
-
-    @Nested
-    @DisplayName("Tests for Stack Overflows - YOU MIGHT PASS ARTEMIS WITHOUT THEM!")
-    class stack_overflow_test {
-        /**
-         * Add more stack overflow candidates:
-         * ARRAY_LEN, GENERATOR FOR ARRAY (OPERAND IS A RISING NUMBER), SHORT DESCRIPTION
-         */
-        static Stream<Arguments> test_for_stack_overflows() {
-            Random random = new Random(420);
-
-            return Stream.of(
-                    Arguments.arguments(500_000, (IntUnaryOperator) operand -> random.nextInt(200), "Just random"),
-                    Arguments.arguments(2_500_000, (IntUnaryOperator) operand -> 1, "Maaaany ones"),
-                    Arguments.arguments(10_000, (IntUnaryOperator) operand -> operand, "Rising"),
-                    Arguments.arguments(10_000, (IntUnaryOperator) operand -> -1 * (operand + 10_000), "Descendant")
-            );
-        }
-
-
-        void test_factory_with_pivots(int arrLen, IntUnaryOperator mapper, String whatsThat) {
-
-            assertAll("", Stream.of(DualPivotFinder.getFirstLastPivot(),
-                    DualPivotFinder.getRandomPivot(42), DualPivotFinder.getRandomPivot(69),
-                    DualPivotFinder.getMedianPivotFront(2), DualPivotFinder.getMedianPivotFront(3),
-                    DualPivotFinder.getMedianPivotFront(5), DualPivotFinder.getMedianPivotDistributed(2),
-                    DualPivotFinder.getMedianPivotDistributed(3), DualPivotFinder.getMedianPivotDistributed(5))
-                    .map(dualPivotFinder -> () -> {
-                        DualPivotQuicksort quicksort = new DualPivotQuicksort(dualPivotFinder, 1);
-                        int[] arr = IntStream.range(0, arrLen).map(mapper).toArray();
-
-                        try {
-                            quicksort.sort(arr, new SilentResult(), 0, arrLen - 1);
-                        } catch (java.lang.StackOverflowError e) {
-                            fail("StackOverFlow with repetitive numbers: " + whatsThat + " and Pivot: " + dualPivotFinder);
-                        }
-                    }));
-        }
-
-        @DisplayName("Random Index")
-        @ParameterizedTest(name = "{index} | Array length: {0} with: {2}")
-        @MethodSource
-        void test_for_stack_overflows(int arrLen, IntUnaryOperator mapper, String text) {
-            test_factory_with_pivots(arrLen, mapper, text);
         }
     }
 }
