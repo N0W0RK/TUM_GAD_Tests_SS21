@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PivotFinderTester {
 
@@ -744,7 +744,7 @@ class PivotFinderTester {
         array = new int[] {301, -397, 3, -395, 498, -381, 188, 22, 300, -68, 368, 325, -440};
         assertEquals(2, PivotFinder.getMedianPivotDistributed(3).findPivot(array, 2, 12));
         array = new int[] {-353, -222, -43, -319, -328, 412, 494, -234, 99, -486, 440, 357, -398, -233};
-        assertEquals(2, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 2, 13));
+        assertEquals(8, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 2, 13));
         array = new int[] {459, 93, -36, -369, -199, 1, 473, -135, 178, -12, -233, 404, -330, 15, -92};
         assertEquals(9, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 0, 14));
         array = new int[] {140, 168, -119, 469, -490, -69, -128, 302, -98, 397, 231, -230, -377, -235, -158, 407};
@@ -758,11 +758,11 @@ class PivotFinderTester {
         array = new int[] {136, -461, -386, 261, 153, -29, -146, -170, -440, -112, 426, 67, 228, -473, 22, 106, 402, -185, 287, -5};
         assertEquals(19, PivotFinder.getMedianPivotDistributed(3).findPivot(array, 1, 19));
         array = new int[] {460, 174, -134, 72, -370, -175, -294, -353, 325, -181, 280, -268, 52, 412, 249, -315, 263, -373, 177, -422, -454};
-        assertEquals(15, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 13, 20));
+        assertEquals(14, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 13, 20));
         array = new int[] {73, -476, -65, -99, -316, 169, -485, -372, -58, -356, 6, -324, 410, -22, -170, 149, 182, -265, 391, -452, -107, -457};
         assertEquals(17, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 13, 21));
         array = new int[] {488, 33, -295, 333, -421, 354, 285, 77, 52, -320, -219, -249, -335, 345, 66, -178, -31, -241, -114, 166, 192, 369, 462};
-        assertEquals(16, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 15, 22));
+        assertEquals(18, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 15, 22));
         array = new int[] {-413, -188, 27, 427, -413, 310, 246, 63, 152, -137, 240, 227, -350, -227, -196, 446, -308, 498, 124, 492, 397, 348, 104, -372};
         assertEquals(5, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 5, 23));
         array = new int[] {-223, 125, -489, 132, 332, -247, -171, -489, 393, -307, -154, 197, -48, -404, 217, 374, -351, -80, -163, 53, 269, -148, -495, 77, -355};
