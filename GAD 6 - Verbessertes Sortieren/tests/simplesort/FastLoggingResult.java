@@ -1,19 +1,22 @@
 package tests.simplesort;
 
+import gad.simplesort.Result;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Fast logging class which doesn't print anything to the console
- * However stores all the would've been outputs in a list
- * Abbreviations list
- * SS = SelectionSort
- * MS = MergeSort
- * QS = QuickSort
- * DPQS = DualPivotQuickSort
- * JS = JavaSort
- * LPA = LoggingPartialArray
+ * but stores all outputs that would have been printed in a list
+ *
+ * Abbreviations list:
+ *   SS = SelectionSort
+ *   MS = MergeSort
+ *   QS = QuickSort
+ *   DPQS = DualPivotQuickSort
+ *   JS = JavaSort
+ *   LPA = LoggingPartialArray
  * @author Aamin
  */
 public class FastLoggingResult implements Result {
@@ -24,8 +27,8 @@ public class FastLoggingResult implements Result {
      * To log selection sort
      * SS = SelectionSort
      * @param array The array to be logged
-     * @param from The index from which it'll be logged (inclusive)
-     * @param to The index up to which it'll be logged (inclusive)
+     * @param from The first index from which it'll be logged (inclusive)
+     * @param to The last index up to which it'll be logged (inclusive)
      * @author Aamin
      */
     @Override
@@ -37,8 +40,8 @@ public class FastLoggingResult implements Result {
      * To log merge sort
      * MS = MergeSort
      * @param array The array to be logged
-     * @param from The index from which it'll be logged (inclusive)
-     * @param to The index up to which it'll be logged (inclusive)
+     * @param from The first index from which it'll be logged (inclusive)
+     * @param to The last index up to which it'll be logged (inclusive)
      * @author Aamin
      */
     @Override
@@ -50,8 +53,8 @@ public class FastLoggingResult implements Result {
      * To log quick sort
      * QS = QuickSort
      * @param array The array to be logged
-     * @param from The index from which it'll be logged (inclusive)
-     * @param to The index up to which it'll be logged (inclusive)
+     * @param from The first index from which it'll be logged (inclusive)
+     * @param to The last index up to which it'll be logged (inclusive)
      * @author Aamin
      */
     @Override
@@ -63,8 +66,8 @@ public class FastLoggingResult implements Result {
      * To log DualPivotQuickSort
      * DQPS = DualPivotQuickSort
      * @param array The array to be logged
-     * @param from The index from which it'll be logged (inclusive)
-     * @param to The index up to which it'll be logged (inclusive)
+     * @param from The first index from which it'll be logged (inclusive)
+     * @param to The last index up to which it'll be logged (inclusive)
      * @author Aamin
      */
     @Override
@@ -76,8 +79,8 @@ public class FastLoggingResult implements Result {
      * To log java sort
      * JS = JavaSort
      * @param array The array to be logged
-     * @param from The index from which it'll be logged (inclusive)
-     * @param to The index up to which it'll be logged (inclusive)
+     * @param from The first index from which it'll be logged (inclusive)
+     * @param to The last index up to which it'll be logged (inclusive)
      * @author Aamin
      */
     @Override
@@ -89,8 +92,8 @@ public class FastLoggingResult implements Result {
      * To log a partial array
      * LPA = LoggingPartialArray
      * @param array The array to be logged
-     * @param from The index from which it'll be logged (inclusive)
-     * @param to The index up to which it'll be logged (inclusive)
+     * @param from The first index from which it'll be logged (inclusive)
+     * @param to The last index up to which it'll be logged (inclusive)
      * @author Aamin
      */
     @Override
