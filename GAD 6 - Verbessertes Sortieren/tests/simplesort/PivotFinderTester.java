@@ -241,7 +241,6 @@ class PivotFinderTester {
     /**
      * Test with random arrays to see if a PSEUDO random index is being returned or not
      * @author Aamin
-     * @version 1.0.4
      */
     @Test
     public void randomPivot() {
@@ -725,7 +724,6 @@ class PivotFinderTester {
      * The public test from artemis to see if the index of the median within those distributed limits are returned or not
      * Note: If the median has duplicates, this test expects the FIRST index of the duplicate to be returned
      * @author Artemis
-     * @version 1.0.2
      */
     @Test
     public void MedianPivotDistributed() {
