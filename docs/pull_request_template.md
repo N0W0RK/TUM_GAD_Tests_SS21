@@ -1,5 +1,11 @@
-**Link any issues if they have led to changes in the request**  
+**Shortly describe your proposed changes:**
 
 
-**Please describe the (sub-)exercises the tests are meant for**  
-* GAD N
+
+**Link any issues if they have led to changes in the request:**
+
+
+
+**Note the (sub-)exercises the tests are meant for:**
+
+* GAD <N>
