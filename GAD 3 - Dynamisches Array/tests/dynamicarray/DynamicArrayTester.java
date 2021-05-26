@@ -6,11 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-/**
- * Tests included from Zulip: https://zulip.in.tum.de/#narrow/stream/419-GAD-E03-Dynamisches.20Array/topic/Tests/near/177724
- * @Author Aamin Dev
- */
-class TestForDynamicArray {
+class DynamicArrayTester {
 
     @Test
     void testIllegalArguments() {
@@ -435,5 +431,4 @@ class TestForDynamicArray {
         }
 
     }
-
 }

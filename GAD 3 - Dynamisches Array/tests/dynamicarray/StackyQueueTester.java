@@ -1,15 +1,16 @@
-package gad.dynamicarray;
+package tests.dynamicarray;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import gad.dynamicarray.StackyQueue;
 import org.junit.jupiter.api.Test;
 
-class TestForStackyQueue {
+class StackyQueueTester {
 
 	@Test
 	void test() {
-		StackyQueue s = new StackyQueue(3, 4, new StudentResult(), new StudentResult());
+		StackyQueue s = new StackyQueue(3, 4, new TestResult(), new TestResult());
 		s.insert(1);
 		assertTrue(s.toString().equals("[1, 0, 0], length: 1, [], length: 0"));
 		s.insert(2);
