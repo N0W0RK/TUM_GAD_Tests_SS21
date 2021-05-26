@@ -30,7 +30,7 @@ $ ln -s /path/to/src/tests /path/to/repository/tests
 For every exercise that has tests, there will be a separate folder. The `gad` in the package name of the excercise file will be replaced by `tests`.
 So, if the classes of the excercises are located in the package `gad.binarysearch` (for the class `gad.binarysearch.BinSea`), the tests will be located at `tests.binarysearch`.
 Usually, the naming convention for test classes is to use the tested class name and append `Tester` (e.g. `BinSeaTester`) or another fitting name ending with `Tester`.
-Further information can be found in the contributing guidelines, too.
+Further information can be found in the [contributing guidelines](docs/CONTRIBUTING.md), too.
 
 ## Collaboration
 
