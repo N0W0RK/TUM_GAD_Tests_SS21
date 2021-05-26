@@ -33,7 +33,7 @@ public class FastLoggingResult implements Result {
      */
     @Override
     public void startSelectionsort(int[] array, int from, int to) {
-        outputs.add(("\nSS : " + Arrays.toString(array) + " in [" + from + ", " + to + "]"));
+        outputs.add("\nSS : " + Arrays.toString(array) + " in [" + from + ", " + to + "]");
     }
 
     /**
