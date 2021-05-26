@@ -241,6 +241,7 @@ class PivotFinderTester {
     /**
      * Test with random arrays to see if a PSEUDO random index is being returned or not
      * @author Aamin
+     * @version 1.0.3
      */
     @Test
     public void randomPivot() {
@@ -252,25 +253,25 @@ class PivotFinderTester {
 
         assertEquals(4, pivotFinder.findPivot(array, 0, 5));
         answerGot = pivotFinder.findPivot(array, 0, 5);
-        assertEquals(3, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot);
+        assertEquals(3, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot + ">");
         answerGot = pivotFinder.findPivot(array, 0, 5);
-        assertEquals(2, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot);
+        assertEquals(2, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot + ">");
         answerGot = pivotFinder.findPivot(array, 0, 5);
-        assertEquals(4, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot);
+        assertEquals(4, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot + ">");
         answerGot = pivotFinder.findPivot(array, 0, 5);
-        assertEquals(5, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot);
+        assertEquals(5, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot + ">");
         answerGot = pivotFinder.findPivot(array, 1, 5);
-        assertEquals(1, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot);
+        assertEquals(1, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot + ">");
         answerGot = pivotFinder.findPivot(array, 2, 5);
-        assertEquals(4, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot);
+        assertEquals(4, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot + ">");
         answerGot = pivotFinder.findPivot(array, 3, 5);
-        assertEquals(5, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot);
+        assertEquals(5, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot + ">");
         answerGot = pivotFinder.findPivot(array, 2, 4);
-        assertEquals(3, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot);
+        assertEquals(3, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot + ">");
         answerGot = pivotFinder.findPivot(array, 2, 3);
-        assertEquals(3, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot);
+        assertEquals(3, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot + ">");
         answerGot = pivotFinder.findPivot(array, 3, 3);
-        assertEquals(3, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot);
+        assertEquals(3, answerGot, "Are you sure you aren't creating new object of random every time? Expected <3> got <" + answerGot + ">");
 
         array = new int[] {258, 381, -187};
         assertEquals(1, PivotFinder.getRandomPivot(606509405).findPivot(array, 0, 1));
