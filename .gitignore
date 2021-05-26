@@ -1,2 +1,19 @@
+*.jar
+*.class
+*.iml
+*.iws
+*.war
+*.ear
+*.tmp
+*.bak
+*.swp
+*.launch
+*~.nib
 .project
-GAD 4 - Simple Hashing/tests/simplehash/TestGenerator.java
+.idea
+.metadata
+.settings
+.externalToolBuilders
+.factorypath
+.buildpath
+local.properties
