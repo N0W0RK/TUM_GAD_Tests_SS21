@@ -241,7 +241,7 @@ class PivotFinderTester {
     /**
      * Test with random arrays to see if a PSEUDO random index is being returned or not
      * @author Aamin
-     * @version 1.0.3
+     * @version 1.0.4
      */
     @Test
     public void randomPivot() {
