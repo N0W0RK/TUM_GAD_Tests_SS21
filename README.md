@@ -36,7 +36,7 @@ Further information can be found in the contributing guidelines, too.
 
 We will probably only add test cases from the problem statements and ones from issues we were experiencing.
 If you have cases yourself or spot mistakes we did in the tests here, feel free to open an issue or to create a pull request.
-Check out the [contributing guidelines](https://github.com/N0W0RK/TUM_GAD_Tests_SS21/blob/main/docs/CONTRIBUTING.md) for further information.
+Check out the [contributing guidelines](docs/CONTRIBUTING.md) for further information.
 In case you are unsure how to create a pull request, take a look at the [GitHub documentation](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
 Please use JUnit 5.7 when writing your own Tests. Existing tests will be modified accordingly.
 
