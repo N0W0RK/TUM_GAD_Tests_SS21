@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class BinSea {
+public class BinSeaTester {
 
 	/**
 	 * Tests from examples from exercise 1
