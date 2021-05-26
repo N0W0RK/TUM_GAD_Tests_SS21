@@ -40,5 +40,6 @@ Check out the [contributing guidelines](docs/CONTRIBUTING.md) for further inform
 In case you are unsure how to create a pull request, take a look at the [GitHub documentation](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
 Please use JUnit 5.7 when writing your own Tests. Existing tests will be modified accordingly.
 
-The GPLv3 license will be added in the near future.
-All new contributions imply that they accept that they will be placed under this license once existing contributors agree.
+## License
+
+This project is licensed under GPLv3, see [LICENSE](docs/LICENSE).
