@@ -16,4 +16,5 @@
 .externalToolBuilders
 .factorypath
 .buildpath
+.DS_Store
 local.properties
