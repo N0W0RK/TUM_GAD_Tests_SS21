@@ -71,7 +71,7 @@ class TesterDualQuicksortResult implements Result {
         int pivotOne = endResult[indicesOfLog[1] + 1];
         int pivotTwo = endResult[indicesOfLog[3] + 1];
 
-        assertTrue(pivotOne <= pivotTwo, "Array: " + Arrays.toString(endResult) +
+        if (pivotOne > pivotTwo) fail("Array: " + Arrays.toString(endResult) +
                 "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
                 "\nThe second pivot is smaller than the first one");
 
