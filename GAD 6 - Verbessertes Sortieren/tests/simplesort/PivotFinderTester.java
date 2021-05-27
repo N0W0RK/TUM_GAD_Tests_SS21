@@ -8,13 +8,16 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+//import static org.junit.jupiter.api.Assertions.*;
+import static tests.simplesort.CustomAssertion.*;
 
 class PivotFinderTester {
 
     @BeforeEach
     void printLine() {
+
         System.out.println("-------------------------");
+
     }
 
     /**
@@ -508,8 +511,8 @@ class PivotFinderTester {
         int[] array;
 
         array = new int[] {69, 420};
-        assertEquals(0, PivotFinder.getMedianPivotFront(3).findPivot(array, 0, 1));
-        assertEquals(0, PivotFinder.getMedianPivotFront(5).findPivot(array, 0, 1));
+        assertEquals(0, 1, PivotFinder.getMedianPivotFront(3).findPivot(array, 0, 1));
+        assertEquals(0, 1, PivotFinder.getMedianPivotFront(5).findPivot(array, 0, 1));
         array = new int[] {352, -198, 88};
         assertEquals(2, PivotFinder.getMedianPivotFront(5).findPivot(array, 0, 2));
         array = new int[] {117, 357, -487, -153};
@@ -738,7 +741,7 @@ class PivotFinderTester {
         array = new int[] {425, -284, -45, 27};
         assertEquals(2, PivotFinder.getMedianPivotDistributed(3).findPivot(array, 1, 3));
         array = new int[] {-484, 36, -408, 240, -366};
-        assertEquals(4, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 1, 4));
+        assertEquals(4, 1, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 1, 4));
         array = new int[] {-180, 228, 272, 406, -313, 350};
         assertEquals(2, PivotFinder.getMedianPivotDistributed(3).findPivot(array, 2, 5));
         array = new int[] {-249, 352, -24, 110, 316, 150, 137};
@@ -746,7 +749,7 @@ class PivotFinderTester {
         array = new int[] {468, 402, -59, 15, 209, -148, -422, 464};
         assertEquals(5, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 5, 7));
         array = new int[] {240, 285, -219, 25, -363, 299, 200, -69, 50};
-        assertEquals(8, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 6, 8));
+        assertEquals(8, 6, PivotFinder.getMedianPivotDistributed(5).findPivot(array, 6, 8));
         array = new int[] {435, -269, 269, 297, 353, 49, -150, -194, 88, -363};
         assertEquals(7, PivotFinder.getMedianPivotDistributed(3).findPivot(array, 5, 9));
         array = new int[] {-421, 214, -72, -469, -412, -19, 483, -422, -400, -427, 385};
@@ -953,10 +956,10 @@ class PivotFinderTester {
     }
 
     /**
-        Beware: These tests are in some regards *stricter* than the Artemis tests. Good for finding exceptions and general edge cases regardless.
-        
-        Provided by the man, the myth, the legend: Ralg
-    */
+     Beware: These tests are in some regards *stricter* than the Artemis tests. Good for finding exceptions and general edge cases regardless.
+
+     Provided by the man, the myth, the legend: Ralg
+     */
     @Test
     void testAll() {
         System.out.println("Mid Pivot"+System.lineSeparator());
@@ -980,11 +983,11 @@ class PivotFinderTester {
     }
 
     /**
-        Beware: This test helper is in some regards *stricter* than the Artemis tests. Good for finding exceptions and general edge cases regardless.
-        maxArrayLength 30 is recommended for general testing, 3 for the small array tests.
-        
-        Provided by the man, the myth, the legend: Ralg
-    */
+     Beware: This test helper is in some regards *stricter* than the Artemis tests. Good for finding exceptions and general edge cases regardless.
+     maxArrayLength 30 is recommended for general testing, 3 for the small array tests.
+
+     Provided by the man, the myth, the legend: Ralg
+     */
     static void bigArraysTestHelper(PivotFinder f, int seed, int maxArrayLength) {
         Random ralg = new Random(seed);
         for (int i = 0; i < 10000; i++) {
