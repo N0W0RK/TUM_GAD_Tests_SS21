@@ -3,6 +3,7 @@ package tests.simplesort;
 import gad.simplesort.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DualPivotFinderTester {
@@ -13,8 +14,8 @@ class DualPivotFinderTester {
     }
 
     /**
-     * @author mertcorumlu
      * I think it is enough for this one :)
+     * @author mertcorumlu
      */
     @Test
     void firstLastPivot() {
@@ -32,9 +33,9 @@ class DualPivotFinderTester {
     }
 
     /**
-     * @author mertcorumlu
      * Not providing any array because it is not necessary.
-     * It tests 74 random cases
+     * It tests 75 random cases
+     * @author mertcorumlu
      */
     @Test
     void randomPivot() {
@@ -116,8 +117,8 @@ class DualPivotFinderTester {
     }
 
     /**
+     * Tests 300 random cases.
      * @author mertcorumlu
-     * Tests 300 random cases. Don't ask why 299 :(
      */
     @Test
     void medianPivotFront() {
@@ -705,8 +706,8 @@ class DualPivotFinderTester {
     }
 
     /**
-     * @author mertcorumlu
      * Tests 340 random cases.
+     * @author mertcorumlu
      */
     @Test
     void medianPivotDistributed() {
