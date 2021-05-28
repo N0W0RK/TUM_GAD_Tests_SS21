@@ -20,6 +20,7 @@ class MergesortTester {
     /**
      * Tests simple merge sort, this should've been implemented already
      * Without any optimisation and without the use of selection sort optimisation
+     * Note: This is one possible version of logging, you may fail this test if you're using a different way of logging and still have 100%
      * @author Aamin
      */
     @Test
@@ -233,6 +234,7 @@ class MergesortTester {
     /**
      * Tests simple merge sort
      * Without any optimisation but WITH the use of selection sort optimisation
+     * Note: This is one possible version of logging, you may fail this test if you're using a different way of logging and still have 100%
      * @author
      */
     @Test

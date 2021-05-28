@@ -33,6 +33,77 @@ class DualPivotFinderTester {
     }
 
     /**
+     * Test to see if your dual pivot finder is returning the first and the last pivot
+     * @author Aamin
+     */
+    @Test
+    public void getFirstLastPivot() {
+        DualPivotFinder dualPivotFinder = DualPivotFinder.getFirstLastPivot();
+        int[] array;
+
+        array = new int[] {32, 28};
+        assertArrayEquals(new int[] {0, 1}, dualPivotFinder.findPivot(array, 0, 1));
+        array = new int[] {9, -10, 46};
+        assertArrayEquals(new int[] {1, 1}, dualPivotFinder.findPivot(array, 1, 1));
+        array = new int[] {29, -23, -1, 5};
+        assertArrayEquals(new int[] {2, 2}, dualPivotFinder.findPivot(array, 2, 2));
+        array = new int[] {-41, -3, 19, 39, 41};
+        assertArrayEquals(new int[] {0, 4}, dualPivotFinder.findPivot(array, 0, 4));
+        array = new int[] {38, 7, 40, -31, 12, -9};
+        assertArrayEquals(new int[] {0, 1}, dualPivotFinder.findPivot(array, 0, 1));
+        array = new int[] {-49, 40, 22, -10, 2, 16, -49};
+        assertArrayEquals(new int[] {0, 1}, dualPivotFinder.findPivot(array, 0, 1));
+        array = new int[] {-40, 30, -46, -41, 34, 13, 43, -22};
+        assertArrayEquals(new int[] {6, 6}, dualPivotFinder.findPivot(array, 6, 6));
+        array = new int[] {-43, -13, -21, -34, 6, 17, -19, -29, -13};
+        assertArrayEquals(new int[] {8, 8}, dualPivotFinder.findPivot(array, 8, 8));
+        array = new int[] {-47, 44, 36, 41, 16, -44, 22, -16, 34, 34};
+        assertArrayEquals(new int[] {7, 7}, dualPivotFinder.findPivot(array, 7, 7));
+        array = new int[] {-15, 7, -12, -19, 28, -37, -18, -6, -28, -29, 25};
+        assertArrayEquals(new int[] {8, 10}, dualPivotFinder.findPivot(array, 8, 10));
+        array = new int[] {15, -2, 10, -8, -35, 41, -45, 15, 5, 30, 41, -43};
+        assertArrayEquals(new int[] {8, 11}, dualPivotFinder.findPivot(array, 8, 11));
+        array = new int[] {-16, -13, -46, 24, 28, -32, -21, -40, -35, -18, -30, 43, 11};
+        assertArrayEquals(new int[] {12, 12}, dualPivotFinder.findPivot(array, 12, 12));
+        array = new int[] {-18, 41, -8, -50, -35, 2, -3, -11, 12, 40, -42, -47, -20, -25};
+        assertArrayEquals(new int[] {13, 13}, dualPivotFinder.findPivot(array, 13, 13));
+        array = new int[] {-20, -4, 12, -37, 11, 38, -18, -41, 37, 42, -33, 32, -33, -5, 17};
+        assertArrayEquals(new int[] {13, 14}, dualPivotFinder.findPivot(array, 13, 14));
+        array = new int[] {41, 32, 3, 1, -29, -32, 48, 33, -21, -37, 32, 7, 8, -43, -49, 12};
+        assertArrayEquals(new int[] {14, 15}, dualPivotFinder.findPivot(array, 14, 15));
+        array = new int[] {-50, 34, 20, 2, 45, 26, -29, -25, 30, -2, -20, -23, -4, -49, 44, -24, 24};
+        assertArrayEquals(new int[] {16, 16}, dualPivotFinder.findPivot(array, 16, 16));
+        array = new int[] {8, 6, 32, 32, 47, 17, 46, -23, 37, -45, 34, -30, -38, 41, 30, -26, 30, -30};
+        assertArrayEquals(new int[] {1, 7}, dualPivotFinder.findPivot(array, 1, 7));
+        array = new int[] {8, 0, 19, -29, -17, 44, 26, -3, -31, 39, 33, 16, 19, 24, -23, 22, 24, 35, -26};
+        assertArrayEquals(new int[] {8, 16}, dualPivotFinder.findPivot(array, 8, 16));
+        array = new int[] {-44, 8, -41, -20, 11, 17, 23, 22, 22, 22, 48, -50, -6, 9, -23, 17, -37, -19, 45, -31};
+        assertArrayEquals(new int[] {8, 17}, dualPivotFinder.findPivot(array, 8, 17));
+        array = new int[] {25, -7, -19, 19, 47, 32, -27, 26, -22, 0, -18, 35, -33, 29, -33, 16, -13, -26, -50, -36, 13};
+        assertArrayEquals(new int[] {20, 20}, dualPivotFinder.findPivot(array, 20, 20));
+        array = new int[] {20, 10, 7, 45, 37, 8, -12, 40, 31, -23, -25, 24, 30, 28, -44, 17, 38, -32, 34, -22, -17, 49};
+        assertArrayEquals(new int[] {21, 21}, dualPivotFinder.findPivot(array, 21, 21));
+        array = new int[] {-41, 42, -17, -15, 6, -17, 28, -21, 5, -23, 43, -27, -7, 8, -21, -47, -15, -17, 30, -46, 41, -38, 6};
+        assertArrayEquals(new int[] {11, 21}, dualPivotFinder.findPivot(array, 11, 21));
+        array = new int[] {-15, 41, 1, -19, -38, -3, -8, -35, -33, 17, -31, -49, 1, 45, 6, 17, -42, -41, 25, -40, 5, 31, -13, -44};
+        assertArrayEquals(new int[] {15, 21}, dualPivotFinder.findPivot(array, 15, 21));
+        array = new int[] {19, -48, -25, -43, 48, -48, -31, 38, -45, -32, -11, 10, 33, -39, -27, 9, -20, -12, -13, 7, -11, -26, -49, 31, 33};
+        assertArrayEquals(new int[] {14, 22}, dualPivotFinder.findPivot(array, 14, 22));
+        array = new int[] {14, -19, -30, -45, -33, 16, -50, -8, -21, -19, 39, 42, 7, -15, 42, -45, -49, -34, 4, -46, 30, -2, 0, 25, 43, -33};
+        assertArrayEquals(new int[] {2, 14}, dualPivotFinder.findPivot(array, 2, 14));
+        array = new int[] {15, -36, 30, -35, 34, 48, 13, -25, -3, 22, -13, -41, -31, 39, 36, 25, 14, -37, -20, -22, 19, 49, -10, -46, -43, -50, 42};
+        assertArrayEquals(new int[] {3, 4}, dualPivotFinder.findPivot(array, 3, 4));
+        array = new int[] {7, 11, -40, -27, -43, 28, -4, -3, 42, -33, 13, -4, -43, 25, 18, 34, -6, 28, 12, 30, -26, -28, -38, -12, -22, 15, -21, -4};
+        assertArrayEquals(new int[] {25, 26}, dualPivotFinder.findPivot(array, 25, 26));
+        array = new int[] {12, -38, -39, -7, 39, 48, -48, 47, 45, 45, -35, 5, 49, -20, 29, -31, 4, 47, 46, 37, 10, 48, -2, 2, -12, 24, 2, 43, -50};
+        assertArrayEquals(new int[] {4, 12}, dualPivotFinder.findPivot(array, 4, 12));
+        array = new int[] {31, 7, -42, 7, 17, -6, -6, -50, -35, -26, 25, -50, -31, 21, -29, 22, 12, 48, -27, -24, -9, 45, -29, 38, 13, 40, 6, 10, -49, 23};
+        assertArrayEquals(new int[] {18, 21}, dualPivotFinder.findPivot(array, 18, 21));
+        array = new int[] {-16, 42, -8, 6, 24, 19, -33, 5, 17, -9, -4, 36, -20, -39, -17, -3, -12, -6, -24, -43, 48, -20, -1, -49, -49, -21, -20, 40, 20, 41, 15};
+        assertArrayEquals(new int[] {3, 13}, dualPivotFinder.findPivot(array, 3, 13));
+    }
+
+    /**
      * Not providing any array because it is not necessary.
      * It tests 75 random cases
      * @author mertcorumlu
@@ -117,7 +188,84 @@ class DualPivotFinderTester {
     }
 
     /**
+     * Test to see if PSEUDO random pivots are returned by the method
+     * @author Aamin
+     */
+    @Test
+    public void getRandomPivots() {
+        DualPivotFinder dualPivotFinder = DualPivotFinder.getRandomPivot(69696969);
+        int[] array;
+        array = new int[] {26, -2, 23, -32, 47, 39};
+        assertArrayEquals(new int[] {1, 0}, dualPivotFinder.findPivot(array, 0, 2));
+        assertArrayEquals(new int[] {2, 3}, dualPivotFinder.findPivot(array, 2, 3), "Are you sure you're not creating a new random object every time?");
+        assertArrayEquals(new int[] {4, 3}, dualPivotFinder.findPivot(array, 3, 4), "Are you sure you're not creating a new random object every time?");
+        assertArrayEquals(new int[] {2, 1}, dualPivotFinder.findPivot(array, 1, 2), "Are you sure you're not creating a new random object every time?");
+        assertArrayEquals(new int[] {3, 4}, dualPivotFinder.findPivot(array, 2, 5), "Are you sure you're not creating a new random object every time?");
+        array = new int[] {-17, -38, -1, -14, -38, -12};
+        assertArrayEquals(new int[] {2, 1}, dualPivotFinder.findPivot(array, 0, 2));
+        array = new int[] {13, 37, 11, -5, 1, 8, 3};
+        assertArrayEquals(new int[] {2, 0}, dualPivotFinder.findPivot(array, 0, 2));
+        array = new int[] {-45, -5, -8, 39, 11, 36, -19, -35};
+        assertArrayEquals(new int[] {4, 3}, dualPivotFinder.findPivot(array, 2, 5));
+        array = new int[] {15, 23, -5, 19, -23, -38, -8, 16, -20};
+        assertArrayEquals(new int[] {2, 4}, dualPivotFinder.findPivot(array, 2, 4));
+        array = new int[] {45, 16, 9, -1, 1, -30, 10, 10, -30, 6};
+        assertArrayEquals(new int[] {6, 4}, dualPivotFinder.findPivot(array, 4, 6));
+        array = new int[] {27, -49, -11, -6, 7, -49, 2, -29, 25, -2, 8};
+        assertArrayEquals(new int[] {5, 0}, dualPivotFinder.findPivot(array, 0, 7));
+        array = new int[] {-24, 33, -23, -26, 40, 1, 43, 7, 0, -12, -28, 7};
+        assertArrayEquals(new int[] {6, 4}, dualPivotFinder.findPivot(array, 4, 6));
+        array = new int[] {39, -45, -22, -6, 25, 46, -20, 46, -19, -45, 24, -12, 2};
+        assertArrayEquals(new int[] {9, 7}, dualPivotFinder.findPivot(array, 7, 9));
+        array = new int[] {-34, 5, 38, -6, 27, -50, 10, 6, -8, 32, -39, 6, 17, -37};
+        assertArrayEquals(new int[] {9, 7}, dualPivotFinder.findPivot(array, 7, 10));
+        array = new int[] {41, -50, 21, -45, -15, -34, -18, -12, 18, -47, -35, -21, -43, 1, 4};
+        assertArrayEquals(new int[] {10, 12}, dualPivotFinder.findPivot(array, 8, 12));
+        array = new int[] {10, -4, -40, -45, 2, 37, 33, -43, 39, -14, 47, -23, 9, -8, -32, 6};
+        assertArrayEquals(new int[] {3, 4}, dualPivotFinder.findPivot(array, 2, 4));
+        array = new int[] {17, -10, -10, 34, -22, 6, -23, 33, -15, 42, 24, 6, -7, -21, -48, 7, 42};
+        assertArrayEquals(new int[] {11, 10}, dualPivotFinder.findPivot(array, 9, 11));
+        array = new int[] {-27, -3, -3, 4, 32, -3, -22, -20, -27, -1, -34, -7, -9, -34, 3, 4, -10, 5};
+        assertArrayEquals(new int[] {7, 1}, dualPivotFinder.findPivot(array, 1, 9));
+        array = new int[] {4, -49, -14, 25, -10, -14, -9, 11, 39, 22, -15, 20, -2, 31, -19, 28, -10, 37, 12};
+        assertArrayEquals(new int[] {3, 5}, dualPivotFinder.findPivot(array, 3, 8));
+        array = new int[] {-25, -34, -34, 29, 11, 16, 31, -44, 41, 25, 15, -19, -43, 26, 18, 25, -45, -43, 13, -8};
+        assertArrayEquals(new int[] {15, 13}, dualPivotFinder.findPivot(array, 13, 15));
+        array = new int[] {39, -29, -41, -19, 19, 3, 42, -42, -6, 35, 47, 33, 3, -44, -12, 0, -22, -32, 6, -22, -15};
+        assertArrayEquals(new int[] {10, 9}, dualPivotFinder.findPivot(array, 9, 13));
+        array = new int[] {18, 35, 2, -35, 40, 22, 29, 42, -22, 31, -17, 8, -42, -20, -19, 42, 15, -23, 35, 1, -38, 27};
+        assertArrayEquals(new int[] {12, 13}, dualPivotFinder.findPivot(array, 12, 17));
+        array = new int[] {-47, 49, -39, -3, -46, -40, -28, -26, -13, 17, 30, 7, 1, 34, 49, -16, -44, 29, -17, -20, -7, 39, -19};
+        assertArrayEquals(new int[] {7, 8}, dualPivotFinder.findPivot(array, 6, 8));
+        array = new int[] {23, 46, -31, 15, 31, -34, -39, -13, -37, -21, -50, 19, -19, 19, -49, -12, 37, -2, -45, -22, 11, 24, -45, -46};
+        assertArrayEquals(new int[] {14, 17}, dualPivotFinder.findPivot(array, 14, 19));
+        array = new int[] {49, -4, -13, 6, -21, -11, 39, -11, 25, 33, -10, 28, 35, 33, 40, 10, -10, 37, 2, 5, 11, -14, 38, 31, 12};
+        assertArrayEquals(new int[] {17, 6}, dualPivotFinder.findPivot(array, 5, 17));
+        array = new int[] {-50, -27, -35, 37, -17, -38, -46, 46, 29, 3, 35, -18, 29, 28, 12, 2, 30, -15, -27, 8, -16, 27, -34, 2, -45, 43};
+        assertArrayEquals(new int[] {15, 19}, dualPivotFinder.findPivot(array, 15, 19));
+        array = new int[] {-43, 25, -20, 34, -41, 47, -49, -31, 19, -4, 33, -10, 3, -19, 24, 32, 23, 10, 13, 48, -21, -21, -32, 42, 11, -36, 27};
+        assertArrayEquals(new int[] {7, 9}, dualPivotFinder.findPivot(array, 2, 16));
+        array = new int[] {4, 21, -38, 36, 6, 6, 43, -34, 48, 46, 2, 4, 8, 39, -46, -7, -12, 17, 47, -3, 2, 40, 13, -46, 29, -30, 20, -40};
+        assertArrayEquals(new int[] {14, 20}, dualPivotFinder.findPivot(array, 14, 21));
+        array = new int[] {-7, 32, 20, 28, 6, -7, 5, 49, -39, 44, 45, -46, 12, 16, 31, -10, 8, 11, 41, -9, 12, 11, 48, -43, 4, -28, 45, 8, 3};
+        assertArrayEquals(new int[] {15, 14}, dualPivotFinder.findPivot(array, 14, 15));
+        array = new int[] {16, -21, -36, 33, 14, 21, 34, 20, -19, -25, 26, -29, -18, -24, -4, 36, -9, 21, -40, 39, -25, -30, 37, 13, 10, 24, -46, 19, 28, -6};
+        assertArrayEquals(new int[] {24, 27}, dualPivotFinder.findPivot(array, 22, 27));
+        array = new int[] {12, -20, 33, -40, 38, 8, 23, -37, 33, -34, 37, -47, 47, 9, -41, -31, -35, 22, 5, -50, 5, 13, -37, 41, -42, 31, 32, -30, 39, -26, -5};
+        assertArrayEquals(new int[] {8, 12}, dualPivotFinder.findPivot(array, 7, 14));
+        array = new int[] {15, -20, 21, -44, -30, 42, -1, 45, -47, 32, 9, -6, 39, -8, -47, 22, -6, 49, -29, -47, -5, 24, 43, -15, -24, 2, 11, 37, 24, 12, 8, -46};
+        assertArrayEquals(new int[] {28, 24}, dualPivotFinder.findPivot(array, 23, 28));
+        array = new int[] {33, 29, -27, 26, 1, -32, 23, -15, 9, 19, 31, -16, -47, -31, 21, -19, 31, 32, -19, -30, 25, -18, 29, -40, 27, -12, 13, -25, 7, 5, 2, 29, 13};
+        assertArrayEquals(new int[] {25, 30}, dualPivotFinder.findPivot(array, 25, 30));
+        array = new int[] {4, 34, 22, 47, -14, -33, 47, 8, 11, 8, -36, 23, -27, 23, 12, 5, 30, -9, -23, 28, 31, 9, 17, 6, 1, -11, -21, -26, 11, -14, -12, 17, 42, -27};
+        assertArrayEquals(new int[] {4, 5}, dualPivotFinder.findPivot(array, 4, 5));
+        array = new int[] {-20, 43, 25, -30, -23, -6, -15, -25, 23, 6, -3, -9, 21, -6, -9, 9, 13, 45, 32, -20, 17, 45, -24, 34, 16, 21, -18, -14, -21, 23, 0, -6, -12, 16, 42};
+        assertArrayEquals(new int[] {24, 19}, dualPivotFinder.findPivot(array, 18, 26));
+    }
+
+    /**
      * Tests 300 random cases.
+     * Note: You may fail this test where the interval size is less than 5, if you do, try the tests from Aamin
      * @author mertcorumlu
      */
     @Test
@@ -706,7 +854,220 @@ class DualPivotFinderTester {
     }
 
     /**
+     * Test to see if 2 medians are being returned or not
+     * NOTE: THIS TEST ONLY TESTS WITH NUMBER OF EXEPCTED ELEMENTS = 5
+     * NOTE: You may fail this test where the interval size is less than 5, if you do, try the tests from mertcorumlu
+     * I've passed all these tests and I have 100% on Artemis
+     * @author Aamin
+     */
+    @Test
+    public void getMedianPivotFront() {
+        DualPivotFinder dualPivotFinder = DualPivotFinder.getMedianPivotFront(5);
+        int[] array;
+
+        array = new int[] {-45, 16};
+        assertArrayEquals(new int[] {1, 0}, dualPivotFinder.findPivot(array, 0, 1));
+        array = new int[] {-41, -29, 11};
+        assertArrayEquals(new int[] {1, 0}, dualPivotFinder.findPivot(array, 0, 1));
+        array = new int[] {-33, 48, 4, -11};
+        assertArrayEquals(new int[] {1, 2}, dualPivotFinder.findPivot(array, 1, 2));
+        array = new int[] {-25, 47, -34, 14, 35};
+        assertArrayEquals(new int[] {4, 3}, dualPivotFinder.findPivot(array, 3, 4));
+        array = new int[] {18, 37, -17, -9, 16, 5};
+        assertArrayEquals(new int[] {3, 4}, dualPivotFinder.findPivot(array, 1, 4));
+        array = new int[] {-26, -25, -40, -4, -7, 0, -4};
+        assertArrayEquals(new int[] {0, 4}, dualPivotFinder.findPivot(array, 0, 6));
+        array = new int[] {11, 29, 5, 4, -23, -42, -18, -8};
+        assertArrayEquals(new int[] {3, 3}, dualPivotFinder.findPivot(array, 2, 4));
+        array = new int[] {-35, -35, 11, 10, 21, -30, -12, -21, -20};
+        assertArrayEquals(new int[] {6, 5}, dualPivotFinder.findPivot(array, 5, 6));
+        array = new int[] {23, 12, 24, 49, -36, 18, 40, 35, -40, 15};
+        assertArrayEquals(new int[] {6, 7}, dualPivotFinder.findPivot(array, 6, 7));
+        array = new int[] {10, 19, -23, -10, -33, -24, -29, 8, -33, -20, -44};
+        assertArrayEquals(new int[] {6, 6}, dualPivotFinder.findPivot(array, 6, 8));
+        array = new int[] {-36, 3, 27, 15, 3, 6, 39, 15, -40, 27, 34, 21};
+        assertArrayEquals(new int[] {5, 2}, dualPivotFinder.findPivot(array, 2, 6));
+        array = new int[] {-25, -11, -5, 29, -42, 31, 16, 34, -12, 11, -25, -8, -19};
+        assertArrayEquals(new int[] {11, 12}, dualPivotFinder.findPivot(array, 11, 12));
+        array = new int[] {12, 28, -46, 39, -8, -17, -26, 13, -48, 11, 36, -14, -9, -6};
+        assertArrayEquals(new int[] {0, 0}, dualPivotFinder.findPivot(array, 0, 2));
+        array = new int[] {-23, -37, 35, 6, -31, 29, 27, -27, -25, -15, -5, -31, 37, -49, 41};
+        assertArrayEquals(new int[] {3, 6}, dualPivotFinder.findPivot(array, 3, 6));
+        array = new int[] {4, -17, -49, -43, -48, -14, 12, -26, 45, -41, -43, 43, 42, 45, -21, 26};
+        assertArrayEquals(new int[] {3, 5}, dualPivotFinder.findPivot(array, 3, 12));
+        array = new int[] {41, -15, -34, -36, 34, -16, 43, -7, 20, -50, 25, -46, -18, -13, 37, 21, -44};
+        assertArrayEquals(new int[] {8, 8}, dualPivotFinder.findPivot(array, 6, 8));
+        array = new int[] {47, 7, -9, 21, 46, 26, -13, 26, 47, -43, 49, 27, 22, 13, 45, -13, -21, 28};
+        assertArrayEquals(new int[] {12, 8}, dualPivotFinder.findPivot(array, 8, 17));
+        array = new int[] {12, -43, -46, 33, 9, 43, -9, -33, 35, 4, 13, -44, 9, 17, -30, 12, -6, 45, -50};
+        assertArrayEquals(new int[] {15, 15}, dualPivotFinder.findPivot(array, 15, 17));
+        array = new int[] {-39, -27, -33, -7, -45, 39, -14, -10, 41, 4, 40, 0, -32, 0, 32, -39, -12, 1, -5, 47};
+        assertArrayEquals(new int[] {2, 3}, dualPivotFinder.findPivot(array, 2, 18));
+        array = new int[] {7, 28, -43, -50, 3, -2, 32, -42, -21, 16, -6, 35, -11, -43, -39, -14, -30, 1, 32, -24, 13};
+        assertArrayEquals(new int[] {6, 7}, dualPivotFinder.findPivot(array, 6, 7));
+        array = new int[] {-48, 29, -48, -11, 46, 37, -2, 32, -47, 5, 17, 7, -30, 24, -19, 48, 0, 20, -25, 20, 12, -15};
+        assertArrayEquals(new int[] {9, 10}, dualPivotFinder.findPivot(array, 9, 14));
+        array = new int[] {6, -35, -13, -21, -42, 22, 8, -28, 22, 20, 12, 5, 45, 41, 14, -35, 27, -3, 49, 28, 26, 24, -34};
+        assertArrayEquals(new int[] {14, 15}, dualPivotFinder.findPivot(array, 14, 15));
+        array = new int[] {25, -20, 3, 6, 27, 32, 41, -40, -27, 34, 18, -16, 3, -26, -2, -49, 49, 28, -24, 7, -10, -21, 17, -21};
+        assertArrayEquals(new int[] {2, 0}, dualPivotFinder.findPivot(array, 0, 22));
+        array = new int[] {40, 25, 0, 42, -24, -5, 47, -28, -41, -34, 38, -16, 30, 20, 37, 29, -5, -38, -20, -25, 35, -13, -47, -22, 16};
+        assertArrayEquals(new int[] {23, 22}, dualPivotFinder.findPivot(array, 22, 23));
+        array = new int[] {-14, -2, 1, 19, -37, 2, 18, -17, 1, -22, 17, -15, 39, 21, 45, 37, -48, 20, -41, 33, 38, 9, -48, -12, -45, -11};
+        assertArrayEquals(new int[] {1, 5}, dualPivotFinder.findPivot(array, 1, 24));
+        array = new int[] {-39, -5, 48, -40, -15, -48, -19, 14, -36, 9, -13, -24, 30, -42, 1, -29, 11, 6, -32, -19, 29, -46, -45, 46, 29, -26, 33};
+        assertArrayEquals(new int[] {8, 9}, dualPivotFinder.findPivot(array, 5, 24));
+        array = new int[] {7, -6, 2, -16, 4, 0, 49, -24, 15, -49, 6, 14, -37, 42, -17, 44, -17, -37, -15, 41, -27, -49, -7, -16, 22, 23, -9, -19};
+        assertArrayEquals(new int[] {14, 11}, dualPivotFinder.findPivot(array, 11, 14));
+        array = new int[] {27, -38, -19, -46, 29, -4, -43, -50, -29, -15, 15, -13, 37, 9, 33, 18, 37, 3, -16, -38, 29, 31, -36, -10, -9, -29, -27, -16, -1};
+        assertArrayEquals(new int[] {22, 20}, dualPivotFinder.findPivot(array, 19, 23));
+        array = new int[] {-7, -4, -20, 35, -13, 40, -24, 28, -6, 4, -47, -4, -15, 21, 42, -46, -28, -31, -13, 29, -2, -49, -3, -13, 44, -17, -35, -24, 41, 1};
+        assertArrayEquals(new int[] {4, 7}, dualPivotFinder.findPivot(array, 4, 25));
+        array = new int[] {-21, -7, 26, 4, -2, 49, -2, -31, -17, -28, -50, -35, -24, 32, -46, 11, -27, 21, 30, 21, 10, -9, 22, -46, 44, -42, 10, 0, -38, 40, -10};
+        assertArrayEquals(new int[] {27, 28}, dualPivotFinder.findPivot(array, 27, 28));
+        array = new int[] {30, -3, -23, 23, 37, -2, -8, 22, -16, 31, 5, 14, 34, -17, 39, 20, 37, 11, -50, 49, -47, 32, 41, 7, 25, 41, -38, -43, 16, 20, -11, -28};
+        assertArrayEquals(new int[] {24, 22}, dualPivotFinder.findPivot(array, 22, 25));
+        array = new int[] {-11, 19, 45, -27, -11, -18, -21, 31, -37, -30, 40, -7, 31, -11, -17, -7, 23, 15, -38, 48, -29, -31, 45, -37, -50, -31, 39, -41, -6, 12, 28, 49, -18};
+        assertArrayEquals(new int[] {13, 17}, dualPivotFinder.findPivot(array, 13, 18));
+        array = new int[] {37, -46, 46, 6, 25, -20, 30, -34, 14, 0, -9, 38, 22, -5, -21, 5, -46, 41, -20, -28, 5, -15, -10, 15, -13, -33, -48, -27, 5, 49, 13, 4, 18, -8};
+        assertArrayEquals(new int[] {23, 22}, dualPivotFinder.findPivot(array, 22, 23));
+        array = new int[] {-28, -48, 33, -44, -50, 10, -38, -43, -48, -33, -18, -44, 44, -22, 28, 28, 46, 27, -43, 47, -13, 16, -30, 26, -40, 46, 4, 30, 6, -7, 20, -11, -4, -36, 34};
+        assertArrayEquals(new int[] {17, 15}, dualPivotFinder.findPivot(array, 14, 20));
+        array = new int[] {-49, 32, -3, -35, 44, -5, -44, -31, -33, 45, -28, -47, 5, -44, 16, 38, -22, -44, 34, -14, 8, 30, 21, 23, -39, 12, 5, 47, -43, 47, 41, 23, -3, -5, -4, 6};
+        assertArrayEquals(new int[] {16, 18}, dualPivotFinder.findPivot(array, 14, 35));
+        array = new int[] {-47, 38, -47, -32, -50, 42, -27, 22, -2, 38, -8, -41, 39, 49, 44, -15, 6, -8, -34, 10, 26, 33, -28, -46, -2, -12, 21, -14, -11, 48, 14, -32, -37, 22, 12, 43, -22};
+        assertArrayEquals(new int[] {17, 14}, dualPivotFinder.findPivot(array, 13, 31));
+        array = new int[] {-42, -46, 3, -22, 0, 37, 4, -39, -26, 38, -13, 35, 42, -33, -26, -50, -34, 43, 4, -50, 32, -30, -29, -42, -43, 21, 10, -1, -36, 37, 1, -31, -18, 3, 31, -38, 19, 24};
+        assertArrayEquals(new int[] {10, 9}, dualPivotFinder.findPivot(array, 8, 15));
+        array = new int[] {31, -47, -16, 3, 15, -35, -43, 48, -1, -14, 2, 39, 0, -33, -35, 43, -46, 47, 39, -7, -1, 19, 33, -50, -46, -21, 32, 45, -17, 29, -4, -7, -25, 35, -20, 45, 14, -1, -10};
+        assertArrayEquals(new int[] {5, 4}, dualPivotFinder.findPivot(array, 4, 28));
+        array = new int[] {0, 48, 21, -36, 0, 24, 13, -16, 12, 14, 48, -44, 16, -18, -39, 7, 42, 6, 9, -31, -7, -45, 39, 36, -46, -26, 30, 6, -39, 24, -13, -7, -6, -39, -15, -38, -9, 21, 22, -7};
+        assertArrayEquals(new int[] {8, 12}, dualPivotFinder.findPivot(array, 8, 13));
+        array = new int[] {4, 28, -28, 23, 6, 39, 13, 38, 2, -4, -10, -30, 19, 16, -46, 36, 12, 48, -26, 27, 12, 3, 38, 36, 6, 23, -48, 12, 1, -14, 34, -26, -34, 24, 0, -5, 43, 36, 19, -32, -8};
+        assertArrayEquals(new int[] {10, 13}, dualPivotFinder.findPivot(array, 9, 40));
+        array = new int[] {-28, 42, -15, 35, -34, 23, 31, 34, -17, -15, -37, 14, -43, 37, -33, -2, -13, 38, 5, 30, -39, 12, 21, -50, 27, 9, 27, -21, -31, 33, 41, -26, -23, 35, 24, 6, -11, 47, -44, 38, -25, 39};
+        assertArrayEquals(new int[] {36, 34}, dualPivotFinder.findPivot(array, 32, 41));
+        array = new int[] {3, 1, 12, -24, -17, 40, -37, 37, -30, -17, -15, 15, -49, 19, -11, -6, -13, -29, 34, 4, -43, 15, 20, 11, 38, -33, 3, -18, 48, -5, 26, -28, -30, -6, -44, -5, -34, -25, 9, -41, 2, -30, -25};
+        assertArrayEquals(new int[] {8, 10}, dualPivotFinder.findPivot(array, 6, 13));
+        array = new int[] {-23, -2, -26, 29, 20, -15, -16, 3, 3, 44, -25, -35, 36, -5, 22, 9, -4, -14, 2, 16, -19, -45, -27, -38, 33, 45, -33, -2, 3, 31, -39, -47, -3, 41, -8, 40, -23, -5, -6, -23, -7, -43, 41, -47};
+        assertArrayEquals(new int[] {10, 12}, dualPivotFinder.findPivot(array, 9, 29));
+        array = new int[] {-37, -37, 7, -26, -42, 31, -45, 20, -17, 48, 15, -3, -21, -18, -40, 2, -7, -45, -17, -3, -33, -12, -8, 40, 14, 12, -28, -39, 24, 14, -49, 45, -9, -44, 46, 46, -24, 13, -23, 9, -25, 7, 33, -46, -5};
+        assertArrayEquals(new int[] {26, 24}, dualPivotFinder.findPivot(array, 23, 29));
+        array = new int[] {-31, -18, -5, -31, 20, 2, -44, -24, -27, 22, 46, -33, 27, 21, 18, -47, -13, 30, -10, -10, 15, 44, 35, -41, -30, -3, -14, -5, -50, -20, 10, -36, -12, -21, -8, 12, -10, 35, 5, 24, -44, -1, 37, -32, -16, 36};
+        assertArrayEquals(new int[] {41, 39}, dualPivotFinder.findPivot(array, 38, 43));
+        array = new int[] {-20, -38, -17, 18, 44, -34, 8, 5, -14, 16, -43, 32, 27, 19, -43, 33, -10, -12, -3, 37, -39, 3, -11, 24, 39, -18, -41, -43, 39, 32, 3, -30, -32, 49, -4, -39, 7, 35, 2, 37, -30, 33, 35, 12, -49, 0, -33};
+        assertArrayEquals(new int[] {26, 29}, dualPivotFinder.findPivot(array, 25, 41));
+        array = new int[] {-29, 20, 34, 31, -19, 4, -35, -42, -14, -3, -31, 37, -10, 3, 16, 7, 16, 43, 13, 13, 22, 49, 29, 35, -9, -29, 15, 2, 13, -48, -23, 36, 18, 15, -21, -34, -28, 37, 33, -24, -50, -46, -20, -20, 15, -39, -34, -23};
+        assertArrayEquals(new int[] {20, 23}, dualPivotFinder.findPivot(array, 19, 32));
+        array = new int[] {-5, 19, 43, 22, -36, -30, 14, 31, -8, 47, -29, 49, -22, -35, -28, 0, 8, 9, -16, -11, -24, 9, -40, -37, -34, 48, 24, -1, 3, -22, 33, 35, -40, -1, 43, -29, 25, 21, 16, -48, 49, -41, 46, 16, 42, -15, -13, 6, 47};
+        assertArrayEquals(new int[] {48, 47}, dualPivotFinder.findPivot(array, 47, 48));
+        array = new int[] {-47, -37, -27, -16, -33, 0, 12, 30, -19, 39, 15, -40, 10, 22, -32, -37, -33, -49, -3, 5, 39, 38, 15, 21, -38, 43, 45, 44, -10, 30, 43, -38, -9, 28, -35, -19, 30, 27, 12, -15, -37, -35, 43, -39, 45, -2, -32, -7, 17, 36};
+        assertArrayEquals(new int[] {40, 39}, dualPivotFinder.findPivot(array, 39, 47));
+        array = new int[] {-22, -14, 43, 16, -46, 35, 34, -15, 30, 49, -19, 10, -1, 41, 30, 43, -33, -22, 3, -41, -2, 46, -7, 48, 25, 45, -11, 34, -29, 35, 13, 15, 4, 22, 39, 23, -29, -30, -14, -27, 28, -50, -26, 38, 38, -15, 26, -12, -33, 13, -27};
+        assertArrayEquals(new int[] {16, 20}, dualPivotFinder.findPivot(array, 16, 22));
+        array = new int[] {-46, -43, 1, -20, -9, -23, -35, 11, 30, -14, -47, 5, -21, 25, 33, -50, -32, 12, -1, -23, -21, -28, 35, -47, -42, 37, -45, -25, 36, -28, -23, 5, -18, 45, 33, 46, -9, -38, -17, 34, 31, 5, -29, 46, 30, 6, 49, -27, -31, 33, 4, 13};
+        assertArrayEquals(new int[] {36, 33}, dualPivotFinder.findPivot(array, 33, 45));
+        array = new int[] {-20, -24, 9, 26, 31, -41, 7, 35, -37, -34, -35, 33, 41, 8, 46, 1, -41, 35, -44, 10, 46, -4, 34, -2, 39, -27, -8, 0, -4, 21, 28, 47, 34, -26, -2, 38, 0, 39, 13, 8, -40, -35, 10, -34, 29, -23, 10, 8, 33, 45, 12, 49, 13};
+        assertArrayEquals(new int[] {26, 27}, dualPivotFinder.findPivot(array, 24, 31));
+        array = new int[] {47, -38, 4, 31, 22, 15, -16, -25, 40, -1, -40, 38, 0, -1, 33, 48, -16, 26, -36, 42, -34, -29, 23, 1, -26, 45, 24, -41, 10, -17, -22, -32, 35, 31, -15, 9, 4, -10, -45, -11, -26, 16, -38, -16, 11, 22, 40, 15, 40, -32, -30, -14, 37, -23};
+        assertArrayEquals(new int[] {36, 36}, dualPivotFinder.findPivot(array, 35, 37));
+        array = new int[] {42, 49, -49, -35, -9, 47, -12, -40, -45, 7, 40, 15, 24, 30, 42, 3, -17, -44, 21, 2, 40, -43, 49, -39, 3, 12, -5, 15, 17, 19, -41, 42, -25, -15, -12, 36, 21, 3, 12, 35, -40, -17, -47, 5, 30, -27, 24, -26, -45, 41, 44, 28, 14, 37, 43};
+        assertArrayEquals(new int[] {34, 36}, dualPivotFinder.findPivot(array, 33, 49));
+        array = new int[] {21, -28, -1, -25, -2, -11, -41, 34, -47, -10, 17, -9, -11, 45, -3, 28, -19, -3, 28, -40, -13, -25, -42, 37, -6, -5, -33, 32, -26, 5, -43, 43, -42, 3, -37, 17, -6, 23, -3, 31, 3, -27, -39, -49, -31, 9, 14, 49, 32, 35, -32, 13, -18, -44, 4, -9};
+        assertArrayEquals(new int[] {3, 4}, dualPivotFinder.findPivot(array, 3, 36));
+        array = new int[] {39, 48, 8, 25, 21, 20, -5, -17, 14, -24, 39, 43, 21, 7, 36, 40, 23, 24, -7, -25, -31, -41, 6, 10, -41, -29, 39, -2, 41, -22, 46, -39, 12, 13, 0, -37, -38, 32, 12, 49, -45, 14, 17, 31, 41, 38, -33, -4, -41, -43, -38, -27, 22, -8, 23, 43, 0};
+        assertArrayEquals(new int[] {6, 4}, dualPivotFinder.findPivot(array, 3, 32));
+        array = new int[] {9, 20, -22, -44, -17, -18, 24, 12, 35, 10, -26, -38, 5, 15, -32, -14, 25, -2, -20, 43, -33, 29, -40, 43, 21, -19, -39, -2, 23, 42, 46, -2, 19, 47, -25, -30, -1, -14, 43, 37, -28, -23, -43, 2, 9, 29, -28, -47, -23, -49, -33, 25, -30, 1, 17, -10, 19, 23};
+        assertArrayEquals(new int[] {32, 29}, dualPivotFinder.findPivot(array, 28, 42));
+        array = new int[] {-7, 33, -32, 17, 17, -27, -30, 49, -5, -47, -40, -27, 13, 5, 29, -48, 22, 33, -14, -29, 19, -9, -36, -15, -8, -49, 31, -9, -12, -1, -4, -21, -27, 16, -42, 2, -18, -35, -43, 48, -25, -5, 24, 12, -1, -38, 8, -6, -42, -40, 30, -38, -17, 20, -14, -27, 25, -37, 19};
+        assertArrayEquals(new int[] {23, 24}, dualPivotFinder.findPivot(array, 20, 46));
+        array = new int[] {-4, 7, 19, -45, 47, -17, -30, -42, 38, -36, 44, 1, 37, -6, 36, -33, 26, -50, 7, 8, -20, -38, 8, -2, 33, 44, -46, -37, 15, -31, -2, 17, -33, 25, 43, -42, -10, -37, 35, -33, 29, -22, -33, -25, -43, -40, 38, 8, -23, -48, 7, 36, -24, 39, -7, 32, -25, -5, -44, -33};
+        assertArrayEquals(new int[] {6, 8}, dualPivotFinder.findPivot(array, 4, 18));
+        array = new int[] {2, 45, 49, -39, 24, 16, -36, 0, -2, -45, -15, 17, -45, 22, -8, -1, -29, 28, 20, -45, 37, -30, -34, 44, 1, 18, 18, -13, 21, -28, 44, -5, -33, -23, 27, 4, 26, 33, 17, 12, -50, -3, -20, 11, -43, -9, 45, 13, -39, 29, -48, -32, 32, -16, 16, -32, 15, 9, -19, -2, -9};
+        assertArrayEquals(new int[] {21, 17}, dualPivotFinder.findPivot(array, 17, 43));
+        array = new int[] {-18, 31, -1, 36, 40, 41, -5, 1, -21, 43, -5, -6, -28, 25, -41, 7, -47, 24, -27, -38, 13, -26, 18, 46, -40, 23, 22, -41, 8, 21, -5, 5, 42, -4, 13, -15, 29, 0, -36, 42, 2, -17, 29, 14, 45, 48, -10, 20, 3, 18, 22, 34, -31, 11, -19, 7, -47, 8, 14, -50, 28, 34};
+        assertArrayEquals(new int[] {33, 34}, dualPivotFinder.findPivot(array, 31, 37));
+        array = new int[] {45, 7, 21, -20, -33, 23, 30, -47, -37, 12, -6, 48, -19, -50, -16, -27, 8, -47, -42, -38, -35, 48, 23, 19, 42, 23, 2, -49, -37, 10, -34, 11, -47, 7, -20, -34, -34, -1, 11, -11, 6, -25, 36, 28, -25, -42, -36, 48, -19, 43, 39, -33, 28, -11, 23, 19, -46, -15, -10, -4, 2, -39, -41};
+        assertArrayEquals(new int[] {28, 26}, dualPivotFinder.findPivot(array, 26, 56));
+        array = new int[] {23, -1, -10, -42, -15, -38, -40, -22, 25, -47, 23, -47, -50, -28, -29, 34, 12, -24, 0, -16, -35, 29, 30, -39, 7, 18, -14, 31, 18, 17, 28, 19, 18, 19, 45, 24, 22, -46, 20, 41, -8, 5, 44, -38, -43, -3, 33, -15, -31, 8, 28, -31, 8, -40, -2, -40, -48, -46, -39, 43, -41, 35, 14, -50};
+        assertArrayEquals(new int[] {24, 21}, dualPivotFinder.findPivot(array, 21, 31));
+        array = new int[] {-12, -13, 46, -2, -46, -40, 1, 5, 30, 15, 39, 41, -38, -4, 45, -41, 23, -24, 30, -33, 45, 13, 23, -45, -46, 6, -16, 26, -20, -10, 9, -37, 14, 23, 7, 42, -8, 35, 31, 1, -46, -34, 33, -37, 32, -22, 47, -30, -1, 8, -35, -45, -42, 0, -47, 32, -44, 1, 47, -18, 1, -26, -9, -15, 28};
+        assertArrayEquals(new int[] {28, 25}, dualPivotFinder.findPivot(array, 24, 41));
+        array = new int[] {0, -19, 29, -15, 36, 44, 29, 3, -23, 32, 37, 0, 39, -35, -32, 25, -2, 49, -33, 4, 12, 17, 7, -5, 4, 21, -43, 46, 40, -3, -40, -12, 11, -29, -25, 11, -27, -2, -7, -14, 5, -10, -1, -21, 34, 3, 21, -50, 33, -31, 34, 49, 7, 41, 47, -48, -5, 37, -29, 4, 31, 21, -36, -5, 8, -15};
+        assertArrayEquals(new int[] {34, 37}, dualPivotFinder.findPivot(array, 34, 55));
+        array = new int[] {33, -8, 42, -41, -49, 2, 25, 37, 17, -41, 24, -3, 18, 26, -12, -4, 26, 24, -23, -46, 4, -46, 47, 26, 41, -28, 23, 10, 9, 43, 44, -1, 33, 11, -18, 15, 36, -48, -15, -9, 8, 47, 16, 49, 4, 26, -13, -44, 23, 36, 39, 44, -32, 18, 8, -24, 17, 15, 9, 42, 47, 48, -6, 2, -20, 37, -14};
+        assertArrayEquals(new int[] {34, 35}, dualPivotFinder.findPivot(array, 33, 63));
+        array = new int[] {-12, -42, -42, -31, -39, 47, 11, 38, 39, -16, 42, -1, 47, 11, 41, -21, 21, -32, 30, -44, -3, -44, -36, -16, -35, 32, 37, 4, 7, 28, 15, -50, 31, 1, -26, 23, -41, -17, -37, -41, 5, -17, 11, -42, -25, 9, -24, 39, 27, -18, 26, 26, 1, -21, 10, -50, 45, -27, -14, 22, 21, 0, 4, 11, 40, 11, 46, -16};
+        assertArrayEquals(new int[] {15, 18}, dualPivotFinder.findPivot(array, 14, 59));
+        array = new int[] {19, -15, -47, 22, 13, 20, -33, 27, -5, 21, 37, -28, -38, -14, 37, 20, 15, -45, -35, -18, 13, -17, 21, -15, 48, -1, 37, -29, 45, 8, 45, 6, -39, 16, -6, 40, 16, -30, -5, 15, 0, -25, -4, 16, -21, 37, 23, 4, -46, -6, -12, 8, -34, 34, -21, 43, 25, 35, -10, 24, -2, -35, 8, -50, 23, 33, -42, 15, -47};
+        assertArrayEquals(new int[] {11, 11}, dualPivotFinder.findPivot(array, 10, 12));
+        array = new int[] {-14, -9, -40, -2, 36, -8, 24, -39, 36, -33, 13, -6, 27, 4, -14, 8, 20, 42, -40, 11, -38, -22, 39, 24, -37, -11, 17, -14, -23, 17, 5, 26, -39, 20, -9, -7, -34, 25, -19, 44, 19, -43, -18, 21, -25, 17, -29, 1, 28, -2, -12, -34, 14, -39, 44, -2, 29, -26, 9, 31, -44, 10, 31, -50, 30, 36, -19, -42, 37, 13};
+        assertArrayEquals(new int[] {13, 16}, dualPivotFinder.findPivot(array, 13, 49));
+        array = new int[] {22, -9, 5, 21, 15, 7, 29, -40, -12, -19, -41, -43, 44, -18, 30, 39, 9, 0, -16, -22, 39, -40, -19, -2, -23, -11, 37, 28, 29, 30, -28, -30, 41, 10, 8, 38, -47, -45, -10, -15, -26, -12, 42, 23, 26, -1, 17, 47, 14, -33, -32, 41, 4, -4, 40, 3, -9, 37, -48, -32, 0, 44, 3, -2, 17, 29, -17, -4, -31, -19, -33};
+        assertArrayEquals(new int[] {17, 14}, dualPivotFinder.findPivot(array, 13, 39));
+        array = new int[] {30, -40, -12, 49, -6, 44, -3, -13, -44, 3, -41, 5, -26, -40, 28, -3, -37, 42, 11, 2, -41, 15, 11, 49, 13, 35, 8, -27, -21, 47, 39, 14, -39, 42, 45, -35, -29, -32, -41, 46, 1, 18, -39, 13, 1, 34, 24, -33, 19, -44, 19, 31, 42, -39, -50, 46, 28, 8, 18, 29, -28, 35, -23, 12, -32, 49, -11, 43, -15, 38, -4, -47};
+        assertArrayEquals(new int[] {16, 15}, dualPivotFinder.findPivot(array, 12, 36));
+        array = new int[] {27, 19, 5, 2, 17, -38, -13, 37, 27, 2, 48, 2, -41, -21, 0, 32, 42, -40, -8, -13, -22, -6, 29, -1, 19, -26, -14, 42, -35, -21, -20, -19, -49, -15, -24, -5, -10, -22, 31, -48, 45, -26, 41, -6, 49, -18, 39, 26, -26, 17, 18, -23, -3, 44, -2, -23, 18, -8, -43, -44, 1, -41, 45, 25, -44, -1, -48, -25, 32, 11, 49, -42, -31};
+        assertArrayEquals(new int[] {18, 15}, dualPivotFinder.findPivot(array, 14, 61));
+        array = new int[] {-26, 13, 32, 19, 40, 35, 29, 26, 36, -7, 37, -40, 26, -17, -1, 41, -32, -25, -16, 9, 30, -22, 5, 20, -6, 44, 8, 37, -41, -47, -44, 48, 47, -8, 5, 15, 8, -35, -20, -44, 48, -13, 1, -35, 23, 24, 20, -27, -2, 18, -11, 11, -45, 38, -21, -15, 39, -12, -40, 47, 14, 43, 31, 18, -22, -49, -47, -28, -1, -39, 13, -6, -33, 10};
+        assertArrayEquals(new int[] {66, 67}, dualPivotFinder.findPivot(array, 65, 73));
+        array = new int[] {14, -26, -50, -45, -13, -3, 0, -25, 36, -13, 22, 47, 38, 47, 23, -5, 24, 47, 16, -28, -5, 31, 4, -40, 0, 14, -4, -14, -6, -22, 44, 14, -24, 10, -18, 8, 37, -21, 11, 39, 48, 19, 15, -15, -1, -10, -45, -38, -50, 20, 45, -39, 16, -19, -25, -9, 31, 23, -10, -33, -26, 41, 45, 49, -12, 9, 27, -4, -25, 12, 22, -26, -41, 43, 46};
+        assertArrayEquals(new int[] {34, 33}, dualPivotFinder.findPivot(array, 31, 55));
+        array = new int[] {-28, -28, 6, -45, 18, 10, -8, -18, -5, 22, 31, 5, 32, 36, -39, 10, -44, 21, -32, -35, 49, 44, 26, -8, -20, 47, 27, -5, 17, -43, 19, -39, 46, 45, -18, 31, -19, 29, -10, 35, -39, -10, 41, 7, -45, 39, 44, -32, 46, 18, 3, -44, 10, 2, 14, 2, 33, 4, -34, -8, 27, 37, 22, 17, -27, -1, -47, 3, 1, -28, 33, -15, -23, -44, 21, 9};
+        assertArrayEquals(new int[] {74, 73}, dualPivotFinder.findPivot(array, 73, 74));
+        array = new int[] {-14, -46, -45, -8, 26, -25, -23, 37, -45, -16, 34, -12, -24, -25, -11, 47, 38, -26, -33, 24, -22, -15, -11, 21, 1, -8, -22, -37, -15, 0, -33, -41, 31, -42, -23, 20, 42, -20, -25, 42, -8, -31, -15, 9, 16, -43, -20, 45, -39, 10, 28, 18, -15, -14, -48, 13, 22, 25, 37, 38, -10, 15, -10, 22, 33, -5, 17, 12, 1, 3, -33, -29, 26, 20, -6, 19, 12};
+        assertArrayEquals(new int[] {48, 44}, dualPivotFinder.findPivot(array, 44, 68));
+        array = new int[] {36, 37, -33, 45, 26, -9, -25, -24, -11, -6, -29, -12, -6, 43, -11, -6, -15, 8, -31, 46, -36, 20, -10, 3, -18, 48, -22, -2, -16, -42, 48, 2, -47, -25, -10, -22, -30, 6, 43, -18, -28, -13, -29, 1, 18, -30, -43, 25, 23, 32, 47, 39, -46, 3, 30, 9, 29, -17, -44, -45, -8, -30, -37, -10, -38, -27, 35, -31, -50, 18, 29, 34, -20, -7, -49, -20, -50, -22};
+        assertArrayEquals(new int[] {14, 15}, dualPivotFinder.findPivot(array, 11, 48));
+        array = new int[] {43, 27, -14, 9, 41, 40, 27, 5, 46, 34, 41, -7, 11, 0, -31, 36, 42, -26, -9, -1, -37, 0, -4, -14, -14, -16, 8, -40, -20, 32, -34, 6, -13, 30, -47, 9, 34, 34, -44, 40, -38, 2, 22, -19, 32, -14, 33, -17, -30, -49, 2, -11, -20, -30, 42, -29, 32, 10, -9, -2, 39, -34, 49, 47, -7, 33, 12, -10, -49, -39, -4, 49, -24, -41, -23, -2, -19, -43, 41};
+        assertArrayEquals(new int[] {32, 33}, dualPivotFinder.findPivot(array, 32, 43));
+        array = new int[] {39, 24, -23, 2, 37, 9, 4, 40, -24, 28, 11, -21, 48, 31, -29, -5, 26, -28, 49, 1, -19, 11, 9, 1, 42, 0, -4, -21, -1, -13, 22, -26, -4, -36, -12, -36, 30, -10, -36, -28, 35, 8, 11, -39, -2, 26, 20, 43, 31, -18, 11, -32, -12, 39, 47, -47, 21, -32, 45, 16, 10, 45, -13, -34, -17, 42, 42, 2, 8, 13, 17, 12, -42, -21, -34, 25, -6, -36, 18, -32};
+        assertArrayEquals(new int[] {31, 32}, dualPivotFinder.findPivot(array, 30, 37));
+        array = new int[] {-19, 30, -34, -34, -2, -30, -47, -29, -6, 36, 6, 0, -21, -16, 10, 47, -40, -31, -44, 22, -16, 0, -7, -10, 11, -46, -45, -44, 8, -6, -29, -42, 30, 26, -27, -41, 22, -40, 39, 48, -5, 42, 47, 14, 46, -33, 45, 25, 13, -31, 14, -36, 30, -16, 22, -12, -35, 9, 33, 11, 23, -12, 29, 17, 23, -36, 19, -26, -12, -28, -7, 44, 36, -21, 15, 16, 40, -46, 27, -25, 23};
+        assertArrayEquals(new int[] {30, 28}, dualPivotFinder.findPivot(array, 28, 32));
+        array = new int[] {-29, 8, -29, -4, -17, 13, -46, 7, -24, 40, -15, -17, 0, -18, 32, 49, -1, 17, 33, -32, 25, 49, 3, -49, 24, 13, -41, 21, -37, 7, 6, 20, 39, -28, 21, 34, -7, 46, 33, 10, -9, -40, -17, -32, -24, 2, -32, 49, 22, -25, 11, 18, 45, 24, -20, -18, 18, 2, 1, -25, 31, -17, -8, -30, 34, -3, -8, -48, -31, 44, 37, 35, 41, -5, 23, 25, 8, -21, -29, 23, 5, -28};
+        assertArrayEquals(new int[] {68, 65}, dualPivotFinder.findPivot(array, 64, 76));
+        array = new int[] {-33, -30, -12, 25, -45, -14, -46, -19, 45, 35, 34, -48, -29, -3, 46, 4, 4, 47, 7, 11, 18, -32, -50, 15, -31, -41, -9, -40, -35, -17, -15, -39, -10, 44, 28, -46, -3, -21, 23, -39, 18, 48, -14, 29, 16, -6, 9, 27, -18, -48, 24, 4, -16, -48, 43, 8, 42, 5, 5, 16, -34, 34, 44, 33, 12, 25, -1, -32, 19, 10, 48, -34, 40, -11, 35, 1, -42, -29, -7, 28, -42, 30, 35};
+        assertArrayEquals(new int[] {74, 75}, dualPivotFinder.findPivot(array, 74, 75));
+        array = new int[] {-10, 40, 9, 17, 11, 13, 36, -13, 18, 48, 39, -44, -11, 27, 41, -1, 19, 15, 27, 49, 4, 3, -15, 45, -25, 45, -44, 12, -30, 8, 2, 46, -13, -27, -40, 23, 21, 20, 43, 31, -39, 26, 5, 7, 45, -38, 24, 8, -32, -31, -25, -45, -16, 49, 37, -24, -28, 5, 3, 45, -11, -30, -4, -41, -39, 48, -5, -25, 19, -28, -6, 38, -14, -3, -30, -49, 24, 47, -16, 38, 3, 36, -13, -50};
+        assertArrayEquals(new int[] {80, 79}, dualPivotFinder.findPivot(array, 77, 82));
+        array = new int[] {-10, 35, 12, -33, -42, 44, 41, 5, 19, -29, -44, 21, -38, 16, -37, -25, -19, -16, -13, 24, -6, -5, 34, -3, -18, -48, -22, -19, 43, 8, -22, -35, 15, 32, -42, 0, -48, 41, 36, -49, -48, -32, -2, -39, 42, 46, 20, -36, 20, 39, 25, 5, -44, 2, 19, 26, -46, 4, 28, -5, -13, -37, 24, 15, -35, 22, -6, -31, 19, -32, -2, 43, 12, -19, -46, -2, 12, 4, 20, -44, -26, -5, 37, 19, -30};
+        assertArrayEquals(new int[] {47, 44}, dualPivotFinder.findPivot(array, 43, 73));
+        array = new int[] {-35, 39, 2, -46, 30, 5, 49, -10, -19, 5, 19, -12, 2, -11, 3, -30, -39, -31, 30, 33, 8, -10, 41, -40, 21, 26, -10, 39, -20, -45, 39, -41, -47, 27, 33, -2, 5, 7, -23, -15, 15, -43, 9, 42, -50, 36, 30, 7, -50, 14, -16, -19, 41, -40, 36, -2, 23, -38, -2, -2, 21, 15, 19, 42, 32, 26, 16, 40, -50, 23, -37, -1, 43, -1, -40, 22, -35, -42, 40, -14, 16, 43, 45, 9, 18, -9};
+        assertArrayEquals(new int[] {50, 49}, dualPivotFinder.findPivot(array, 46, 75));
+        array = new int[] {29, -2, -36, -32, -29, 0, -23, 15, -22, 15, -30, -8, 30, -24, -6, 14, -28, 8, -29, 29, 24, -6, -3, 9, 10, 34, 46, 1, -27, -43, -15, -44, -42, -26, 45, -7, 0, 40, -19, 37, -31, -9, 10, 47, -43, -43, -7, 10, 41, -43, 11, 15, 8, -34, 31, -10, 33, -6, 48, -31, -31, -9, -31, 7, 37, 0, 45, 32, -24, 10, 19, -38, -23, 49, 43, 9, -33, 2, -49, 13, -36, 38, 1, 32, -40, 24, -34};
+        assertArrayEquals(new int[] {8, 7}, dualPivotFinder.findPivot(array, 5, 54));
+        array = new int[] {21, -45, -27, 15, 24, -49, -13, 9, -14, -15, 46, 33, -28, -48, -7, 44, -15, -1, -11, -46, -10, 40, 31, 6, -19, -10, 47, -36, -20, -20, -1, -9, -21, -21, 0, 23, -20, 31, -50, 11, 0, -7, -48, -9, 43, 7, -46, -43, 26, 41, 11, 35, 13, 8, 39, 2, -33, 2, -47, -3, -42, -21, -26, -44, -20, 35, -27, 12, 19, 32, 32, -18, -38, -2, -43, 16, -19, 9, 27, -48, -28, 20, 32, 27, 37, 45, -33, -3};
+        assertArrayEquals(new int[] {16, 17}, dualPivotFinder.findPivot(array, 15, 57));
+        array = new int[] {-15, 26, 39, 15, -19, 32, 10, 22, 42, -42, 22, 2, 48, 47, 14, 9, 9, -29, 9, -41, 4, -42, -24, -7, -34, -19, 21, -46, -18, -29, -7, -34, -22, 22, 23, 27, 32, -18, 35, 8, 27, 0, -45, 41, -5, 44, 49, -26, -2, -8, -49, 45, -48, -13, 17, -46, 40, -34, 20, 21, 30, -38, -19, 35, 2, -15, 32, 34, -11, 15, 38, 46, 46, 5, -30, 20, 1, 37, 15, -15, -4, 36, -20, -41, -12, -31, -5, 8, 34};
+        assertArrayEquals(new int[] {57, 58}, dualPivotFinder.findPivot(array, 54, 61));
+        array = new int[] {17, 30, 0, -16, -2, -30, -48, -43, 36, 16, 32, 12, -50, -39, 44, -39, 32, 8, -27, 10, 48, -35, 3, 2, 10, 22, -45, 22, -20, 34, 45, -49, -32, -16, 10, 8, -36, 20, -40, -3, 25, -11, 27, 20, 6, 15, -30, 15, 15, 12, 7, 27, 28, 14, -8, -32, 15, -25, -23, -29, -46, 26, 24, -31, -16, 46, 48, -39, -4, -19, 7, 13, -33, 3, 35, 30, 43, 9, -29, 6, -44, -3, -13, -5, 11, -20, 33, 3, -9, 23};
+        assertArrayEquals(new int[] {71, 72}, dualPivotFinder.findPivot(array, 71, 72));
+        array = new int[] {30, 45, -39, 27, -30, 45, -30, -31, -10, 0, 33, 48, -4, -23, -8, 36, 27, -13, 14, -29, -49, 36, 9, -11, 19, 26, 34, -26, -32, 28, -38, -33, -23, -19, 28, -21, 10, 45, 14, 14, 14, 43, 34, -31, -43, 11, 30, -47, -18, -47, -32, 19, -10, -42, 20, -43, 34, 8, 24, 34, -17, 24, -9, 20, 41, -22, -3, 43, 5, 12, -37, -29, -24, 5, 26, -34, 10, 46, -37, -48, 48, -24, 6, 24, -46, -43, 12, 4, -8, 31, 12};
+        assertArrayEquals(new int[] {4, 0}, dualPivotFinder.findPivot(array, 0, 19));
+        array = new int[] {-21, -32, 34, -7, -43, -48, 34, -27, -46, -50, 26, -21, 34, -3, 17, 39, -36, -31, 24, -38, -7, -37, 11, 22, -13, -3, 20, -37, 27, 1, -21, 42, 38, 38, -29, -9, 21, -34, 25, -46, -5, -16, 19, -18, -36, 11, 36, 10, 29, 16, -30, 29, 11, -16, 17, 45, 29, 49, -40, 0, 37, 18, 39, -25, 34, 44, 8, -8, 33, -28, 6, 47, -49, -45, -5, -2, 31, 49, -3, 22, 13, 33, 10, -38, 46, 11, -18, -42, 47, 27, -13, 13};
+        assertArrayEquals(new int[] {24, 22}, dualPivotFinder.findPivot(array, 20, 77));
+        array = new int[] {-13, -39, -12, -13, 30, -41, -19, -3, -43, -43, 28, 24, -37, -31, 31, -15, -17, 14, -47, 2, -28, -31, -43, -6, -30, -30, 42, -30, 26, -15, 21, 41, -6, -7, 31, 25, 0, 7, -39, 41, 45, -24, -6, -32, 22, -12, 45, -29, -5, 18, 37, 0, 33, -34, 6, -41, -2, -37, -4, 13, 30, 10, 10, 25, -15, 40, 21, 31, 32, 46, 48, -31, -46, -5, -46, 32, -4, -23, 11, 14, -43, -43, -38, -10, -20, 29, 19, 38, -4, 23, 49, 7, -33};
+        assertArrayEquals(new int[] {33, 30}, dualPivotFinder.findPivot(array, 29, 34));
+        array = new int[] {11, -9, 2, -25, -25, -9, 19, -6, -43, 30, 45, -10, -2, -33, 34, 13, 29, 14, -32, -36, -14, 32, -49, -22, -36, -4, -17, -44, -8, 42, 29, -50, 41, 11, 26, 48, 3, 33, -42, 35, -15, 17, -44, 18, -29, 47, 7, -26, 17, -15, 30, -45, -32, 13, -6, -2, -5, -15, -40, -40, -17, 44, 26, 0, 13, -37, 10, -10, 9, -43, -30, -21, -44, 33, 12, 41, -2, -17, 14, 27, 37, 26, -6, 1, -29, 17, 24, 24, -1, -33, 37, -35, 47, -10};
+        assertArrayEquals(new int[] {52, 53}, dualPivotFinder.findPivot(array, 49, 83));
+        array = new int[] {25, 3, 18, -38, 25, -21, 18, -16, 36, -2, 19, 40, 11, -2, 35, -18, 45, -33, -43, 26, -10, -2, 3, -32, -23, -16, -7, 27, 28, 10, 44, -7, -41, 2, -20, 17, 23, -34, -47, 44, 18, 28, -32, 13, -43, 33, -26, -12, 30, 36, 37, 13, -13, 16, -44, 6, 31, -38, 46, -35, 44, 33, 23, 3, 31, -25, -13, -26, -23, -16, 24, -27, -42, 38, -9, -15, -32, -12, 14, 33, -27, 25, -39, 0, 42, -30, -5, -28, -10, 21, -8, -13, 15, 29, 21};
+        assertArrayEquals(new int[] {34, 35}, dualPivotFinder.findPivot(array, 33, 89));
+        array = new int[] {-46, 9, 12, 47, 26, -15, 15, -28, -38, 41, 35, 49, 13, -8, 4, -22, 37, -1, -45, 38, -2, -25, 14, 43, -20, 8, -6, -49, 36, 12, 39, 27, -16, -46, 30, 33, -40, -10, -3, -17, -10, -17, -31, 39, 3, 12, -23, -23, 15, -24, -9, 34, -42, 28, 43, 3, 33, 15, 4, -42, -11, 18, -5, 25, -4, 23, -33, -9, -48, 25, 14, -3, 4, -31, -5, 34, -41, 18, 21, -12, 45, 42, -47, -13, 47, -18, 21, 24, 22, -19, 23, 47, -2, -22, 28, 17};
+        assertArrayEquals(new int[] {13, 12}, dualPivotFinder.findPivot(array, 12, 61));
+        array = new int[] {-10, 46, 0, -7, -19, 16, -19, 10, 31, -10, 15, -45, -34, -28, 34, 0, -47, -31, 36, 44, -3, 35, -31, 12, 47, -45, 36, -44, -23, 43, 44, -26, 48, -44, -11, -7, 8, 4, -45, -43, -20, -35, 42, 46, -34, 20, 45, 35, 15, 30, 24, 30, 28, -43, 28, 18, -44, 34, 10, -36, -30, 7, -3, -2, 19, -36, 38, -39, 41, 24, -3, -9, -37, -30, -11, 31, -35, 41, -23, 17, 48, 26, -30, -18, -41, 36, 22, 8, 21, 47, 7, -50, 7, -42, -23, 40, 7};
+        assertArrayEquals(new int[] {12, 15}, dualPivotFinder.findPivot(array, 12, 49));
+        array = new int[] {-25, 3, 23, -9, 48, 15, -40, -45, 30, 43, 36, 17, -12, 47, -45, -21, -46, -39, 22, 33, 11, -33, 17, 0, -13, -30, -29, -18, -27, 5, -2, 35, 14, 0, 28, 27, -39, 4, -45, -24, -28, 14, 34, -34, 37, 12, -39, -19, 35, 44, 32, 44, -4, -25, 17, -43, -5, 9, 46, 9, -13, 3, 14, -10, -22, 10, 35, 38, -48, 24, -39, -20, 28, -3, -4, 47, -26, 13, 7, 19, -21, -16, -22, 9, 6, -29, 26, -35, 48, -34, 27, 11, 2, -25, -21, -1, 31, -18};
+        assertArrayEquals(new int[] {14, 15}, dualPivotFinder.findPivot(array, 14, 84));
+        array = new int[] {24, 9, -24, -5, -22, 37, 28, 34, -33, 41, 39, -38, 47, -43, 46, -7, -6, 43, 39, -17, 9, 16, -12, 48, 40, 12, 32, -4, -1, -2, -19, 13, -2, -49, 11, 20, -7, 10, -45, -40, 28, -19, -44, -28, -20, -14, -1, 5, -17, 25, -31, 5, 6, -41, -5, 11, 38, -40, -7, 39, 9, -33, 37, -17, -9, -26, 4, 15, 1, -27, 3, -46, -31, -45, -33, 42, 32, -48, 13, -10, 18, -18, 14, -45, 48, 23, 20, 32, -33, -23, 48, 4, 20, 17, 28, -21, -32, -46, -13};
+        assertArrayEquals(new int[] {54, 55}, dualPivotFinder.findPivot(array, 54, 57));
+        array = new int[] {-22, 19, -39, 29, 22, 25, -46, -14, -35, 18, 30, -22, 27, 40, 6, -14, -45, 42, 38, -7, -26, -23, 4, -23, 2, 4, 25, 12, -20, 32, -8, -43, -6, -42, 38, -31, 26, 35, 40, 31, 8, -21, -20, 4, 24, -31, -49, 23, -47, 46, -40, -23, -1, -23, -22, 12, -49, -48, 28, 44, -35, 46, -34, -25, 15, 29, -35, -38, 33, -2, 24, 29, -23, 44, -18, -14, -45, -23, 15, 0, 31, -15, 22, -29, -8, -15, -42, 36, 13, -9, -39, -2, -21, 42, -1, -33, 10, -44, -45, 10};
+        assertArrayEquals(new int[] {85, 88}, dualPivotFinder.findPivot(array, 84, 95));
+    }
+
+    /**
      * Tests 340 random cases.
+     * Note: You may fail this test where the interval size is less than 5, if you do, try the tests from Aamin
      * @author mertcorumlu
      */
     @Test
@@ -1392,5 +1753,216 @@ class DualPivotFinderTester {
         assertArrayEquals(new int[]{13, 12}, DualPivotFinder.getMedianPivotDistributed(5).findPivot(arr, 12, 14));
         arr = new int[] {26, 260, 194, 9, 227, 180, 179, 295, 142, 118, 57, 133, 43, 122, 35, 135, 169, 81, 295, 30, 223, 92, 150, 201, 236, 114, 297, 128};
         assertArrayEquals(new int[]{25, 24}, DualPivotFinder.getMedianPivotDistributed(5).findPivot(arr, 24, 25));
+    }
+
+    /**
+     * Test to see if 2 distributed medians are being returned or not
+     * NOTE: THIS TEST ONLY TESTS WITH NUMBER OF EXEPCTED ELEMENTS = 5
+     * NOTE: You may fail this test where the interval size is less than 5, if you do, try the tests from mertcorumlu
+     * I've passed all these tests and I have 100% on Artemis
+     * @author Aamin
+     */
+    @Test
+    public void getMetMedianPivotDistributedFront() {
+        DualPivotFinder dualPivotFinder = DualPivotFinder.getMedianPivotDistributed(5);
+        int[] array;
+        array = new int[] {-15, -30};
+        assertArrayEquals(new int[] {0, 1}, dualPivotFinder.findPivot(array, 0, 1));
+        array = new int[] {20, -31, 34};
+        assertArrayEquals(new int[] {0, 0}, dualPivotFinder.findPivot(array, 0, 2));
+        array = new int[] {17, -19, 48, -48};
+        assertArrayEquals(new int[] {0, 0}, dualPivotFinder.findPivot(array, 0, 2));
+        array = new int[] {-8, 9, 23, -38, -9};
+        assertArrayEquals(new int[] {4, 4}, dualPivotFinder.findPivot(array, 2, 4));
+        array = new int[] {-12, 21, -42, -49, -6, 22};
+        assertArrayEquals(new int[] {5, 4}, dualPivotFinder.findPivot(array, 4, 5));
+        array = new int[] {-6, 49, -36, -39, 23, -33, 25};
+        assertArrayEquals(new int[] {6, 5}, dualPivotFinder.findPivot(array, 5, 6));
+        array = new int[] {-48, 24, -24, -34, 25, 24, -1, -24};
+        assertArrayEquals(new int[] {2, 2}, dualPivotFinder.findPivot(array, 2, 4));
+        array = new int[] {8, -37, 41, -23, 23, 3, 45, 3, -6};
+        assertArrayEquals(new int[] {7, 7}, dualPivotFinder.findPivot(array, 5, 7));
+        array = new int[] {-12, -1, 44, -2, -3, -46, -40, 32, -37, 26};
+        assertArrayEquals(new int[] {4, 1}, dualPivotFinder.findPivot(array, 1, 8));
+        array = new int[] {17, 1, 27, -12, -43, -29, 2, -49, -28, -6, -18};
+        assertArrayEquals(new int[] {8, 8}, dualPivotFinder.findPivot(array, 7, 9));
+        array = new int[] {22, -15, -35, -25, 33, 2, 8, -28, -17, -36, -16, 37};
+        assertArrayEquals(new int[] {8, 6}, dualPivotFinder.findPivot(array, 4, 8));
+        array = new int[] {26, 44, -13, 22, -48, -5, -34, 28, 45, -40, -38, 23, -29};
+        assertArrayEquals(new int[] {6, 0}, dualPivotFinder.findPivot(array, 0, 11));
+        array = new int[] {-17, -38, -43, -6, 7, 35, -29, 11, 7, -8, 16, 26, 9, 10};
+        assertArrayEquals(new int[] {10, 10}, dualPivotFinder.findPivot(array, 9, 11));
+        array = new int[] {40, -2, 45, -20, 6, -33, 16, 29, -9, -20, -28, 12, 25, 33, 6};
+        assertArrayEquals(new int[] {2, 1}, dualPivotFinder.findPivot(array, 1, 2));
+        array = new int[] {-38, 43, -32, 1, 15, -42, -23, -32, 46, 23, 22, 17, 28, -1, 36, 34};
+        assertArrayEquals(new int[] {11, 15}, dualPivotFinder.findPivot(array, 11, 15));
+        array = new int[] {37, -38, -6, -28, 28, -22, -28, 21, -30, -28, -2, 15, 18, -23, -12, -9, -6};
+        assertArrayEquals(new int[] {6, 10}, dualPivotFinder.findPivot(array, 6, 10));
+        array = new int[] {27, 17, 16, 8, -13, -2, -46, -38, 41, 33, 32, -24, -9, 30, 36, -31, -22, 46};
+        assertArrayEquals(new int[] {12, 10}, dualPivotFinder.findPivot(array, 10, 17));
+        array = new int[] {9, -27, -43, -50, 49, 28, -32, -24, -36, 42, 33, -30, -12, -5, 14, -11, -45, -40, 49};
+        assertArrayEquals(new int[] {18, 17}, dualPivotFinder.findPivot(array, 17, 18));
+        array = new int[] {-31, 45, -42, 47, 9, 13, -12, 46, -49, -46, 13, -45, -14, -25, 42, 37, 43, -23, -7, -38};
+        assertArrayEquals(new int[] {18, 19}, dualPivotFinder.findPivot(array, 18, 19));
+        array = new int[] {-46, -26, -27, -36, -11, -46, -11, -13, 32, 38, -45, -41, -15, -24, -41, -14, 32, -1, 10, 47, 38};
+        assertArrayEquals(new int[] {18, 18}, dualPivotFinder.findPivot(array, 16, 18));
+        array = new int[] {-12, 2, -4, 4, 22, 28, 49, 14, 30, 1, 0, 41, 41, -12, 11, -30, -1, 19, 36, -15, -42, 34};
+        assertArrayEquals(new int[] {13, 14}, dualPivotFinder.findPivot(array, 12, 16));
+        array = new int[] {15, -18, 20, 35, -43, -35, -1, -48, 32, 14, 22, 8, -4, -50, 17, -14, 28, 8, -28, 30, 33, 38, 40};
+        assertArrayEquals(new int[] {7, 1}, dualPivotFinder.findPivot(array, 1, 16));
+        array = new int[] {21, -38, 16, 48, -23, -44, 45, -34, -25, 23, 7, 39, -23, 9, 12, -14, 31, -6, -10, 24, 49, 41, -40, 13};
+        assertArrayEquals(new int[] {18, 19}, dualPivotFinder.findPivot(array, 15, 20));
+        array = new int[] {47, 13, -22, 42, 32, -50, 21, -46, 0, -25, 32, 5, 6, 28, -37, 29, -21, 18, 41, 7, -40, -4, -38, 5, -26};
+        assertArrayEquals(new int[] {23, 24}, dualPivotFinder.findPivot(array, 23, 24));
+        array = new int[] {49, -5, -12, -12, 1, -50, 19, 27, -6, -8, 1, -33, -20, -9, -34, 16, -17, 24, 7, 25, 3, 4, 32, 27, -40, 49};
+        assertArrayEquals(new int[] {10, 6}, dualPivotFinder.findPivot(array, 6, 25));
+        array = new int[] {38, 11, 20, -38, 18, 33, 27, -11, 32, 6, 40, -19, -17, -47, -35, 6, -43, -5, -31, -38, 37, 48, 8, 18, 9, 49, -28};
+        assertArrayEquals(new int[] {19, 15}, dualPivotFinder.findPivot(array, 13, 22));
+        array = new int[] {-6, -37, -2, 17, -41, -46, -46, -34, -13, -4, -18, -5, -47, 19, -13, -19, 26, -50, 32, 37, -11, -24, -45, -43, -6, -47, -33, -46};
+        assertArrayEquals(new int[] {15, 20}, dualPivotFinder.findPivot(array, 0, 23));
+        array = new int[] {-18, 7, -36, 31, 16, -49, 33, -5, -49, -40, -16, -42, 15, 13, -22, -4, -31, -43, 2, -4, -38, 18, -48, -37, 47, 14, 38, -28, 5};
+        assertArrayEquals(new int[] {16, 15}, dualPivotFinder.findPivot(array, 13, 17));
+        array = new int[] {-25, 42, 44, 27, 30, -25, -5, 11, -31, 9, -41, -44, 15, 17, -46, -48, -47, 20, 23, 39, 24, 25, -48, 15, 7, 30, -15, 3, 39, -26};
+        assertArrayEquals(new int[] {28, 27}, dualPivotFinder.findPivot(array, 27, 28));
+        array = new int[] {29, 10, 33, 37, 41, 8, 13, 24, 13, 30, -25, -14, 26, 47, -2, -34, 16, 48, -26, -10, 26, -17, 8, -38, -11, -2, 43, -50, 3, 29, 47};
+        assertArrayEquals(new int[] {3, 3}, dualPivotFinder.findPivot(array, 3, 5));
+        array = new int[] {2, 29, -26, -3, -31, -47, -34, -13, 10, -6, 49, -15, -2, -22, -42, 14, 47, -6, 9, 0, 34, 5, -22, -37, 33, 1, -7, 36, 49, -17, -36, -44};
+        assertArrayEquals(new int[] {18, 18}, dualPivotFinder.findPivot(array, 16, 18));
+        array = new int[] {29, -9, 37, -7, 43, -37, -29, 28, 6, -22, -44, 20, 29, -39, -20, -4, -13, 33, -16, -26, -50, -9, 23, 16, -50, -49, 29, -20, 27, -38, 48, -19, -33};
+        assertArrayEquals(new int[] {19, 21}, dualPivotFinder.findPivot(array, 19, 30));
+        array = new int[] {33, -1, -5, -24, 44, -46, -26, -31, 45, -13, -37, 34, -38, 41, 22, -22, -2, -29, 27, -25, 44, -42, -13, 33, -26, 34, 34, 48, 29, 43, -1, 33, -38, -16};
+        assertArrayEquals(new int[] {16, 16}, dualPivotFinder.findPivot(array, 16, 18));
+        array = new int[] {15, -20, 20, 21, -13, -24, 24, 0, -27, -21, 12, -42, 7, 9, 1, -3, 19, 7, 30, -32, 29, -28, 25, 28, 20, -23, -44, 33, 0, 45, -42, -19, -30, 18, 4};
+        assertArrayEquals(new int[] {27, 27}, dualPivotFinder.findPivot(array, 27, 29));
+        array = new int[] {-6, -7, 15, -22, -37, 24, 42, 7, -21, -23, -10, 19, 8, -24, -23, 20, 36, 42, 36, -44, -29, -4, 6, 18, 18, -22, 33, -28, -26, 48, 22, 44, 1, 17, -25, -30};
+        assertArrayEquals(new int[] {22, 12}, dualPivotFinder.findPivot(array, 7, 29));
+        array = new int[] {-20, -24, 24, 2, 41, 23, 46, -1, 8, -34, 45, 46, -5, 0, 29, -6, 30, 0, 18, 4, 18, -1, -27, -41, 27, 42, 18, 11, -49, -15, 12, 31, -41, 11, 0, 24, -19};
+        assertArrayEquals(new int[] {22, 16}, dualPivotFinder.findPivot(array, 16, 30));
+        array = new int[] {28, 12, 24, -43, -25, 34, 28, -2, 11, 26, 27, -10, 31, -14, -24, -38, 43, -31, 6, -49, -22, 17, -43, -15, -49, -34, 30, -49, 43, -3, -40, -16, -41, -21, 0, 33, 9, 14};
+        assertArrayEquals(new int[] {30, 29}, dualPivotFinder.findPivot(array, 28, 33));
+        array = new int[] {26, -11, -38, -1, -11, -18, -40, -14, -16, -27, -9, 27, 15, 35, -5, 21, 1, -1, 35, -13, 45, 48, 33, 27, -50, 40, 32, 35, 39, 45, 20, 46, -39, -33, -9, 11, -40, 39, -10};
+        assertArrayEquals(new int[] {23, 20}, dualPivotFinder.findPivot(array, 20, 25));
+        array = new int[] {-42, -46, 26, -3, 12, 42, -14, -44, 29, -12, -10, 6, -8, -18, -46, 31, 26, 43, -12, -35, 9, -8, 11, -25, -7, -11, -5, -32, -50, 25, 40, -41, 41, 44, -38, 23, 28, -49, 28, -30};
+        assertArrayEquals(new int[] {24, 22}, dualPivotFinder.findPivot(array, 16, 24));
+        array = new int[] {-45, 36, 35, -25, 31, -43, 25, -49, 30, 13, -31, 25, 3, 44, -48, 44, 22, 36, 12, 2, 35, 23, 22, 3, -12, 19, -1, 48, -33, 11, 41, 19, 38, 8, 6, -43, 43, 49, 3, -16, 20};
+        assertArrayEquals(new int[] {39, 21}, dualPivotFinder.findPivot(array, 3, 39));
+        array = new int[] {2, 1, 23, 36, 45, 20, 28, 44, 2, 10, -27, -21, -46, 32, -21, -42, 13, -28, 45, -45, 32, 12, -9, -44, 34, 2, -41, 46, 19, 0, -3, -44, 22, 27, -20, 8, 44, 49, 31, -31, 46, 7};
+        assertArrayEquals(new int[] {30, 32}, dualPivotFinder.findPivot(array, 29, 35));
+        array = new int[] {-34, -36, 1, -1, 24, 3, 5, -7, 20, 47, -21, 17, -35, 42, 20, 6, 41, 47, -36, -25, -15, -31, -8, 27, 40, 47, 7, -22, 5, 9, 48, 43, -27, -45, 44, -39, 23, 23, 2, 1, -14, -11, -13};
+        assertArrayEquals(new int[] {32, 32}, dualPivotFinder.findPivot(array, 31, 33));
+        array = new int[] {-22, -38, 5, -20, 30, -16, 34, 28, 19, -25, 6, -3, 46, 33, 0, 21, 33, 47, -8, -3, 37, -47, 21, 27, -30, 25, 6, -32, 29, 25, -38, -36, -5, 31, -27, 7, 4, 31, -33, -42, -25, -47, -25, 15};
+        assertArrayEquals(new int[] {31, 35}, dualPivotFinder.findPivot(array, 27, 43));
+        array = new int[] {-42, 30, -22, 5, 18, 32, 9, 25, -4, -9, 37, -15, -4, -11, -28, 36, -7, 6, 9, 13, -39, 29, 47, 17, -28, 17, -19, -19, 48, -22, -22, -24, 15, 34, 45, 1, -36, -44, 14, 12, -27, 8, 36, 30, 18};
+        assertArrayEquals(new int[] {24, 9}, dualPivotFinder.findPivot(array, 9, 30));
+        array = new int[] {1, -46, -31, -19, -7, -32, 6, 32, -50, -33, 7, -1, 30, 37, 9, 49, -18, -9, -7, 3, -29, -38, 28, -44, -13, 17, -23, -37, 45, -26, -48, 32, 20, -25, 22, -4, 22, 5, 27, -15, 38, -16, 24, 12, -29, -39};
+        assertArrayEquals(new int[] {37, 42}, dualPivotFinder.findPivot(array, 22, 44));
+        array = new int[] {11, 37, 3, 25, -47, -5, -47, 28, -33, 46, -50, 31, -14, 35, -30, -27, 23, 35, -6, -48, 44, 36, -22, 17, -39, 11, -3, -38, -16, -36, -24, -18, -33, 9, -9, -33, -13, -49, -41, 14, 7, 3, 21, -18, -33, -28, -28};
+        assertArrayEquals(new int[] {45, 46}, dualPivotFinder.findPivot(array, 43, 46));
+        array = new int[] {-34, 7, -34, -44, 39, 32, -6, -48, -17, 35, 1, 40, 33, -46, -24, -31, -40, -48, 23, 47, -23, 11, -48, 10, 23, 39, -6, 41, -7, 8, -21, 48, -45, 10, 1, -7, -5, 44, -36, 29, -9, 10, -34, 4, -21, -16, -39, -17};
+        assertArrayEquals(new int[] {29, 21}, dualPivotFinder.findPivot(array, 17, 36));
+        array = new int[] {-4, 8, -45, 45, 11, 42, -34, -7, -41, -42, 31, 33, -9, 12, -50, -45, 42, -27, 48, 17, -37, -17, -8, -42, -48, 19, 43, 39, -45, -48, -26, 18, -12, 42, -41, -1, -44, -20, 11, 36, -28, 3, -23, 19, 7, 5, -32, 42, -47};
+        assertArrayEquals(new int[] {34, 45}, dualPivotFinder.findPivot(array, 1, 47));
+        array = new int[] {-36, -32, 17, -45, 9, 34, 22, 48, -49, -20, 46, 42, -32, -23, -13, -38, -50, -12, 14, 32, -9, 0, -28, 33, 43, -8, -25, -8, 40, -42, -45, -40, -22, 3, 34, 25, -39, 3, -3, -4, 44, -2, -47, -13, -24, -30, 3, -14, 42, -11};
+        assertArrayEquals(new int[] {45, 21}, dualPivotFinder.findPivot(array, 13, 48));
+        array = new int[] {-34, 19, -17, 8, -36, -6, 8, -4, -9, -30, -14, 48, -5, -50, -45, 48, 31, -46, 1, -18, 15, 42, -4, 15, 37, -12, 16, 5, -32, 8, -35, -25, 39, 37, 46, 22, -32, -38, -23, -34, 40, 11, -28, -27, -45, -33, -7, -48, -6, -8, 32};
+        assertArrayEquals(new int[] {8, 7}, dualPivotFinder.findPivot(array, 5, 11));
+        array = new int[] {0, -12, 27, -32, -32, -11, 10, -46, 31, 18, 48, -17, -22, 18, 37, 35, -32, 37, -10, 16, -39, 2, 21, 33, -17, -45, -22, -28, -39, -2, 42, 5, -37, 6, 47, 45, 0, 43, -12, -16, 7, -5, -15, -1, -11, -17, 14, 45, -12, -18, 44, -35};
+        assertArrayEquals(new int[] {32, 36}, dualPivotFinder.findPivot(array, 28, 47));
+        array = new int[] {-29, -26, -18, -33, -19, 17, 36, 26, -13, -12, 9, -27, -43, -12, -46, 11, -26, 49, 17, -23, -7, -13, -34, -13, -42, 43, 8, -19, 22, 0, -12, -10, -37, 25, -41, 41, 14, 27, -14, 28, 46, -7, 12, 42, -46, 44, -5, -34, 11, 26, 35, -18, -11};
+        assertArrayEquals(new int[] {33, 39}, dualPivotFinder.findPivot(array, 33, 43));
+        array = new int[] {-17, -48, -7, 19, -18, 43, 22, -24, -8, 5, -1, -40, -17, 3, -2, 46, 24, 39, -17, 13, 36, 1, -33, 23, -5, -3, 49, -35, -33, 22, 16, 18, 16, 17, -39, 32, 19, -39, 28, 30, -23, -17, 1, -48, -9, -40, 38, -35, -23, -42, -4, 7, 36, -32};
+        assertArrayEquals(new int[] {30, 36}, dualPivotFinder.findPivot(array, 27, 42));
+        array = new int[] {48, -14, -10, 38, -10, 10, -46, 49, 27, 42, 4, -20, -1, -48, 12, 30, 35, -3, -9, -8, 15, -40, -39, -46, -11, -33, 39, 41, 3, -31, 14, -7, -1, 8, 8, 42, 22, 31, -40, 34, -14, -36, 46, 14, -30, -47, -39, -9, 4, 16, -24, -13, -17, 25, 28};
+        assertArrayEquals(new int[] {41, 47}, dualPivotFinder.findPivot(array, 35, 49));
+        array = new int[] {-35, 39, 28, 27, -24, -2, -22, 11, 7, -26, 24, -26, 8, 4, 9, -39, 7, -43, 11, 25, 48, -24, -2, -39, 43, 45, 8, -50, 0, 37, 36, 47, -31, -25, -39, 32, -11, -14, -34, -14, -18, 30, 24, 41, 3, 21, 8, -44, 29, 22, -9, -46, 0, -4, 40, -10};
+        assertArrayEquals(new int[] {53, 41}, dualPivotFinder.findPivot(array, 5, 54));
+        array = new int[] {11, -10, -26, 23, -13, -22, -24, 2, 48, -30, -38, 2, 28, -5, 34, 45, 14, -38, 41, 24, 13, 13, -30, 40, -1, 35, -17, 41, -16, 14, -40, -27, 12, -3, 26, 44, -44, -28, -22, -36, 42, -25, -17, 33, 11, -35, 26, -21, -24, -23, 42, -9, 29, -38, 33, -39, -8};
+        assertArrayEquals(new int[] {46, 54}, dualPivotFinder.findPivot(array, 46, 54));
+        array = new int[] {-39, 24, -38, 33, -43, -40, 8, -27, 43, -39, 15, 32, -29, 38, 27, -25, -46, 14, -37, -8, -37, 49, -48, -37, -16, -47, 1, 37, -50, 42, 14, 9, -20, -6, -48, -2, -36, 7, -13, -42, 1, 42, 49, -8, -3, -39, 47, -8, -31, -19, -7, 33, 39, 30, -43, -18, -28, 25};
+        assertArrayEquals(new int[] {50, 52}, dualPivotFinder.findPivot(array, 44, 52));
+        array = new int[] {11, -3, 14, 19, -43, 7, -10, 14, 2, -13, -46, -22, 47, -8, -16, 42, -13, -7, 41, -39, 5, 18, -40, 9, -15, 45, 9, -17, 26, -4, 40, 20, -29, 48, 48, 39, -2, 0, 19, -24, 8, -36, -46, 41, 37, -7, -13, 4, 0, 12, 7, 14, -33, 31, -49, 19, 29, -24, -41};
+        assertArrayEquals(new int[] {8, 44}, dualPivotFinder.findPivot(array, 8, 47));
+        array = new int[] {45, -50, 46, 25, 28, -32, 19, -29, -8, 29, -42, -46, -28, 44, -25, -39, -8, -15, -49, -47, 25, 14, -27, -23, -36, 39, 5, -36, -39, -3, 0, -32, 35, 2, -21, 21, -47, 3, 42, -44, -35, 18, 30, 42, -31, -17, -21, 9, -25, 15, 36, 7, -30, -15, -40, -10, -21, 41, 17, 12};
+        assertArrayEquals(new int[] {56, 53}, dualPivotFinder.findPivot(array, 53, 56));
+        array = new int[] {34, 48, 34, 48, 26, 6, -34, 12, 13, 1, 16, -35, -19, 25, 40, -32, 19, -40, -48, -37, 22, 16, -44, 29, -37, -3, -39, -14, -41, 21, -6, 31, -14, -24, -23, 46, -35, 36, 39, -1, 27, 22, -8, -48, -22, -36, -34, -8, -31, 14, 36, -12, -31, -17, -42, -48, -47, 41, -36, -48, -25};
+        assertArrayEquals(new int[] {27, 31}, dualPivotFinder.findPivot(array, 27, 36));
+        array = new int[] {-36, -6, 21, 47, 44, -46, -27, 48, -5, -48, -7, 26, -7, 31, 45, 28, -36, -19, -35, 9, 41, -9, 41, -41, 24, -11, 36, -27, 1, 13, -22, -21, -13, -42, 31, -14, 12, 47, 8, 14, -44, 47, 17, -10, -49, -35, -24, -30, 38, -11, -32, -34, -26, -28, -34, 6, -48, -22, 42, -50, 20, -26};
+        assertArrayEquals(new int[] {8, 20}, dualPivotFinder.findPivot(array, 8, 34));
+        array = new int[] {-34, 22, -6, 48, -13, -16, 44, -10, 8, -35, -35, -9, -49, 0, -34, 22, -35, 9, 16, -18, 41, 16, 29, -1, 14, -32, 25, -13, -49, -1, -32, 11, -34, 32, -41, -8, 10, -20, -19, -9, 46, -37, 17, -11, -8, 11, -30, 25, -41, -45, 26, 36, 10, 6, 28, 26, -32, -41, -27, 22, 25, -47, -26};
+        assertArrayEquals(new int[] {58, 26}, dualPivotFinder.findPivot(array, 26, 61));
+        array = new int[] {22, 47, -28, 6, 25, -28, 39, -37, -15, -43, -21, 15, -25, 4, -27, 22, 10, -9, -33, 16, 10, -41, -10, 14, -46, 49, 29, -42, -15, -32, -18, 39, 21, 37, -42, -46, -16, 23, -1, 49, 32, -23, -50, 22, -3, -41, 28, 39, 5, 34, -46, -18, 3, -31, 12, 48, -29, -15, -42, -15, 2, -48, -1, 7};
+        assertArrayEquals(new int[] {21, 23}, dualPivotFinder.findPivot(array, 21, 27));
+        array = new int[] {43, -13, -14, -4, 20, 7, -30, 4, 12, 15, -14, -38, -3, 42, 26, 34, -36, -3, -37, -17, -27, 24, 7, -19, -12, -14, -3, 22, 49, 49, -35, 49, -20, 34, 19, 36, 2, 48, 24, -42, -20, 39, 36, 34, 41, 48, -20, 37, 19, 33, -42, 28, 31, -20, 30, -25, 22, -11, -12, 10, 13, 16, 41, -17, 13};
+        assertArrayEquals(new int[] {60, 60}, dualPivotFinder.findPivot(array, 59, 61));
+        array = new int[] {-2, 18, 5, -17, -47, 7, -19, 9, -47, 43, 6, 33, 12, -23, 37, 48, 47, -48, 40, 25, 39, 18, -46, -18, -36, -21, -19, 15, 16, -5, 36, 21, -41, 43, -33, -19, -29, -39, -50, 6, 40, 42, 32, 17, -50, -45, -48, 45, -22, -28, 21, 12, 12, -13, 3, 14, -30, 40, 37, 48, 14, -3, -20, -8, -7, 3};
+        assertArrayEquals(new int[] {29, 19}, dualPivotFinder.findPivot(array, 9, 49));
+        array = new int[] {-12, -13, 30, 18, 24, -6, 34, -49, -36, 24, -15, -37, 13, 3, 28, -28, -40, -17, 11, -9, -12, 21, 26, 13, 9, -1, 22, 16, 30, -44, 10, 44, 19, -40, -15, 24, 18, 17, -30, 42, -9, -4, -40, -32, -21, -29, -15, 48, -11, -16, 46, -21, 12, 32, -20, -38, -46, -43, 4, 37, -45, -27, 14, 17, -29, -35, 48};
+        assertArrayEquals(new int[] {48, 24}, dualPivotFinder.findPivot(array, 16, 48));
+        array = new int[] {0, 10, -2, 49, -36, -22, 15, -16, 16, -41, 30, -18, -20, -5, -43, -15, 25, 14, -42, 37, 34, 23, 30, -2, -28, 15, -35, -44, 17, 46, 41, 18, -23, 28, 10, -33, -31, -9, -10, 26, -47, 11, 45, 44, 21, -33, -11, 5, 17, 24, -7, -29, 43, -40, 20, 0, -18, -25, 9, -48, 49, -30, 34, 46, -27, -18, 42, -45};
+        assertArrayEquals(new int[] {12, 44}, dualPivotFinder.findPivot(array, 12, 44));
+        array = new int[] {41, 32, 23, -7, 21, 21, 24, -36, -25, -40, 34, -9, 24, -15, -13, -11, 47, -27, -48, 7, 14, 37, -47, 47, -14, 45, -19, 29, 13, 23, -21, -44, -7, -32, 42, -17, -6, 30, -28, -45, 13, 16, 38, -31, 37, 23, -4, -30, -44, -35, -27, -48, -48, 12, 4, -3, 39, 10, 34, -22, -8, 44, 25, 17, -25, -42, -2, 40, 37};
+        assertArrayEquals(new int[] {50, 58}, dualPivotFinder.findPivot(array, 50, 59));
+        array = new int[] {-16, 45, -32, -11, -48, 34, -21, -23, 18, 48, 7, 15, 14, 33, 9, 6, -16, -18, 1, 41, -25, 31, 46, -48, 26, 21, -5, 15, -13, 48, -22, -32, 18, -15, 22, -13, 40, -4, 22, 31, 27, -17, 5, -20, -29, 0, -7, 29, 43, 46, 2, 20, 30, -44, 48, -8, -50, -22, -7, -45, 31, 21, 5, 24, 48, -39, -12, -12, -9, 9};
+        assertArrayEquals(new int[] {64, 63}, dualPivotFinder.findPivot(array, 63, 64));
+        array = new int[] {-46, -38, -16, 10, 27, -35, 15, 13, 43, -18, -8, -11, 46, 37, 13, -45, 45, -41, -21, -10, 6, -21, -34, 7, -2, 24, -24, 8, 38, -36, -8, 23, 47, 6, 5, 49, 31, -16, 21, 17, 18, -7, -12, 43, 11, 31, 24, -17, -44, 45, 6, -1, 44, -40, -12, -42, 43, -12, -50, 18, -11, -34, 5, -15, 33, -48, 47, -24, 14, -11, -40};
+        assertArrayEquals(new int[] {21, 6}, dualPivotFinder.findPivot(array, 1, 24));
+        array = new int[] {24, 40, -4, 36, -23, -17, 5, 49, -30, 5, -40, -29, 3, -2, -39, -19, 31, 23, -41, 35, 16, -13, -18, -27, 3, 37, -10, 30, 13, -40, -46, -48, -42, 12, 0, 31, 33, -31, 32, 2, -47, 31, -12, 27, 35, -47, 39, -45, 39, -1, -23, -45, 22, 11, -8, 38, -18, 7, 13, -29, 14, -11, 2, -29, 26, -27, 33, 31, 13, 36, 33, -19};
+        assertArrayEquals(new int[] {23, 20}, dualPivotFinder.findPivot(array, 17, 32));
+        array = new int[] {4, -25, 17, 12, 2, -37, 41, 7, 45, -6, -30, -36, -6, 10, -29, -20, -32, -17, 10, 25, 33, 8, 14, 37, 30, 42, 44, 9, 37, -27, -48, 37, 25, 48, -14, -44, 9, 20, 11, -44, -6, -48, -39, -16, 3, 12, 28, -26, 27, 44, -43, 12, -2, -7, 20, 30, 45, -29, -7, 15, -4, 10, -12, -30, -2, 3, 11, 16, -35, 17, -34, 15, 0};
+        assertArrayEquals(new int[] {53, 20}, dualPivotFinder.findPivot(array, 20, 64));
+        array = new int[] {21, -35, -44, 37, -15, -12, -7, 26, -47, 6, 19, 43, -15, -48, 1, 6, 25, 37, 25, -38, -29, -31, 21, 22, -50, 41, 13, -28, 21, -6, -34, 4, 47, 41, -1, -36, 47, 29, -21, -4, -31, -11, 16, 39, 24, 25, -44, 16, -42, -28, 5, -21, 37, -35, 47, 32, 40, -18, 26, -29, -5, -13, 0, 43, 28, -32, -18, -23, 0, -19, -13, -20, 49, -14};
+        assertArrayEquals(new int[] {67, 68}, dualPivotFinder.findPivot(array, 64, 68));
+        array = new int[] {7, -12, -13, 6, -17, 12, -40, 7, -43, -5, -34, -29, 11, 16, 47, -22, 25, 19, 5, -20, -17, 35, -38, 47, 30, 27, 9, -24, 37, 26, -36, -3, 44, 39, 1, 48, -32, 44, -6, -33, -46, 27, 26, -5, -10, 44, 10, 3, -34, -10, 40, 18, -5, -12, -49, 9, -48, 28, 13, -8, -2, -45, 10, 45, -8, 16, 22, -18, 45, -37, 29, -32, 43, 34, 42};
+        assertArrayEquals(new int[] {44, 50}, dualPivotFinder.findPivot(array, 44, 71));
+        array = new int[] {-36, -20, -36, 25, 37, 24, 33, -32, 6, -29, -17, -45, -24, -13, 44, 22, -30, 47, 13, -24, 12, -38, -4, 21, -49, -28, -43, 15, -21, 20, -15, -17, 1, -39, -49, 12, -33, 38, -40, 27, 14, 14, 3, 6, -22, -36, 22, 23, 18, -24, -20, 22, 48, 22, 12, 43, -16, 12, -14, -27, 13, -40, -39, 0, 32, -28, -2, -10, -22, -3, -43, 14, -12, 32, -1, -7};
+        assertArrayEquals(new int[] {44, 41}, dualPivotFinder.findPivot(array, 35, 50));
+        array = new int[] {-35, -3, 21, -46, 6, -42, 32, -35, 16, 32, 23, 49, -1, -15, 10, -23, 46, -27, -47, -48, 37, 29, 23, -27, 34, -12, -11, -24, -15, 18, 30, -14, 37, -14, 20, 5, 36, -22, -24, 14, -14, -50, 34, 41, 39, 34, 20, -38, 47, 49, -19, -5, 16, 30, 37, -47, -1, 26, -40, 31, 3, -28, 4, -41, 16, 1, -15, -40, 16, 5, -47, -10, -28, 4, -32, 44, -46};
+        assertArrayEquals(new int[] {0, 6}, dualPivotFinder.findPivot(array, 0, 14));
+        array = new int[] {10, 37, -44, 1, 22, -36, 13, 42, -1, -21, 13, -15, -29, -34, 46, -29, -14, -50, 41, 46, 2, -15, 21, 22, -42, 15, 28, -4, -43, 29, 26, 3, 27, -26, 19, 5, 6, -6, 13, -6, -35, 48, -16, -47, 26, -20, -5, 20, -49, 21, 49, -30, 32, 5, -28, -28, -45, 7, -39, 36, -4, -42, -3, 18, 20, -8, -20, 18, 30, -22, -32, 19, 5, 3, -31, 30, 22, -7};
+        assertArrayEquals(new int[] {62, 47}, dualPivotFinder.findPivot(array, 42, 63));
+        array = new int[] {-11, 30, 47, -22, -41, 15, 36, -49, 15, -8, -18, -23, 49, -26, 0, -24, -23, 33, -32, -34, 44, 10, 15, -39, 5, 42, -33, -43, -9, -25, -48, 40, 12, -23, 16, -33, -17, 34, -43, 36, 8, 16, -31, 29, 24, 36, -50, -32, -28, -43, 20, -38, -19, 18, 26, -8, -10, -34, 17, 35, 20, -31, -3, 4, -32, 31, -33, -13, 48, 5, 4, 10, 22, -28, -21, 37, 8, -40, -34};
+        assertArrayEquals(new int[] {67, 66}, dualPivotFinder.findPivot(array, 66, 67));
+        array = new int[] {34, -47, 46, 37, -9, 22, 2, 39, -22, -45, -12, 5, -18, 36, -11, -11, -21, -15, 24, -37, 19, -4, -33, -38, -49, 36, 15, 36, 33, 8, 44, 17, -50, -40, 48, 47, -47, -44, 14, -28, -2, 14, 35, -15, -30, 0, -1, 48, 20, -1, -10, -46, -23, -18, 31, -44, -7, -7, -9, 31, 45, -45, 47, -30, -30, -6, 35, 48, 0, -37, 7, 31, 16, 48, 32, -39, 24, -29, -48, -27};
+        assertArrayEquals(new int[] {22, 28}, dualPivotFinder.findPivot(array, 19, 34));
+        array = new int[] {6, -39, 49, 43, -38, 29, -11, -33, -15, 4, -50, 20, 20, -35, 5, -38, -4, 6, -19, -35, -40, 47, 1, 7, 39, 26, 34, -42, -12, 36, 9, 12, 44, -8, 9, -39, -15, -14, 11, -48, 31, -34, 27, 43, 43, 30, 36, -31, -47, 42, 17, -39, 32, 16, 47, -27, -38, -16, -5, -39, 18, 7, 16, 18, 17, 43, -18, 32, -29, -42, -42, 36, -41, 37, -26, -42, 40, 11, 49, -29, 3};
+        assertArrayEquals(new int[] {64, 67}, dualPivotFinder.findPivot(array, 63, 68));
+        array = new int[] {-17, 46, 21, 9, 28, 8, -8, -16, 29, -42, -38, -16, -19, -44, 15, 9, -41, -15, -17, 3, 31, -30, -31, -2, -38, 1, 48, 8, -9, 46, -7, -13, 8, -13, -50, -47, 49, 23, 11, 4, -13, 49, -28, 28, 6, 19, -9, -19, 25, 39, -24, 47, -17, 15, 23, 1, 40, 1, 9, 45, -7, -2, 27, 1, 41, -1, -25, -9, 13, -10, 5, 43, -2, 3, -8, 7, -2, -1, 22, 44, -19, -50};
+        assertArrayEquals(new int[] {57, 54}, dualPivotFinder.findPivot(array, 53, 58));
+        array = new int[] {18, 37, -4, 33, 41, -41, 43, 42, 22, -5, 5, -21, -21, -15, -24, 5, 17, 38, 49, 46, 37, -13, -9, -11, 8, -6, -27, 37, 20, 35, -15, -19, 35, -50, -30, -15, -39, 47, -39, 1, -14, 4, 8, -21, 5, 11, 44, 15, -23, 34, 1, -33, 11, -24, 48, -23, 49, 2, 17, 49, -46, -25, 30, 35, 42, 15, -31, 7, 34, 18, -22, 1, 41, 45, 9, 32, -11, 10, -21, -9, -19, 28, 15};
+        assertArrayEquals(new int[] {66, 68}, dualPivotFinder.findPivot(array, 60, 71));
+        array = new int[] {-5, -28, 43, 19, 9, 45, 28, 15, 3, -27, -25, 5, 39, 21, -1, 23, 14, -22, 9, -40, 26, 49, -13, -48, -30, -2, -15, 48, 36, -4, 25, -31, -42, 8, -10, -5, -4, -31, -12, 22, -29, 17, 8, -12, 34, 47, 31, 13, -43, -15, 46, -8, 46, 0, 36, -29, -35, -38, -12, 2, 37, -24, -41, 17, 33, -30, -46, -16, 46, 25, 41, -3, -34, 32, -49, -34, 38, -30, -43, -8, 13, 43, 2, 28};
+        assertArrayEquals(new int[] {42, 42}, dualPivotFinder.findPivot(array, 41, 43));
+        array = new int[] {44, 33, 5, 36, -18, 40, -14, -33, -34, 24, 15, 33, -46, 20, 31, -45, -41, -19, -2, -22, 36, -38, 44, -23, -46, -2, 36, 46, -22, -23, 43, -21, 17, -37, 7, -29, 1, 27, 25, -16, -14, -29, 37, 22, 20, -50, 40, 26, -23, -17, 22, 45, 23, -20, 40, -2, -9, 15, -11, 39, -31, 28, 41, 15, 24, -10, 25, -11, 30, 13, 10, 40, -7, -3, -14, -32, -14, 20, -36, -4, 31, -12, -35, -5, 35};
+        assertArrayEquals(new int[] {29, 37}, dualPivotFinder.findPivot(array, 29, 62));
+        array = new int[] {8, -23, 38, 48, 31, 48, 12, 6, 14, 0, 4, 49, 29, -24, -10, 11, 15, -32, 44, -10, 5, 7, 43, -39, 29, -15, -13, -38, -42, -15, 41, 17, 46, -19, -19, -1, -49, 15, -8, -24, -15, 30, 16, -6, 5, 14, -16, 40, -2, -35, -48, 19, -4, 36, 49, -36, 2, -46, 33, 26, -2, -40, 37, 30, 36, -1, -40, 22, -9, 11, 45, 40, 16, -36, -42, 24, 25, 19, 19, -7, -17, -2, -30, 40, 45, 29};
+        assertArrayEquals(new int[] {77, 75}, dualPivotFinder.findPivot(array, 75, 82));
+        array = new int[] {-34, -50, 3, -16, -46, -23, 17, -41, -45, -10, -24, -49, -23, -48, -36, 48, -28, -23, -46, 17, -50, 49, -7, 3, 26, 6, -37, -42, -14, 25, 15, 6, 20, -7, -15, 43, 49, 17, -31, 19, 31, 8, -18, -2, 9, 29, 11, -32, 21, -15, -43, -3, 9, 17, -47, 34, -33, 33, -12, 22, -4, 3, 5, 16, -11, -10, 26, -1, 6, 7, -9, 42, -50, 25, -17, -29, 19, 49, 17, -38, 2, -27, -7, 27, 4, -2, 9};
+        assertArrayEquals(new int[] {65, 63}, dualPivotFinder.findPivot(array, 62, 69));
+        array = new int[] {31, -1, 0, 24, -9, -17, -39, -16, -12, -25, -29, -12, 37, -15, -15, 2, 12, 4, 9, 14, -35, 7, -24, 27, 31, -10, -18, 33, 40, 6, -46, 10, -14, 1, -50, -32, -11, 16, 35, 27, 48, 33, 4, 8, 23, 24, -15, 33, -26, 2, 7, 30, 41, -26, -5, 13, 18, 23, -36, -34, 29, 20, 13, 42, -35, -30, 17, -8, 2, 13, -6, 10, -6, -26, -11, -46, 14, 9, -24, -34, 12, -40, -18, -4, -44, -11, -23, 10};
+        assertArrayEquals(new int[] {53, 61}, dualPivotFinder.findPivot(array, 49, 68));
+        array = new int[] {25, 31, 26, 41, 37, 32, -42, 10, -12, 35, 29, 7, -45, -38, -10, -28, -24, -38, -32, -38, 23, 19, -37, 20, 23, -19, -14, -25, 47, 22, 19, 11, 8, 5, -28, 13, 47, 46, -30, 41, 37, 46, -27, -43, 29, -50, 8, -27, 13, -50, -9, -22, -36, 27, 31, 46, 49, -50, 21, -2, 39, 9, -49, 8, 37, -3, 4, -44, 29, 34, 7, 16, -48, 42, -4, 40, 12, 40, 47, 15, 11, 9, -14, 37, 8, 22, 49, -21, -12};
+        assertArrayEquals(new int[] {63, 64}, dualPivotFinder.findPivot(array, 60, 65));
+        array = new int[] {11, 13, -39, -50, 49, -34, 45, -37, 41, 37, 28, -13, 2, -43, 6, -49, -42, -22, 49, -3, -21, -11, -20, 6, 18, -3, 17, -3, -26, 3, -33, -48, -26, -49, -25, -11, -34, 22, 37, -2, -48, -27, 36, 42, -27, -48, 2, -36, -22, 48, 1, -34, -20, -22, 8, 23, 8, -48, -2, 18, 20, -29, 34, -5, -40, 25, 22, -43, -32, 22, -38, 38, -40, 9, -38, 34, 22, -33, 4, -10, -37, 18, -43, -38, -3, -15, -18, 39, 5, -26};
+        assertArrayEquals(new int[] {30, 35}, dualPivotFinder.findPivot(array, 15, 37));
+        array = new int[] {-28, 21, 46, -15, 28, 22, 11, -47, 26, -15, 42, 10, 31, -34, 12, 34, 40, 29, 4, -17, -45, 12, -10, 0, 22, 2, 11, 43, 48, 9, -1, 31, -24, 18, 7, 18, -45, -39, -19, 44, 24, -29, 15, 32, -46, 40, 29, 27, 46, -30, 32, -6, 16, 1, -35, 2, -15, -31, 33, -48, -9, -14, -49, 16, 37, -41, 31, 25, 1, -39, -6, -22, -8, 32, -48, -31, 14, 24, 38, -11, 15, -42, 2, -45, 14, -31, 0, 13, 48, 25, 11};
+        assertArrayEquals(new int[] {30, 24}, dualPivotFinder.findPivot(array, 12, 38));
+        array = new int[] {-37, -43, 49, -46, -40, -33, 39, -41, -9, -50, 17, -16, -20, 21, -34, 28, -22, 7, 32, -46, 14, -1, -46, -48, 36, 42, 2, -15, -39, 12, 16, 29, 18, -15, -5, 29, 33, 25, 17, 22, -26, 2, 32, 6, -41, 25, -28, -2, 4, 25, 12, -17, -9, -4, -16, 32, 17, -46, 33, 22, 11, -5, -40, -49, -28, 40, -10, -14, 3, 17, -6, 48, 45, -2, 7, -45, 25, 38, 9, -14, -8, 9, -42, 45, -40, -2, -24, -40, -8, 47, 22, -4};
+        assertArrayEquals(new int[] {87, 88}, dualPivotFinder.findPivot(array, 84, 89));
+        array = new int[] {6, -11, 48, 32, 37, -42, 26, -50, 44, 19, -3, -23, -6, -15, -34, -14, -4, -4, -43, 19, 45, -18, 4, -12, 1, 42, 7, 9, 33, -29, 30, 10, -23, -14, -8, -8, -8, -28, 22, 20, 9, -36, -27, -28, 31, 6, -50, -19, -32, 13, 6, 44, -25, -17, -2, 11, -44, -41, -3, -15, -3, 8, -19, -44, -26, -23, 4, -25, 27, -31, 35, 27, -46, 14, -46, -43, 8, -43, -21, 7, -32, 0, -50, -1, -45, 20, -22, 13, 12, -2, -14, -17, -24};
+        assertArrayEquals(new int[] {64, 58}, dualPivotFinder.findPivot(array, 40, 65));
+        array = new int[] {23, -5, 32, -17, 9, 13, 18, -15, -38, -46, -41, 4, 44, -10, 34, 28, 34, -50, -38, 42, -39, -12, 10, -3, -31, 40, -28, -30, -11, 28, 29, 43, 12, -23, 30, 8, 8, 20, 37, 24, 33, -43, 0, 7, 28, -50, 8, 29, -50, -28, -37, 14, 40, 46, -22, 28, 40, 2, -3, -21, -31, -10, -40, -45, 45, 20, -5, 21, 15, -41, 40, 12, -39, 34, 49, -45, 5, 23, 30, 8, 28, 21, -32, -29, 8, -18, -48, 18, -34, -20, 11, -34, 0, -42};
+        assertArrayEquals(new int[] {85, 77}, dualPivotFinder.findPivot(array, 73, 90));
+        array = new int[] {-21, -13, -24, 4, 29, 2, -19, 35, 14, -49, -11, -32, -35, 23, 22, 41, -7, 43, -8, -40, 38, -7, 35, -48, -14, 24, 1, 0, -6, -9, -42, -43, 39, 6, -10, -30, -29, 12, -26, 39, 1, 47, 23, -11, 26, -46, 8, 13, -43, -24, -37, -3, 22, 29, 11, 46, -6, 42, 21, -3, -9, -8, 42, -29, 36, 26, -43, 0, 13, 32, 30, 39, 41, 8, -10, 44, 11, -5, 30, -29, 3, 8, -21, 9, 38, -34, -32, 6, -38, -28, 9, -42, -30, -50, -41};
+        assertArrayEquals(new int[] {91, 92}, dualPivotFinder.findPivot(array, 90, 94));
+        array = new int[] {8, 5, -5, 11, -2, 47, -8, -37, 29, -34, -46, -42, 11, -22, -40, -25, 45, 25, -17, -39, -37, -9, -26, -34, -41, -19, 3, 36, -25, 7, 48, -36, 49, -49, -8, 4, 32, 20, -7, 36, 21, -45, 4, -34, -23, -2, 49, 16, -39, 23, -7, 27, 3, 36, -1, 13, 24, 29, -2, -42, -45, -23, 45, 28, 31, -6, 4, -42, 23, -7, -5, -39, 1, -25, 9, 15, -12, 35, -37, -36, 26, -19, -35, 34, 38, -26, 10, -36, 21, 18, 11, -9, 0, -37, 5, -26};
+        assertArrayEquals(new int[] {90, 89}, dualPivotFinder.findPivot(array, 88, 91));
+        array = new int[] {30, 3, 24, -38, -8, -33, 37, -5, 35, 19, 41, 13, -42, 17, -8, 24, -25, -33, -5, 23, -15, 29, 6, -5, -23, -24, -21, 37, -41, -23, 29, 41, 35, -10, -17, 31, -6, 48, -38, -30, 22, -41, -47, 44, -21, 31, -17, -42, -26, 3, -40, 16, 20, 31, 45, 5, 6, -50, 7, 21, 43, 34, -38, -16, -40, -50, -33, 25, 37, 40, 29, 43, 6, 12, 0, 40, 32, -8, 0, 23, 30, 16, 8, 16, 4, 33, 48, -32, -22, -17, 14, 49, 31, -27, 9, 45, 28};
+        assertArrayEquals(new int[] {72, 76}, dualPivotFinder.findPivot(array, 68, 78));
+        array = new int[] {23, -33, -24, 39, 39, 42, -20, 30, 41, -6, 26, 27, 28, -27, -10, -34, 10, -47, -13, 25, -10, -40, 13, -21, 6, 9, 1, -35, -1, 18, 18, -21, 3, -25, -39, -38, 46, -19, -48, -1, 9, 19, 40, -33, 28, 19, 17, -2, -7, -50, 47, -37, -42, -22, 24, -38, -40, 13, 42, 21, -21, -10, -46, 13, 43, 4, -14, 25, -36, -25, 35, -15, 42, 27, -20, -16, 3, 19, -12, 8, -41, 27, -26, 3, -13, -48, 36, -24, 42, 5, 13, 28, -20, -29, 9, -40, 32, -47};
+        assertArrayEquals(new int[] {18, 42}, dualPivotFinder.findPivot(array, 18, 50));
+        array = new int[] {-4, 48, -45, 44, -32, 16, -31, -1, -30, -2, -41, 23, 37, -26, 33, 21, 46, 0, -21, -18, -43, 5, -2, -43, -14, -43, 38, -6, -4, -27, -19, -25, -43, 13, -49, 12, -11, 12, 36, 26, 39, 25, -44, -8, 46, -18, 38, 2, 46, 24, -19, -49, 33, -47, -32, 3, 17, -18, -12, 15, -42, -39, -33, -17, -36, -12, 24, 5, 23, 49, -46, 43, -12, -23, -28, -15, -42, -12, 47, -26, -2, -22, 39, 25, -41, 28, -9, -7, 21, -30, -50, 0, -19, 18, 21, -15, -34, -41, -37};
+        assertArrayEquals(new int[] {53, 55}, dualPivotFinder.findPivot(array, 47, 56));
+        array = new int[] {45, -3, -36, 12, -19, 49, -1, 8, 17, 24, 2, 9, -22, -9, -36, -48, 38, -27, 47, 44, 29, -23, 44, -15, 11, -49, 31, 40, -19, 41, 33, -3, -47, 34, -29, -14, 7, 22, 44, 46, 10, -47, -33, -30, -11, 6, 18, 27, -20, -8, 35, 35, 19, -48, -15, 22, 37, 34, -45, -25, -39, -22, 21, -3, -46, 28, 36, -20, 22, -25, -27, -45, 6, -17, 14, -45, 40, 11, -47, -8, 14, 9, -2, -44, -13, 41, -20, 42, 32, -43, 7, -12, -11, 12, -19, 16, -27, -26, -38, -39};
+        assertArrayEquals(new int[] {97, 81}, dualPivotFinder.findPivot(array, 65, 98));
     }
 }
