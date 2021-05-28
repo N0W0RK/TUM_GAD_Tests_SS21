@@ -18,7 +18,7 @@ $ mklink /J \path\to\src\tests \path\to\repository\tests
 
 ### Linux/MacOS
 ```
-$ ln -s /path/to/src/tests /path/to/repository/tests
+$ ln -s /path/to/repository/tests /path/to/src/
 ```
 
 After that you just have to include JUnit in your project and you're good to go.
