@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class HashTableTests {
+public class HashTableTester {
 
     /**
      * Class taken from <a href="#{@link}">{@link https://stackoverflow.com/a/24006293}</a>

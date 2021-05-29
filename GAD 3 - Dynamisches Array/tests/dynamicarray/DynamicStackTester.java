@@ -1,14 +1,15 @@
-package gad.dynamicarray;
+package tests.dynamicarray;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import gad.dynamicarray.DynamicStack;
 import org.junit.jupiter.api.Test;
 
-public class TestForDynamicStack {
+public class DynamicStackTester {
 
 	@Test
 	void defaultTest() {
-		DynamicStack ds = new DynamicStack(3, 4, new StudentResult());
+		DynamicStack ds = new DynamicStack(3, 4, new TestResult());
 		ds.insert(1);
 		assertTrue(ds.toString().equals("[1, 0, 0], length: 1"));
 		ds.insert(2);

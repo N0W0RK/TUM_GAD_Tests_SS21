@@ -1,33 +1,45 @@
 # TUM_GAD_Tests_SS21
-This is a repository to collect JUnit Tests for GAD exercises at TUM in SS21
-These tests have been written by students and are not part of the official course.
+
+This is a repository to collect JUnit Tests for GAD exercises at TUM in SS21.
+These tests have been written by students for students and are not part of the official course.
 
 ## Usage
 
 To use the provided tests, first clone this repository.
+Then, you have to create a symlink to your `src` folder to make it work with your IDE (see below).
+After that you just have to include JUnit in your project and you're good to go.
+To include JUnit you will just need to Alt+Enter on one of the red underlined @Test Annotation in the test file.
+Your IDE will show you options to include the correct JAR.
 
-For every exercise that has tests, there will be a separate folder. The gad in the package of the excercise file will be replaced by tests. So if the excercise file is located at `gad.binarysearch.BinSea`, the tests will be located at `tests.binarysearch.BinSea`.
+### Windows
 
-To use the tests in your IDE you have to create a symlink to your src folder.
+This has to be executed in the command line, run as administrator:
 
-### Windows:
-This has to be executed in the command line, run as administrator.
 ```
 $ mklink /J \path\to\src\tests \path\to\repository\tests
 ```
 
 ### Linux/MacOS
+
 ```
 $ ln -s /path/to/repository/tests /path/to/src/
 ```
 
-After that you just have to include JUnit in your project and you're good to go.
+## Structure of the tests
 
-To include JUnit you will just need to Alt+Enter on one of the red underlined @Test Annotation in the Test file. Your IDE will show you options to include the correct JAR.
+For every exercise that has tests, there will be a separate folder. The `gad` in the package name of the excercise file will be replaced by `tests`.
+So, if the classes of the excercises are located in the package `gad.binarysearch` (for the class `gad.binarysearch.BinSea`), the tests will be located at `tests.binarysearch`.
+Usually, the naming convention for test classes is to use the tested class name and append `Tester` (e.g. `BinSeaTester`) or another fitting name ending with `Tester`.
+Further information can be found in the [contributing guidelines](docs/CONTRIBUTING.md), too.
 
 ## Collaboration
 
-I will probably only add test cases from the problem statements and ones from issues I am experiencing. If you have cases yourself, be sure to create a pull request and check out the [contributing guidelines](https://github.com/N0W0RK/TUM_GAD_Tests_SS21/blob/main/CONTRIBUTING.md).  
-If you are unsure of how to create a pullrequest, take a look in the [GitHub Documentation](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
-Please use JUnit 5.7 when writing your own Tests. existing tests will be modified when I find the time.
-GPLv3 will be added in the near future. All new contributions imply that they accept that they will be placed under this license once existing contributors agree.
+We will probably only add test cases from the problem statements and ones from issues we were experiencing.
+If you have cases yourself or spot mistakes we did in the tests here, feel free to open an issue or to create a pull request.
+Check out the [contributing guidelines](docs/CONTRIBUTING.md) for further information.
+In case you are unsure how to create a pull request, take a look at the [GitHub documentation](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork).
+Please use JUnit 5.7 when writing your own Tests. Existing tests will be modified accordingly.
+
+## License
+
+This project is licensed under GPLv3, see [LICENSE](docs/LICENSE).

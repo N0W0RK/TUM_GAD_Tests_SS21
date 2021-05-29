@@ -1,14 +1,15 @@
-package gad.dynamicarray;
+package tests.dynamicarray;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import gad.dynamicarray.RingQueue;
 import org.junit.jupiter.api.Test;
 
-class TestForRingQueue {
+class RingQueueTester {
 
 	@Test
 	void test() {
-		RingQueue r = new RingQueue(3, 4, new StudentResult());
+		RingQueue r = new RingQueue(3, 4, new TestResult());
 		r.insert(1);
 		assertTrue(r.toString().equals("[1, 0, 0], size: 1"));
 		r.insert(2);
