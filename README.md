@@ -42,4 +42,4 @@ Please use JUnit 5.7 when writing your own Tests. Existing tests will be modifie
 
 ## License
 
-This project is licensed under GPLv3, see [LICENSE](docs/LICENSE).
+This project is licensed under GPLv3, see [LICENSE](LICENSE).
