@@ -11,12 +11,11 @@ class TesterDualQuicksortResult implements Result {
     int[] numbersAtStart = null;
     int[] indicesOfLog = new int[6];
     int countThroughLog = 0;
+    DualPivotFinder pivotFinder;
 
     public TesterDualQuicksortResult(DualPivotFinder pivotFinder) {
         this.pivotFinder = pivotFinder;
     }
-
-    DualPivotFinder pivotFinder;
 
     @Override
     public void startSelectionsort(int[] array, int from, int to) {
@@ -82,31 +81,35 @@ class TesterDualQuicksortResult implements Result {
         int pivotTwo = endResult[indicesOfLog[3] + 1];
 
         if (!(valuePivotStartFirst == pivotOne && valuePivotStartSecond == pivotTwo) &&
-                !(valuePivotStartFirst == pivotTwo && valuePivotStartSecond == pivotOne))
-            fail("Array: " + Arrays.toString(endResult) +
-                    "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
+                !(valuePivotStartFirst == pivotTwo && valuePivotStartSecond == pivotOne)) {
+            fail("Array: " + Arrays.toString(endResult) + "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
                     "\nThe pivots of the pivot finder do not correspond to the log Pivots");
+        }
 
-        if (pivotOne > pivotTwo) fail("Array: " + Arrays.toString(endResult) +
-                "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
-                "\nThe second pivot is smaller than the first one");
+        if (pivotOne > pivotTwo) {
+            fail("Array: " + Arrays.toString(endResult) + "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
+                    "\nThe second pivot is smaller than the first one");
+        }
 
         for (int i = indicesOfLog[0]; i <= indicesOfLog[1]; i++) {
-            if (endResult[i] > pivotOne)
+            if (endResult[i] > pivotOne) {
                 fail("Array: " + Arrays.toString(endResult) + "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
                         "\nIn the first part is at index " + (indicesOfLog[0] + i) + " a number bigger than the first pivot");
+            }
         }
 
         for (int i = indicesOfLog[2]; i <= indicesOfLog[3]; i++) {
-            if (endResult[i] < pivotOne || endResult[i] > pivotTwo)
+            if (endResult[i] < pivotOne || endResult[i] > pivotTwo) {
                 fail("Array: " + Arrays.toString(endResult) + "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
                         "\nIn the second part is at index " + (indicesOfLog[2] + i) + " a number than shouldn't be there");
+            }
         }
 
         for (int i = indicesOfLog[4]; i <= indicesOfLog[5]; i++) {
-            if (endResult[i] < pivotTwo)
+            if (endResult[i] < pivotTwo) {
                 fail("Array: " + Arrays.toString(endResult) + "\nIn range: " + indicesOfLog[0] + " to " + indicesOfLog[5] +
                         "\nIn the third part is at index " + (indicesOfLog[4] + i) + " a number smaller than the second pivot");
+            }
         }
     }
 }
