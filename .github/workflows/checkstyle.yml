@@ -18,7 +18,6 @@ jobs:
     - name: Run check style
       uses: nikitasavinov/checkstyle-action@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        reporter: 'github-pr-check'
-        tool_name: 'GAD Worksheep'
+        reporter: github-check
+        tool_name: GAD Worksheep
         checkstyle_config: .github/workflows/staticCodeAnalysisConfig/checkstyle-configuration.xml
