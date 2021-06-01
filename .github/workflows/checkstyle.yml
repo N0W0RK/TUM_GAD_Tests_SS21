@@ -19,5 +19,6 @@ jobs:
       uses: nikitasavinov/checkstyle-action@master
       with:
         reporter: github-check
+        filter_mode: file
         tool_name: GAD Worksheep
         checkstyle_config: .github/workflows/staticCodeAnalysisConfig/checkstyle-configuration.xml
