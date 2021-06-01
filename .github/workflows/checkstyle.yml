@@ -21,4 +21,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         reporter: 'github-pr-check'
         tool_name: 'GAD Worksheep'
-        checkstyle_config: '.github/workflows/main.yml'
+        checkstyle_config: .github/workflows/staticCodeAnalysisConfig/checkstyle-configuration.xml
