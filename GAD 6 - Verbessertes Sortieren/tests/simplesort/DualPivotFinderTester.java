@@ -1,6 +1,7 @@
 package tests.simplesort;
 
 import gad.simplesort.*;
+import java.util.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -271,8 +272,17 @@ class DualPivotFinderTester {
     @Test
     void medianPivotFront() {
         int[] arr;
+        int[] returnedElements;
+
         arr = new int[] {213, 180, 93, 90, 46};
-        assertArrayEquals(new int[]{3, 2}, DualPivotFinder.getMedianPivotFront(5).findPivot(arr, 2, 3));
+
+        //Note: I know it's a lazy fix, but it makes it more understadable for debugging
+        returnedElements = DualPivotFinder.getMedianPivotFront(5).findPivot(arr, 2, 3);
+        if (returnedElements[0] == 2 && returnedElements[1] == 3) {
+        } else if (returnedElements[0] == 3 && returnedElements[1] == 2) {
+        } else
+            fail("You did not return correct pivots for the array " + Arrays.toString(arr) + "\n" + "The correct pivots were either [0, 1] or [1, 0] but you returned " + Arrays.toString(returnedElements));
+
         arr = new int[] {138, 68, 111, 255, 33};
         assertArrayEquals(new int[]{1, 2}, DualPivotFinder.getMedianPivotFront(5).findPivot(arr, 1, 3));
         arr = new int[] {66, 212, 256, 133, 124};
@@ -342,7 +352,13 @@ class DualPivotFinderTester {
         arr = new int[] {84, 43, 212, 275, 48, 280, 158, 45, 182, 200};
         assertArrayEquals(new int[]{7, 8}, DualPivotFinder.getMedianPivotFront(5).findPivot(arr, 7, 8));
         arr = new int[] {9, 231, 231, 140, 87, 231, 101, 243, 194, 93};
-        assertArrayEquals(new int[]{4, 1}, DualPivotFinder.getMedianPivotFront(5).findPivot(arr, 0, 9));
+
+        returnedElements = DualPivotFinder.getMedianPivotFront(5).findPivot(arr, 0, 9);
+        if (returnedElements[0] != 4)
+            fail("You returned wrong pivots for the array " + Arrays.toString(arr) + "\n" + "The pivots you returned were " + Arrays.toString(returnedElements) + ", however the expected pivots were either [4, 1] or [4, 2]");
+        else if (returnedElements[1] != 1 || returnedElements[1] != 2)
+            fail("You returned wrong pivots for the array " + Arrays.toString(arr) + "\n" + "The pivots you returned were " + Arrays.toString(returnedElements) + ", however the expected pivots were either [4, 1] or [4, 2]");
+
         arr = new int[] {233, 267, 175, 295, 22, 78, 25, 3, 262, 114};
         assertArrayEquals(new int[]{2, 3}, DualPivotFinder.getMedianPivotFront(5).findPivot(arr, 2, 4));
         arr = new int[] {158, 155, 193, 161, 61, 29, 268, 200, 222, 7};
@@ -864,9 +880,17 @@ class DualPivotFinderTester {
     public void getMedianPivotFront() {
         DualPivotFinder dualPivotFinder = DualPivotFinder.getMedianPivotFront(5);
         int[] array;
+        int[] returnedElements;
 
         array = new int[] {-45, 16};
-        assertArrayEquals(new int[] {1, 0}, dualPivotFinder.findPivot(array, 0, 1));
+        returnedElements = dualPivotFinder.findPivot(array, 0, 1);
+
+        //Note: I know it's a lazy fix, but it makes it more understadable for debugging
+        if (returnedElements[0] == 1 && returnedElements[1] == 0) {
+        } else if (returnedElements[0] == 0 && returnedElements[1] == 1) {
+        } else
+            fail("You did not return correct pivots for the array " + Arrays.toString(array) + "\n" + "The correct pivots were either [0, 1] or [1, 0] but you returned " + Arrays.toString(returnedElements));
+
         array = new int[] {-41, -29, 11};
         assertArrayEquals(new int[] {1, 0}, dualPivotFinder.findPivot(array, 0, 1));
         array = new int[] {-33, 48, 4, -11};
@@ -1018,7 +1042,13 @@ class DualPivotFinderTester {
         array = new int[] {-14, -46, -45, -8, 26, -25, -23, 37, -45, -16, 34, -12, -24, -25, -11, 47, 38, -26, -33, 24, -22, -15, -11, 21, 1, -8, -22, -37, -15, 0, -33, -41, 31, -42, -23, 20, 42, -20, -25, 42, -8, -31, -15, 9, 16, -43, -20, 45, -39, 10, 28, 18, -15, -14, -48, 13, 22, 25, 37, 38, -10, 15, -10, 22, 33, -5, 17, 12, 1, 3, -33, -29, 26, 20, -6, 19, 12};
         assertArrayEquals(new int[] {48, 44}, dualPivotFinder.findPivot(array, 44, 68));
         array = new int[] {36, 37, -33, 45, 26, -9, -25, -24, -11, -6, -29, -12, -6, 43, -11, -6, -15, 8, -31, 46, -36, 20, -10, 3, -18, 48, -22, -2, -16, -42, 48, 2, -47, -25, -10, -22, -30, 6, 43, -18, -28, -13, -29, 1, 18, -30, -43, 25, 23, 32, 47, 39, -46, 3, 30, 9, 29, -17, -44, -45, -8, -30, -37, -10, -38, -27, 35, -31, -50, 18, 29, 34, -20, -7, -49, -20, -50, -22};
-        assertArrayEquals(new int[] {14, 15}, dualPivotFinder.findPivot(array, 11, 48));
+        returnedElements = dualPivotFinder.findPivot(array, 11, 48);
+
+        if (returnedElements[0] != 14)
+            fail("You returned wrong pivots for the array " + Arrays.toString(array) + "\n" + "The pivots you returned were " + Arrays.toString(returnedElements) + ", however the expected pivots were either [14, 12] or [14, 15]");
+        else if (returnedElements[1] != 12 && returnedElements[1] != 15)
+            fail("You returned wrong pivots for the array " + Arrays.toString(array) + "\n" + "The pivots you returned were " + Arrays.toString(returnedElements) + ", however the expected pivots were either [14, 12] or [14, 15]");
+
         array = new int[] {43, 27, -14, 9, 41, 40, 27, 5, 46, 34, 41, -7, 11, 0, -31, 36, 42, -26, -9, -1, -37, 0, -4, -14, -14, -16, 8, -40, -20, 32, -34, 6, -13, 30, -47, 9, 34, 34, -44, 40, -38, 2, 22, -19, 32, -14, 33, -17, -30, -49, 2, -11, -20, -30, 42, -29, 32, 10, -9, -2, 39, -34, 49, 47, -7, 33, 12, -10, -49, -39, -4, 49, -24, -41, -23, -2, -19, -43, 41};
         assertArrayEquals(new int[] {32, 33}, dualPivotFinder.findPivot(array, 32, 43));
         array = new int[] {39, 24, -23, 2, 37, 9, 4, 40, -24, 28, 11, -21, 48, 31, -29, -5, 26, -28, 49, 1, -19, 11, 9, 1, 42, 0, -4, -21, -1, -13, 22, -26, -4, -36, -12, -36, 30, -10, -36, -28, 35, 8, 11, -39, -2, 26, 20, 43, 31, -18, 11, -32, -12, 39, 47, -47, 21, -32, 45, 16, 10, 45, -13, -34, -17, 42, 42, 2, 8, 13, 17, 12, -42, -21, -34, 25, -6, -36, 18, -32};
@@ -1766,7 +1796,16 @@ class DualPivotFinderTester {
     public void getMetMedianPivotDistributedFront() {
         DualPivotFinder dualPivotFinder = DualPivotFinder.getMedianPivotDistributed(5);
         int[] array;
+        int[] returnedElements;
         array = new int[] {-15, -30};
+        returnedElements = dualPivotFinder.findPivot(array, 0, 1);
+
+        //Note: I know it's a lazy fix, but it makes it more understadable for debugging
+        if (returnedElements[0] == 1 && returnedElements[1] == 0) {
+        } else if (returnedElements[0] == 0 && returnedElements[1] == 1) {
+        } else
+            fail("You did not return correct pivots for the array " + Arrays.toString(array) + "\n" + "The correct pivots were either [0, 1] or [1, 0] but you returned " + Arrays.toString(returnedElements));
+
         assertArrayEquals(new int[] {0, 1}, dualPivotFinder.findPivot(array, 0, 1));
         array = new int[] {20, -31, 34};
         assertArrayEquals(new int[] {0, 0}, dualPivotFinder.findPivot(array, 0, 2));
@@ -1853,7 +1892,13 @@ class DualPivotFinderTester {
         array = new int[] {-22, -38, 5, -20, 30, -16, 34, 28, 19, -25, 6, -3, 46, 33, 0, 21, 33, 47, -8, -3, 37, -47, 21, 27, -30, 25, 6, -32, 29, 25, -38, -36, -5, 31, -27, 7, 4, 31, -33, -42, -25, -47, -25, 15};
         assertArrayEquals(new int[] {31, 35}, dualPivotFinder.findPivot(array, 27, 43));
         array = new int[] {-42, 30, -22, 5, 18, 32, 9, 25, -4, -9, 37, -15, -4, -11, -28, 36, -7, 6, 9, 13, -39, 29, 47, 17, -28, 17, -19, -19, 48, -22, -22, -24, 15, 34, 45, 1, -36, -44, 14, 12, -27, 8, 36, 30, 18};
-        assertArrayEquals(new int[] {24, 9}, dualPivotFinder.findPivot(array, 9, 30));
+        returnedElements = dualPivotFinder.findPivot(array, 9, 30);
+
+        if (returnedElements[0] != 14 && returnedElements[0] != 24)
+            fail("You returned wrong pivots for the array " + Arrays.toString(array) + "\n" + "The pivots you returned were " + Arrays.toString(returnedElements) + ", however the expected pivots were either [14, 9] or [24, 9]");
+        if (returnedElements[1] != 9)
+            fail("You returned wrong pivots for the array " + Arrays.toString(array) + "\n" + "The pivots you returned were " + Arrays.toString(returnedElements) + ", however the expected pivots were either [14, 9] or [24, 9]");
+
         array = new int[] {1, -46, -31, -19, -7, -32, 6, 32, -50, -33, 7, -1, 30, 37, 9, 49, -18, -9, -7, 3, -29, -38, 28, -44, -13, 17, -23, -37, 45, -26, -48, 32, 20, -25, 22, -4, 22, 5, 27, -15, 38, -16, 24, 12, -29, -39};
         assertArrayEquals(new int[] {37, 42}, dualPivotFinder.findPivot(array, 22, 44));
         array = new int[] {11, 37, 3, 25, -47, -5, -47, 28, -33, 46, -50, 31, -14, 35, -30, -27, 23, 35, -6, -48, 44, 36, -22, 17, -39, 11, -3, -38, -16, -36, -24, -18, -33, 9, -9, -33, -13, -49, -41, 14, 7, 3, 21, -18, -33, -28, -28};
