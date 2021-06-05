@@ -278,10 +278,9 @@ class DualPivotFinderTester {
 
         //Note: I know it's a lazy fix, but it makes it more understadable for debugging
         returnedElements = DualPivotFinder.getMedianPivotFront(5).findPivot(arr, 2, 3);
-        if (returnedElements[0] == 2 && returnedElements[1] == 3) {
-        } else if (returnedElements[0] == 3 && returnedElements[1] == 2) {
-        } else
-            fail("You did not return correct pivots for the array " + Arrays.toString(arr) + "\n" + "The correct pivots were either [0, 1] or [1, 0] but you returned " + Arrays.toString(returnedElements));
+        if (!Arrays.equals(new int[] {2, 3}, returnedElements) && !Arrays.equals(new int[] {3, 2}, returnedElements))
+            fail("You did not return correct pivots for the array " + Arrays.toString(arr) + "\n" + "The correct pivots were either [2, 3] or [3, 2] but you returned " + Arrays.toString(returnedElements));
+
 
         arr = new int[] {138, 68, 111, 255, 33};
         assertArrayEquals(new int[]{1, 2}, DualPivotFinder.getMedianPivotFront(5).findPivot(arr, 1, 3));
@@ -885,10 +884,7 @@ class DualPivotFinderTester {
         array = new int[] {-45, 16};
         returnedElements = dualPivotFinder.findPivot(array, 0, 1);
 
-        //Note: I know it's a lazy fix, but it makes it more understadable for debugging
-        if (returnedElements[0] == 1 && returnedElements[1] == 0) {
-        } else if (returnedElements[0] == 0 && returnedElements[1] == 1) {
-        } else
+        if (!Arrays.equals(new int[] {0, 1}, returnedElements) && !Arrays.equals(new int[] {1, 0}, returnedElements))
             fail("You did not return correct pivots for the array " + Arrays.toString(array) + "\n" + "The correct pivots were either [0, 1] or [1, 0] but you returned " + Arrays.toString(returnedElements));
 
         array = new int[] {-41, -29, 11};
@@ -1801,9 +1797,7 @@ class DualPivotFinderTester {
         returnedElements = dualPivotFinder.findPivot(array, 0, 1);
 
         //Note: I know it's a lazy fix, but it makes it more understadable for debugging
-        if (returnedElements[0] == 1 && returnedElements[1] == 0) {
-        } else if (returnedElements[0] == 0 && returnedElements[1] == 1) {
-        } else
+        if (!Arrays.equals(new int[] {0, 1}, returnedElements) && !Arrays.equals(new int[] {1, 0}, returnedElements))
             fail("You did not return correct pivots for the array " + Arrays.toString(array) + "\n" + "The correct pivots were either [0, 1] or [1, 0] but you returned " + Arrays.toString(returnedElements));
 
         assertArrayEquals(new int[] {0, 1}, dualPivotFinder.findPivot(array, 0, 1));
