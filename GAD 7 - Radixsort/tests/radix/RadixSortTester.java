@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class RadixsortTester {
+public class RadixSortTester {
 
     @BeforeEach
     void printLine() {
@@ -19,7 +19,7 @@ public class RadixsortTester {
     }
 
     /**
-     * Method to compare the expected logging against the logging from the user
+     * Method to compare the expected logging against the logging from the user.
      * It checks first for the difference is size and reports if the user and logged to less/too much
      * If the logging is off at any place, it tells which part of logging had an error.
      * @param expected the reference list being used as the correct answer
@@ -44,7 +44,7 @@ public class RadixsortTester {
     }
 
     /**
-     * Method to print the list of the logging in a manner that it is user friendly/readable
+     * Method to print the list of the logging in a manner that it is user friendly/readable.
      * @param list the list which will be printed with each element in a different line
      * @return The list as a string with each array in a different line.
      * @author Aamin
@@ -62,7 +62,7 @@ public class RadixsortTester {
     }
 
     /**
-     * Tests to check if the the correct key is being returned and the exceptions are being throwned or not
+     * Tests to check if the the correct key is being returned and the exceptions are being throwned or not.
      * @author Aamin
      */
     @Test
@@ -180,7 +180,7 @@ public class RadixsortTester {
     }
 
     /**
-     * Tests to check if MaxDecimalPlaces returns a correct value or not (also with the edge cases from Artemis)
+     * Tests to check if MaxDecimalPlaces returns a correct value or not (also with the edge cases from Artemis).
      * @author Aamin
      */
     @Test
@@ -247,7 +247,7 @@ public class RadixsortTester {
     }
 
     /**
-     * Tests to see if you're doing the concatenation of artemis correctly or not
+     * Tests to see if you're doing the concatenation of artemis correctly or not.
      * @author Aamin
      */
     @Test
@@ -276,7 +276,7 @@ public class RadixsortTester {
     }
 
     /**
-     * Tests to see if in general you're doing the concatenation correctly (incl edge cases)
+     * Tests to see if in general you're doing the concatenation correctly (incl edge cases).
      * @author Aamin
      */
     @Test
@@ -428,7 +428,7 @@ public class RadixsortTester {
     }
 
     /**
-     * Tests to see if your ksort is sorting the respective decimal place correctly or not
+     * Tests to see if your ksort is sorting the respective decimal place correctly or not.
      * @author Aamin
      */
     @Test
@@ -517,7 +517,7 @@ public class RadixsortTester {
     }
 
     /**
-     * Tests to see if you are sorting the entire array correctly or not using Radix sort with proper logging
+     * Tests to see if you are sorting the entire array correctly or not using Radix sort with proper logging.
      * @author Aamin
      */
     @Test
