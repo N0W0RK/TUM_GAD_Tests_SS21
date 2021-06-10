@@ -15,6 +15,8 @@
   Most Checks are configurable, be sure to consult the documentation.
   To completely disable a check, just comment it out or delete it from the file.
   Consult the docs for more information https://checkstyle.org.
+
+  Currently modified to better fit test purposes. This should be reverted upon closure of #48.
 -->
 
 <module name="Checker">
@@ -42,12 +44,11 @@
 
     <!-- Checks for Size Violations.                    -->
     <!-- See https://checkstyle.org/config_sizes.html -->
-    <module name="FileLength"/>
-    <module name="LineLength">
+    <!-- <module name="LineLength">
         <property name="fileExtensions" value="java"/>
-        <property name="max" value="480"/> <!-- original value: 120 -->
+        <property name="max" value="480"/> original value: 120 
         <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
-    </module>
+    </module> -->
 
     <!-- Checks for whitespace                               -->
     <!-- See https://checkstyle.org/config_whitespace.html -->
@@ -107,7 +108,6 @@
 
         <!-- Checks for Size Violations.                    -->
         <!-- See https://checkstyle.org/config_sizes.html -->
-        <module name="MethodLength"/>
         <module name="ParameterNumber"/>
 
         <!-- Checks for whitespace                               -->
@@ -130,7 +130,7 @@
 
         <!-- Checks for blocks. You know, those {}'s         -->
         <!-- See https://checkstyle.org/config_blocks.html -->
-        <module name="AvoidNestedBlocks"/>
+        <!-- <module name="AvoidNestedBlocks"/> -->
         <module name="EmptyBlock"/>
         <!-- <module name="LeftCurly"/> -->
         <module name="NeedBraces"/>
