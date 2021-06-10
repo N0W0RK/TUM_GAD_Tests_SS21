@@ -28,17 +28,59 @@ public class RadixSortTester {
      */
     private void assertAdvancedEquals(List<Integer[]> expected, List<Integer[]> got) {
         if (got.size() < expected.size())
-            fail("You have logged less than expected! The size got was <" + got.size() + "> but expected was <" + expected.size() + ">" + "\n" +
-                    "Your logging was" + "\n" + "<" + listToString(got) + ">" + "\n" + "However the logging expected was" + "\n" + "<" + listToString(expected) + ">");
+            fail("You have logged less than expected! The size got was <" + got.size() 
+                 + "> but expected was <" 
+                 + expected.size() 
+                 + ">" 
+                 + "\n" 
+                 + "Your logging was" 
+                 + "\n" 
+                 + "<" 
+                 + listToString(got) 
+                 + ">" 
+                 + "\n" 
+                 + "However the logging expected was" 
+                 + "\n" 
+                 + "<" 
+                 + listToString(expected) 
+                 + ">");
 
         if (got.size() > expected.size())
-            fail("You have logged more than expected! The size got was <" + got.size() + "> but expected was <" + expected.size() + ">" + "\n" +
-                    "Your logging was" + "\n" + "<" + listToString(got) + ">" + "\n" + "However the logging expected was" + "\n" + "<" + listToString(expected) + ">");
+            fail("You have logged more than expected! The size got was <" 
+                 + got.size() 
+                 + "> but expected was <" 
+                 + expected.size() 
+                 + ">" 
+                 + "\n" 
+                 + "Your logging was" 
+                 + "\n" 
+                 + "<" 
+                 + listToString(got)
+                 + ">" 
+                 + "\n"
+                 + "However the logging expected was"
+                 + "\n" 
+                 + "<"
+                 + listToString(expected) 
+                 + ">");
 
         for (int i = 0; i < expected.size(); i++) {
             if (!Arrays.equals(expected.get(i), got.get(i))) {
-                fail("Your logging does not match with the expected logging! There's a mistake at the " + (int) Math.pow(10, i) + "s places digits" + "\n" +
-                        "Your logging was" + "\n" + "<" + listToString(got) + ">" + "\n" + "However the logging expected was" + "\n" + "<" + listToString(expected) + ">");
+                fail("Your logging does not match with the expected logging! There's a mistake at the " 
+                     + (int) Math.pow(10, i) 
+                     + "s places digits" 
+                     + "\n" 
+                     + "Your logging was"
+                     + "\n" 
+                     + "<" 
+                     + listToString(got) 
+                     + ">" 
+                     + "\n" 
+                     + "However the logging expected was" 
+                     + "\n" 
+                     + "<" 
+                     + listToString(expected) 
+                     + ">");
             }
         }
     }
