@@ -79,7 +79,7 @@ public class RadixSortTester {
                      + "However the logging expected was"
                      + "\n"
                      + "<"
-                     + listToString(expected) 
+                     + listToString(expected)
                      + ">");
             }
         }
