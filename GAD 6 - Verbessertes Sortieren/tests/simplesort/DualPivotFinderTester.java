@@ -15,7 +15,7 @@ class DualPivotFinderTester {
     }
 
     /**
-     * I think it is enough for this one :)
+     * I think it is enough for this one :).
      * @author mertcorumlu
      */
     @Test
