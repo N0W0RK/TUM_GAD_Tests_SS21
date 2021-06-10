@@ -34,7 +34,7 @@ class DualPivotFinderTester {
     }
 
     /**
-     * Test to see if your dual pivot finder is returning the first and the last pivot
+     * Test to see if your dual pivot finder is returning the first and the last pivot.
      * @author Aamin
      */
     @Test
@@ -189,7 +189,7 @@ class DualPivotFinderTester {
     }
 
     /**
-     * Test to see if PSEUDO random pivots are returned by the method
+     * Test to see if PSEUDO random pivots are returned by the method.
      * @author Aamin
      */
     @Test
@@ -869,7 +869,7 @@ class DualPivotFinderTester {
     }
 
     /**
-     * Test to see if 2 medians are being returned or not
+     * Test to see if 2 medians are being returned or not.
      * NOTE: THIS TEST ONLY TESTS WITH NUMBER OF EXEPCTED ELEMENTS = 5
      * NOTE: You may fail this test where the interval size is less than 5, if you do, try the tests from mertcorumlu
      * I've passed all these tests and I have 100% on Artemis
@@ -1782,7 +1782,7 @@ class DualPivotFinderTester {
     }
 
     /**
-     * Test to see if 2 distributed medians are being returned or not
+     * Test to see if 2 distributed medians are being returned or not.
      * NOTE: THIS TEST ONLY TESTS WITH NUMBER OF EXEPCTED ELEMENTS = 5
      * NOTE: You may fail this test where the interval size is less than 5, if you do, try the tests from mertcorumlu
      * I've passed all these tests and I have 100% on Artemis
