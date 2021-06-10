@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RadixSortTester {
 
     @BeforeEach
-    void linePrinter() {
+    void printLine() {
         System.out.println("-------------------------");
     }
 
@@ -163,4 +163,9 @@ public class RadixSortTester {
             int[] generate();
         }
     }
+
+
+    @Nested
+    @DisplayName{"Aamin's Tests"}
+    class aaminsTests {
 }
