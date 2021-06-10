@@ -46,7 +46,7 @@
     <!-- See https://checkstyle.org/config_sizes.html -->
     <!-- <module name="LineLength">
         <property name="fileExtensions" value="java"/>
-        <property name="max" value="480"/> <!-- original value: 120 
+        <property name="max" value="480"/> original value: 120 
         <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
     </module> -->
 
