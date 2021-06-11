@@ -170,7 +170,7 @@ public class RadixSortTester {
      */
     @Nested
     @DisplayName("Aamin's Tests")
-    class aaminsTests {
+    class AaminsTests {
         /**
          * Method to compare the expected logging against the logging from the user.
          * It checks first for the difference is size and reports if the user and logged to less/too much
