@@ -102,6 +102,12 @@ public class FastResult implements Result {
         currentLog.add(BinomialHeap.dot(currentHeap));
     }
 
+    /**
+     * Creates a list of all the logs as strings and returns log. <br>
+     * Each element of this list is when log was called for the first time <br>
+     * <i>Note: The 0th element of the logs is always null, first 1st element is the actual 1st element</i>
+     * @return all the logs
+     */
     public List<List<String>> getLogs() {
         if (!logs.contains(currentLog)) {
             logs.add(currentLog);
@@ -110,6 +116,10 @@ public class FastResult implements Result {
         return logs;
     }
 
+    /**
+     * Method to return only the latest log element.
+     * @return The last logged method
+     */
     public List<String> getLastLog() {
         return getLogs().get(getLogs().size() - 1);
     }
