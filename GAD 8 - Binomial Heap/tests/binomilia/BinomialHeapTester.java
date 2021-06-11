@@ -787,7 +787,7 @@ public class BinomialHeapTester {
 
 
     /**
-     * Alright, this is the code I've used to generate the tests <br>
+     * Alright, this is the code I've used to generate the tests. <br>
      * The explanations are inside the code itself <br>
      * <b>Warning: It's a nightmare to understand this</b>
      * @author Aamin
@@ -848,7 +848,7 @@ public class BinomialHeapTester {
     }
 
     /**
-     * This function returns the smallest element of a list in the first i number of elements where are considered
+     * This function returns the smallest element of a list in the first i number of elements where are considered.
      * @param numbersAdded The Integer list of all the numbers in the order they were added
      * @param i The number of elements to be considered
      * @return the smallest element in that list
