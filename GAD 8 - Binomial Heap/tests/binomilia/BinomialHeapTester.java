@@ -15,7 +15,11 @@ import static org.junit.jupiter.api.Assertions.*;
  * Therefore it is very likely that your insertions are correct, however my tests except a different order. <br>
  * In that case you'll have to manually compare both the answers and manually go ahead! <br>
  * Sorry for that but I don't have enough time to create perfect tests. If you want to improve it, you're gladly welcome to do so <br>
- * Which is why I'm leaving a part of code underneath, which'll allow you to create these tests. Feel free to use it!
+ * Which is why I'm leaving a part of code underneath, which'll allow you to create these tests. Feel free to use it! <br>
+ * If I tried making an algorithm which actually compared it the tree of valid or not, it would be a very obfuscated recursive one
+ * which wouldn't have helped at all, however with Strings it is very easy to visualise what it looks like, which is my motive behind the tests <br>
+ * If you fail a test, @see <a href="http://webgraphviz.com">Graph visualiser</a> and compare the differences yourself <br>
+ * Also note: @see <a href="https://zulip.in.tum.de/#narrow/stream/442-GAD-E08-Binomial.20Heap/topic/Sortieren/near/210373">Order of graphs</a>
  * </i>
  * @author Aamin
  */
