@@ -180,7 +180,7 @@ public class RadixSortTester {
          * @author Aamin
          */
         private void assertAdvancedEquals(List<Integer[]> expected, List<Integer[]> got) {
-            if (got.size() < expected.size())
+            if (got.size() < expected.size()) {
                 fail("You have logged less than expected! The size got was <" + got.size()
                         + "> but expected was <"
                         + expected.size()
@@ -197,8 +197,9 @@ public class RadixSortTester {
                         + "<"
                         + listToString(expected)
                         + ">");
+            }
 
-            if (got.size() > expected.size())
+            if (got.size() > expected.size()) {
                 fail("You have logged more than expected! The size got was <"
                         + got.size()
                         + "> but expected was <"
@@ -216,6 +217,7 @@ public class RadixSortTester {
                         + "<"
                         + listToString(expected)
                         + ">");
+            }
 
             for (int i = 0; i < expected.size(); i++) {
                 if (!Arrays.equals(expected.get(i), got.get(i))) {
