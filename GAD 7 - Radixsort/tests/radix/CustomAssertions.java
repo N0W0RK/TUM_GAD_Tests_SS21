@@ -6,7 +6,7 @@ import org.junit.platform.commons.util.StringUtils;
 import java.util.Arrays;
 
 /**
- * Custom {@link org.junit.jupiter.api.Assertions#assertArrayEquals(int[], int[], String)} implementation to better enable debugging.
+ * Custom {@link org.junit.jupiter.api.Assertions#assertArrayEquals(int[], int[], String)} implementation to enable easier debugging.
  * @author Konrad G
  */
 public class CustomAssertions extends Assertions {
@@ -22,10 +22,10 @@ public class CustomAssertions extends Assertions {
 
     /**
      * Custom {@link org.junit.jupiter.api.Assertions#assertArrayEquals(int[], int[], String)} implementation.
-     * The output of of {@code assertEquals()} is concatenated after hte output of {@code assertArrayEquals()}.
+     * The output of {@code assertEquals()} is concatenated after the output of {@code assertArrayEquals()}.
      * @param expected Expected array
      * @param actual Actual array
-     * @param message Message to be prepended in front of the errormessage
+     * @param message Message to be prepended in front of the error message
      */
     public static void assertArrayEquals(int[] expected, int[] actual, String message) {
 
@@ -43,7 +43,8 @@ public class CustomAssertions extends Assertions {
     }
 
 
-    //All following methods mirror required methods from junit that are private. This is quite ugly and I need a better Solution for that.
+    // All following methods mirror required methods from junit that are private.
+    // This is quite ugly and we need a better solution for that.
 
 
     private static void failArraysNotEqual(int[] expected, int[] actual, int index,
