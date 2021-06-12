@@ -12,13 +12,13 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * <i> Note: It is too difficult to create hard coded tests which test if the your binomial tree is a valid tree or not
  * without actually comparing it with a proper implementation. <br>
- * Therefore it is very likely that your insertions are correct, however my tests except a different order. <br>
+ * Therefore it is very likely that your insertions are correct, however my tests expect a different order. <br>
  * In that case you'll have to manually compare both the answers and manually go ahead! <br>
- * Sorry for that but I don't have enough time to create perfect tests. If you want to improve it, you're gladly welcome to do so <br>
- * Which is why I'm leaving a part of code underneath, which'll allow you to create these tests. Feel free to use it! <br>
- * If I tried making an algorithm which actually compared it the tree of valid or not, it would be a very obfuscated recursive one
- * which wouldn't have helped at all, however with Strings it is very easy to visualise what it looks like, which is my motive behind the tests <br>
- * If you fail a test, @see <a href="http://webgraphviz.com">Graph visualiser</a> and compare the differences yourself <br>
+ * Sorry for that but I don't have enough time to create perfect tests. If you want to improve it, you're gladly welcome to do so. <br>
+ * That's why I'm leaving a part of code underneath, which'll allow you to create these tests. Feel free to use it! <br>
+ * If I tried making an algorithm which actually compared if the tree is valid or not, it would be a very obfuscated recursive one
+ * which wouldn't have helped at all. However, with Strings it is very easy to visualize what it looks like, which is my motive behind the tests. <br>
+ * If you fail a test, @see <a href="http://webgraphviz.com">Graph visualiser</a> and compare the differences yourself. <br>
  * Also note: @see <a href="https://zulip.in.tum.de/#narrow/stream/442-GAD-E08-Binomial.20Heap/topic/Sortieren/near/210373">Order of graphs</a>
  * </i>
  * @author Aamin
