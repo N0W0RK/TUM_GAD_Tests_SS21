@@ -274,6 +274,7 @@ public class RadixSortTester {
             assertThrows(IllegalArgumentException.class, () -> RadixSort.key(-10, 4));
             assertThrows(IllegalArgumentException.class, () -> RadixSort.key(-10, -69));
             assertThrows(IllegalArgumentException.class, () -> RadixSort.key(-69, -420));
+            assertThrows(IllegalArgumentException.class, () -> RadixSort.key(69, -42));
             assertEquals(6, RadixSort.key(6467677, 6));
             assertEquals(7, RadixSort.key(6701586, 5));
             assertEquals(6, RadixSort.key(1584166, 1));
