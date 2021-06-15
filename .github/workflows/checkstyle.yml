@@ -2,7 +2,11 @@ name: Java Style Checker
 
 # Controls when the action will run. This one is executed on every
 # push event or pull request, regardless of the branch name.
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   checkstyle:
