@@ -195,6 +195,7 @@ public class BinomialTreeNodeTester {
         assertEquals(12, treeNode3.min());
         assertEquals(treeNode3, BinomialTreeNode.merge(treeNode1, treeNode3), "You returned the wrong node!");
         assertEquals(2, treeNode3.rank());
+        assertEquals(12, treeNode3.min());
 
         BinomialTreeNode bigTreeNode = BinomialTreeNode.merge(
                 BinomialTreeNode.merge(new BinomialTreeNode(911), new BinomialTreeNode(133)),
