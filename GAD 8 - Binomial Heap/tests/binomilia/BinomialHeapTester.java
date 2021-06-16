@@ -1011,7 +1011,7 @@ public class BinomialHeapTester {
         FastResult fastResult;
         List<String> expectedLogs;
         int deletedMin;
-        
+
         for (int i = 1; i <= 19; i++) {
             heap.insert(i, new FastResult());
         }
