@@ -184,8 +184,6 @@ public class BinomialTreeNodeTester {
         BinomialTreeNode treeNode1 = new BinomialTreeNode(50);
         BinomialTreeNode treeNode2 = new BinomialTreeNode(69);
 
-        testMinAndRank();
-
         assertEquals(treeNode1, BinomialTreeNode.merge(treeNode1, treeNode2), "You returned the wrong node!");
         assertEquals(1, treeNode1.rank());
         assertEquals(50, treeNode1.min());
