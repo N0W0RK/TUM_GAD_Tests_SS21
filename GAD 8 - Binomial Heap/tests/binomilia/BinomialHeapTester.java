@@ -18,8 +18,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * Sorry for that but I don't have enough time to create perfect tests. If you want to improve it, you're gladly welcome to do so. <br>
  * If I tried making an algorithm which actually compared if the tree is valid or not, it would be a very obfuscated recursive one
  * which wouldn't have helped at all. However, with Strings it is very easy to visualise what it looks like, which is my motive behind the tests. <br>
- * If you fail a test, @see <a href="http://webgraphviz.com">Graph visualiser</a> and compare the differences yourself. <br>
- * Also note: @see <a href="https://zulip.in.tum.de/#narrow/stream/442-GAD-E08-Binomial.20Heap/topic/Sortieren/near/210373">Order of graphs</a>
+ * @see <a href="http://webgraphviz.com">Graph visualiser</a> If you fail a test, and compare the differences yourself. <br>
+ * @see <a href="https://zulip.in.tum.de/#narrow/stream/442-GAD-E08-Binomial.20Heap/topic/Sortieren/near/210373"> The order of the nodes within a list should not matter </a>
  * </i>
  * @author Aamin
  */
