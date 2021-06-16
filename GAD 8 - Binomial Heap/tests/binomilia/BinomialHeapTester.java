@@ -1011,27 +1011,10 @@ public class BinomialHeapTester {
         FastResult fastResult;
         List<String> expectedLogs;
         int deletedMin;
-
-        heap.insert(1, new FastResult());
-        heap.insert(2, new FastResult());
-        heap.insert(3, new FastResult());
-        heap.insert(4, new FastResult());
-        heap.insert(5, new FastResult());
-        heap.insert(6, new FastResult());
-        heap.insert(7, new FastResult());
-        heap.insert(8, new FastResult());
-        heap.insert(9, new FastResult());
-        heap.insert(10, new FastResult());
-        heap.insert(11, new FastResult());
-        heap.insert(12, new FastResult());
-        heap.insert(13, new FastResult());
-        heap.insert(14, new FastResult());
-        heap.insert(15, new FastResult());
-        heap.insert(16, new FastResult());
-        heap.insert(17, new FastResult());
-        heap.insert(18, new FastResult());
-        heap.insert(19, new FastResult());
-
+        
+        for (int i = 1; i <= 19; i++) {
+            heap.insert(i, new FastResult());
+        }
 
         fastResult = new FastResult();
         expectedLogs = new ArrayList<>();
@@ -1248,26 +1231,9 @@ public class BinomialHeapTester {
         List<String> expectedLogs;
         int deletedMin;
 
-        heap.insert(16, new FastResult());
-        heap.insert(15, new FastResult());
-        heap.insert(14, new FastResult());
-        heap.insert(13, new FastResult());
-        heap.insert(12, new FastResult());
-        heap.insert(11, new FastResult());
-        heap.insert(10, new FastResult());
-        heap.insert(9, new FastResult());
-        heap.insert(8, new FastResult());
-        heap.insert(7, new FastResult());
-        heap.insert(6, new FastResult());
-        heap.insert(5, new FastResult());
-        heap.insert(4, new FastResult());
-        heap.insert(3, new FastResult());
-        heap.insert(2, new FastResult());
-        heap.insert(1, new FastResult());
-        heap.insert(0, new FastResult());
-        heap.insert(-1, new FastResult());
-        heap.insert(-2, new FastResult());
-
+        for (int i = 16; i >= -2; i--) {
+            heap.insert(i, new FastResult());
+        }
 
         fastResult = new FastResult();
         expectedLogs = new ArrayList<>();
