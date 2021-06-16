@@ -9,7 +9,7 @@ public class FastResult implements Result {
     private final List<BinomialTreeNode> currentHeap = new ArrayList<>();
     private final List<String> logs = new ArrayList<>();
 
-    Comparator<BinomialTreeNode> comparator = Comparator.comparing(BinomialTreeNode::rank).reversed().thenComparing(BinomialTreeNode::min);
+    private final Comparator<BinomialTreeNode> comparator = Comparator.comparing(BinomialTreeNode::rank).reversed().thenComparing(BinomialTreeNode::min);
 
     @Override
     public void startInsert(int value, Collection<BinomialTreeNode> heap) {
