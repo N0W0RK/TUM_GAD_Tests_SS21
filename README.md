@@ -10,6 +10,7 @@ Then, you have to create a symlink to your `src` folder to make it work with you
 After that you just have to include JUnit in your project and you're good to go.
 To include JUnit you will just need to Alt+Enter on one of the red underlined @Test Annotation in the test file.
 Your IDE will show you options to include the correct JAR.
+**PLEASE ADD YOUR TEST PACKAGE TO `.gitignore` TO PREVENT UNNECASSARY LOAD ON ARTEMIS.**
 
 ### Windows
 
