@@ -17,7 +17,7 @@ Your IDE will show you options to include the correct JAR.
 This has to be executed in the command line, run as administrator:
 
 ```
-$ mklink /J \path\to\src\tests \path\to\repository\tests
+$ mklink /d \path\to\src\tests \path\to\repository\tests
 ```
 
 ### Linux/MacOS
