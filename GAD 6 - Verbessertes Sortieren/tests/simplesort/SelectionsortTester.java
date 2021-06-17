@@ -32,8 +32,8 @@ class SelectionsortTester {
      */
     @Test
     public void MergesortTester() {
-        MergesortTester mergesortTester = new MergesortTester();
-        mergesortTester.mergeSortOptimised();
+        MergesortTester.FullRunTest fullRunTest = new MergesortTester.FullRunTest();
+        fullRunTest.mergeSortOptimised();
     }
 
     /**
@@ -62,7 +62,7 @@ class SelectionsortTester {
      */
     @Test
     public void DualPivotQuickSortTester() {
-        DualPivotQuickSortTester.LoggingTest dualPivotQuickSortTester = new DualPivotQuickSortTester().new LoggingTest();
+        DualPivotQuicksortTester.LoggingTest dualPivotQuickSortTester = new DualPivotQuicksortTester().new LoggingTest();
         dualPivotQuickSortTester.optimisedDualPivotQuickSortFirstLastPivot();
         dualPivotQuickSortTester.optimisedDualPivotQuickSortRandomPivot();
         dualPivotQuickSortTester.optimisedDualPivotQuickSortMedianPivot();
