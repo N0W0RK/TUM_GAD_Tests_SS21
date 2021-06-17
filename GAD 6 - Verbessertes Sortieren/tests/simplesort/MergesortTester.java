@@ -351,7 +351,7 @@ class MergesortTester {
 	 */
 	@Nested
 	@DisplayName("Individual feature tests")
-	class featureTests {
+	class FeatureTests {
 
 		/**
 		 * This tests if the {@link Mergesort#sort(int[], Result, int, int, int[])} uses the helper array provided.
