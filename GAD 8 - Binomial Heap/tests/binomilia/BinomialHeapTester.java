@@ -27,8 +27,8 @@ import gad.binomilia.*;
 
 public class BinomialHeapTester {
 
-	BinomialHeap heap;
-	StudentResult result;
+	private BinomialHeap heap;
+	private StudentResult result;
 
 	@BeforeEach
 	void init() {
@@ -40,23 +40,23 @@ public class BinomialHeapTester {
 	@Test
 	void testIllegal() {
 		assertThrows(RuntimeException.class, () -> heap.min(),
-				"Please throw an exception when heap is empty... thats the least u can do");
+				"Please throw an exception when heap is empty, since there cant be a minimal element in an empty heap. (NoSuchElementExeption would be cool)");
 		assertThrows(RuntimeException.class, () -> heap.deleteMin(result),
-				"Would u please just throw me an exception >.<");
+				"Please throw an exception when heap is empty, since deleteMin() is illegal on an empty heap. (NoSuchElementExeption would be cool)");
 	}
 
 	@Test
 	void testMin() {
-		for (int i = -300; i < 300; i++) {
+		for (int i = 0; i < 500; i++) {
 			heap.insert(i, result);
+			assertEquals(-300, heap.min(), "Wrong value for min!");
 		}
-		assertEquals(-300, heap.min(), "Wrong value for min!");
 	}
 
 	@Test
 	void testDeleteMin() {
 		List<Integer> nums = new ArrayList<>();
-		for (int i = -500; i < 500; i++) {
+		for (int i = 0; i < 500; i++) {
 			heap.insert(i, result);
 			nums.add(i);
 		}
@@ -72,7 +72,7 @@ public class BinomialHeapTester {
 	@Test
 	void testBigNumbers() {
 		List<Integer> nums = new ArrayList<>();
-		for (int i = -100; i < 1000; i++) {
+		for (int i = 0; i < 1000; i++) {
 			int num = new Random().nextInt();
 			nums.add(num);
 			heap.insert(num, result);
@@ -95,13 +95,14 @@ public class BinomialHeapTester {
 		List<Integer> nums = new ArrayList<>();
 		TreeCounterResult myResult = new TreeCounterResult();
 
-		for (int i = -500; i < 500; i++) {
+		for (int i = 0; i < 500; i++) {
 			int num = new Random().nextInt();
 			nums.add(num);
 			heap.insert(num, myResult);
 			int expectedSize = Integer.bitCount(nums.size());
 			int trees = myResult.getSize();
-			assertEquals(expectedSize, trees, "Wrong amount of Trees in heap");
+			assertEquals(expectedSize, trees,
+					"Wrong amount of Trees in heap. If only this test fails, check if there is an Integer-Overflow, since these Numbers are pretty big.");
 		}
 	}
 
@@ -109,7 +110,7 @@ public class BinomialHeapTester {
 	void zwischenSchritte() {
 		StepCounterResult myResult = new StepCounterResult();
 
-		for (int i = -500; i < 500; i++) {
+		for (int i = 0; i < 500; i++) {
 			int num = new Random().nextInt();
 			heap.insert(num, myResult);
 			for (int j = 1; j < myResult.getSteps().size(); j++) {
@@ -121,7 +122,7 @@ public class BinomialHeapTester {
 			}
 		}
 
-		for (int i = -500; i < 500; i++) {
+		for (int i = 0; i < 500; i++) {
 			heap.deleteMin(myResult);
 			for (int j = 1; j < myResult.getSteps().size(); j++) {
 				if (myResult.getSteps().get(j) + 1 != myResult.getSteps().get(j - 1)) {

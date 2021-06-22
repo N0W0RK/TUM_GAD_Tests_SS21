@@ -8,7 +8,7 @@ import gad.binomilia.*;
 
 public class TreeCounterResult implements Result {
 
-	private int[] size = new int[1];
+	private int size;
 
 	@Override
 	public void startInsert(int value, Collection<BinomialTreeNode> heap) {
@@ -28,7 +28,10 @@ public class TreeCounterResult implements Result {
 
 	@Override
 	public void logIntermediateStep(Collection<BinomialTreeNode> heap) {
-		size[0] = heap.size();
+		// heap.size() should return the amount of trees in the heap. So it should
+		// return the size of the Collection where u save the trees. If you do it
+		// another way, this test may fail
+		size = heap.size();
 	}
 
 	@Override
@@ -45,10 +48,7 @@ public class TreeCounterResult implements Result {
 
 	@Override
 	public void addToIntermediateStep(Collection<BinomialTreeNode> heap) {
-		// heap.size() should return the amount of trees in the heap. So it should
-		// return the size of the Collection where u save the trees. If you do it
-		// another way, this test may fail
-		size[0] = heap.size();
+		size += heap.size();
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class TreeCounterResult implements Result {
 	}
 
 	public int getSize() {
-		return size[0];
+		return size;
 	}
 
 }
