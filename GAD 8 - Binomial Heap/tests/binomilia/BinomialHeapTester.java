@@ -14,15 +14,14 @@ import org.junit.jupiter.api.Test;
 import gad.binomilia.*;
 
 /**
- * 
- * @author Mihir Mahajan
- * 
- *         These tests only test if your BinomialHeap/BinomialTree itself works.
- *         They don't test the logging. Still, they may not work if the logging
- *         is incorrect!
- * 
- *         I can not guarantee the correctness or accuracy of these tests. I
- *         hope they help, enjoy!
+ *@author Mihir Mahajan
+ *
+ *        These tests only test if your BinomialHeap/BinomialTree itself works.
+ *        They don't test the logging. Still, they may not work if the logging
+ *        is incorrect!
+ *
+ *        I can not guarantee the correctness or accuracy of these tests. I
+ *        hope they help, enjoy!
  */
 
 public class BinomialHeapTester {
@@ -49,7 +48,7 @@ public class BinomialHeapTester {
 	void testMin() {
 		for (int i = 0; i < 500; i++) {
 			heap.insert(i, result);
-			assertEquals(-300, heap.min(), "Wrong value for min!");
+			assertEquals(0, heap.min(), "Wrong value for min!");
 		}
 	}
 
