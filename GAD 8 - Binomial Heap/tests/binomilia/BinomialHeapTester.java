@@ -1,4 +1,4 @@
-package gad.tests;
+package tests.binomilia;
 
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
