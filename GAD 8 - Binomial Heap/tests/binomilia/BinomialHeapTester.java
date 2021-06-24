@@ -105,6 +105,10 @@ public class BinomialHeapTester {
         }
     }
 
+    /**
+     * It's possible to get a 100% score, even if this test does not pass. However,
+     * it provides a good first starting point to implement the logging properly.
+     */
     @Test
     void zwischenSchritte() {
         StepCounterResult myResult = new StepCounterResult();
