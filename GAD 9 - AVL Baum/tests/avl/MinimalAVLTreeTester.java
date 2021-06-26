@@ -276,4 +276,37 @@ public class MinimalAVLTreeTester {
         assertFalse(tree.validAVL(), "left child of rightmost has higher key");
         rightmost.setLeft(null);
     }
+
+    /**
+     * Test to check if the tree arranges the lowest key to the
+     * leftmost element. This test uses a total of 255 elements in
+     * the tree to try to get a completely filled binary search
+     * tree, even though that that's not a strict requirement.
+     */
+    @Test
+    public void testLeftmost() {
+        AVLTree tree = new AVLTree();
+        tree.insert(33);
+        AVLTreeNode root = tree.getRoot();
+        for (int i = 0; i < 254; i++) {
+            tree.insert(42);
+        }
+
+        AVLTreeNode leftmost;
+        try {
+            leftmost = tree.getRoot().getLeft();
+            while (leftmost.getLeft() != null) {
+                leftmost = leftmost.getLeft();
+            }
+        } catch (NullPointerException exc) {
+            fail("NullPointerException: you need to implement insert() first (or did you forget to rotate?)");
+            return;
+        }
+
+        assertEquals(33, leftmost.getKey(), "leftmost node needs a key of 33");
+        assertSame(root, leftmost, "leftmost node must be previous root node (no new nodes created)");
+        assertTrue(8 <= tree.height() && tree.height() <= 9, "height() of the tree must be 8 or 9");
+        assertEquals(255, count(tree.getRoot()), "the tree should contain a total of 255 nodes");
+        assertEquals(1, count(leftmost), "leftmost element should not have children");
+    }
 }
