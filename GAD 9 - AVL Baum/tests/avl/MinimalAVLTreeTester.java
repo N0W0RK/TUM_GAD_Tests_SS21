@@ -28,7 +28,7 @@ public class MinimalAVLTreeTester {
         assertEquals(1, tree.height(), "height of one element should be 1");
 
         AVLTreeNode a = new AVLTreeNode(4);
-        AVLTreeNode a1 = new AVLTreeNode(4);  // equal keys should work
+        AVLTreeNode a1 = new AVLTreeNode(4);
         AVLTreeNode a2 = new AVLTreeNode(8);
         AVLTreeNode b = new AVLTreeNode(15);
         AVLTreeNode b2 = new AVLTreeNode(25);
@@ -54,34 +54,53 @@ public class MinimalAVLTreeTester {
         AVLTree tree = new AVLTree();
         AVLTreeNode root = new AVLTreeNode(12);
         tree.setRoot(root);
-        assertTrue(tree.validAVL());
+        assertTrue(tree.validAVL(), "correct AVL tree");
+
+        try {
+            root.setRight(root);
+            root.setBalance(1);
+            assertFalse(tree.validAVL(), "the root node can't be its own child");
+            root.setRight(null);
+            root.setBalance(0);
+            assertTrue(tree.validAVL(), "correct AVL tree");
+        } catch (StackOverflowError exc) {
+            fail("StackOverflow: fix problems with circular trees");
+        }
 
         AVLTreeNode a = new AVLTreeNode(4);
-        AVLTreeNode a1 = new AVLTreeNode(4);  // equal keys should work
+        AVLTreeNode a1 = new AVLTreeNode(4);
         AVLTreeNode a2 = new AVLTreeNode(8);
         AVLTreeNode b = new AVLTreeNode(15);
         AVLTreeNode b1 = new AVLTreeNode(13);
         AVLTreeNode b2 = new AVLTreeNode(25);
 
         root.setLeft(a);
-        assertFalse(tree.validAVL(), "incorrect balance at root node");
         root.setBalance(2);
         assertFalse(tree.validAVL(), "too high balance value at root node");
+        root.setBalance(1);
+        assertFalse(tree.validAVL(), "wrong balance value 1 at root node");
         root.setBalance(0);
+        assertFalse(tree.validAVL(), "wrong balance value 0 at root node");
+        root.setBalance(-1);
+        assertTrue(tree.validAVL(), "correct AVL tree");
 
-        a.setRight(root);
         try {
+            a.setRight(root);
+            a.setBalance(1);
             assertFalse(tree.validAVL(), "a tree must not contain circles");
+            a.setRight(null);
+            a.setBalance(0);
+            assertTrue(tree.validAVL(), "correct AVL tree");
         } catch (StackOverflowError exc) {
             fail("StackOverflow: fix problems with circular trees");
         }
-        a.setRight(null);
 
         root.setLeft(b);
-        assertFalse(tree.validAVL(), "left value was bigger than right value");
+        assertFalse(tree.validAVL(), "left key was bigger than root key");
 
         root.setLeft(a);
         root.setRight(b);
+        root.setBalance(0);
         assertTrue(tree.validAVL(), "correct AVL tree");
 
         a.setLeft(a1);
@@ -99,7 +118,6 @@ public class MinimalAVLTreeTester {
         assertFalse(tree.validAVL(), "wrong balance at node B");
 
         b.setBalance(-1);
-        root.setBalance(-1);
         assertTrue(tree.validAVL(), "correct AVL tree");
 
         root.setBalance(0);
