@@ -3,6 +3,10 @@ package tests.avl;
 import gad.avl.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MinimalAVLTreeTester {
@@ -104,5 +108,30 @@ public class MinimalAVLTreeTester {
 
         a.setLeft(null);
         assertTrue(tree.validAVL(), "correct AVL tree");
+    }
+
+    @Test
+    public void testFindInsert() {
+        AVLTree tree = new AVLTree();
+        AVLTreeNode root = new AVLTreeNode(12);
+        tree.setRoot(root);
+        assertTrue(tree.find(12));
+        assertFalse(tree.find(5));
+        assertFalse(tree.find(0));
+        assertFalse(tree.find(-12));
+        tree.setRoot(null);
+
+        Random random = new Random();
+        List<Integer> values = new ArrayList<>();
+        for (int i = 0; i < 1000; i++) {
+            int v = random.nextInt(2000) - 1000;
+            values.add(v);
+            tree.insert(v);
+            assertTrue(tree.find(v));
+        }
+
+        for (int i = -1000; i < 1000; i++) {
+            assertEquals(values.contains(i), tree.find(i));
+        }
     }
 }
