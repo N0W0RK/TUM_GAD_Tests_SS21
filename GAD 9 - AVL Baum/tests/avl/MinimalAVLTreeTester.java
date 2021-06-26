@@ -144,6 +144,38 @@ public class MinimalAVLTreeTester {
     }
 
     /**
+     * Count the number of nodes in the subtree, including the root itself.
+     *
+     * @param subtree root of a subtree
+     * @return number of nodes in the subtree
+     */
+    private int count(AVLTreeNode subtree) {
+        int l = subtree.getLeft() == null ? 0 : count(subtree.getLeft());
+        int r = subtree.getRight() == null ? 0 : count(subtree.getRight());
+        return 1 + l + r;
+    }
+
+    /**
+     * Test to check that insert() works to insert new values.
+     * No checks on the layout of the AVL tree are performed in
+     * this test. It will only check that the number of nodes
+     * in the tree is always correct after every insert() call.
+     */
+    @Test
+    public void testInsertNumberOfValues() {
+        AVLTree tree = new AVLTree();
+        tree.insert(42);
+        assertEquals(42, tree.getRoot().getKey(), "you need to implement insert() first");
+        assertEquals(1, count(tree.getRoot()), "expected one element in the tree");
+
+        Random random = new Random();
+        for (int i = 0; i < 999; i++) {
+            tree.insert(random.nextInt());
+            assertEquals(2 + i, count(tree.getRoot()), "expected " + (2 + i) + " nodes in the tree");
+        }
+    }
+
+    /**
      * Test to check whether the combination of find() and insert()
      * work as expected. Note that no tree layout checks are performed
      * by this unit test, it will actually only verify the find()
