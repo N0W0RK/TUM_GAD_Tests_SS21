@@ -11,6 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MinimalAVLTreeTester {
 
+    /**
+     * Test to check various attributes of an empty AVL tree.
+     */
     @Test
     public void testEmptyTree() {
         AVLTree tree = new AVLTree();
@@ -20,6 +23,9 @@ public class MinimalAVLTreeTester {
         assertFalse(tree.find(0), "empty tree should not find any element");
     }
 
+    /**
+     * Test to check the height() method of the tree in various easy settings.
+     */
     @Test
     public void testHeight() {
         AVLTree tree = new AVLTree();
@@ -49,6 +55,15 @@ public class MinimalAVLTreeTester {
         assertEquals(4, tree.height());
     }
 
+    /**
+     * Test to check the validAVL() method. This test only checks
+     * for some of the mandatory attributes the AVL tree needs to
+     * fulfill, e.g. it checks for the balance difference, no
+     * circular references in it and that some node's values are
+     * sorted correctly. Be careful if your implementation depends
+     * on certain functionality of insert() to fix your tree
+     * layout, since this check only uses setters to build the tree.
+     */
     @Test
     public void testValidAVL() {
         AVLTree tree = new AVLTree();
@@ -128,6 +143,13 @@ public class MinimalAVLTreeTester {
         assertTrue(tree.validAVL(), "correct AVL tree");
     }
 
+    /**
+     * Test to check whether the combination of find() and insert()
+     * work as expected. Note that no tree layout checks are performed
+     * by this unit test, it will actually only verify the find()
+     * method. But that's enough to make the test fail if insert() does
+     * not work. Also note that multiple same keys are not checked.
+     */
     @Test
     public void testFindInsert() {
         AVLTree tree = new AVLTree();
