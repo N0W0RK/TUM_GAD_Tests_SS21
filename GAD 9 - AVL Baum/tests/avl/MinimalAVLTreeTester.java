@@ -134,4 +134,70 @@ public class MinimalAVLTreeTester {
             assertEquals(values.contains(i), tree.find(i));
         }
     }
+
+    /**
+     * Test to check if the validAVL() method works for pretty filled
+     * AVL trees. Note that this check can't ensure that your returned
+     * value is <i>correct</i>, since it provides no valid AVL tree for
+     * comparison. But it can force the AVL tree to be definitively
+     * wrong, which must be detected by your method of course. The check
+     * uses the leftmost and rightmost nodes and alters certain values
+     * of them to break various different AVL tree rules.
+     */
+    @Test
+    public void testInsertDeeplyCorrectAVL() {
+        AVLTree tree = new AVLTree();
+        Random random = new Random();
+        for (int i = 0; i < 300; i++) {
+            int v = random.nextInt(2000) - 1000;
+            tree.insert(v);
+        }
+
+        assertTrue(Math.abs(tree.getRoot().getBalance()) <= 1, "the abs balance must be lower than 2");
+
+        AVLTreeNode leftmost;
+        AVLTreeNode rightmost;
+        try {
+            leftmost = tree.getRoot().getLeft();
+            while (leftmost.getLeft() != null) {
+                leftmost = leftmost.getLeft();
+            }
+            rightmost = tree.getRoot().getLeft();
+            while (rightmost.getLeft() != null) {
+                rightmost = rightmost.getLeft();
+            }
+        } catch (NullPointerException exc) {
+            fail("NullPointerException: you need to implement insert() first");
+            return;
+        }
+
+        int leftmostBalance = leftmost.getBalance();
+        leftmost.setBalance(5);
+        assertFalse(tree.validAVL(), "leftmost balance is obviously wrong");
+        leftmost.setBalance(leftmostBalance);
+
+        int rightmostBalance = rightmost.getBalance();
+        rightmost.setBalance(-2);
+        assertFalse(tree.validAVL(), "rightmost balance is obviously wrong");
+        rightmost.setBalance(rightmostBalance);
+
+        assertTrue(leftmost.getKey() <= rightmost.getKey(),
+                "the keys of the leftmost and rightmost nodes should be ascending or equal");
+
+        leftmost.setRight(leftmost);
+        assertFalse(tree.validAVL(), "leftmost is child of itself");
+        leftmost.setRight(rightmost);
+        assertFalse(tree.validAVL(), "rightmost is a child of leftmost");
+        leftmost.setRight(new AVLTreeNode(leftmost.getKey() - 1));
+        assertFalse(tree.validAVL(), "right child of leftmost has lower key");
+        leftmost.setRight(null);
+
+        rightmost.setLeft(rightmost);
+        assertFalse(tree.validAVL(), "rightmost is child of itself");
+        rightmost.setLeft(leftmost);
+        assertFalse(tree.validAVL(), "leftmost is a child of rightmost");
+        rightmost.setLeft(new AVLTreeNode(rightmost.getKey() + 1));
+        assertFalse(tree.validAVL(), "left child of rightmost has higher key");
+        rightmost.setLeft(null);
+    }
 }
