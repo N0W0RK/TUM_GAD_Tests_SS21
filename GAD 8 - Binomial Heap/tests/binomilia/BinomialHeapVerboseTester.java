@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * </i>
  * @author Aamin
  */
-public class BinomialHeapTester {
+public class BinomialHeapVerboseTester {
 
     /**
      * <p>
