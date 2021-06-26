@@ -9,12 +9,22 @@ public class FastResult implements Result {
 	private final List<BinomialTreeNode> currentHeap = new ArrayList<>();
 	private final List<String> logs = new ArrayList<>();
 
-	Comparator<BinomialTreeNode> comparator = Comparator.comparing(BinomialTreeNode::rank).reversed().thenComparing(BinomialTreeNode::min);
+	private Comparator<BinomialTreeNode> comparator = Comparator.comparing(BinomialTreeNode::rank).reversed().thenComparing(BinomialTreeNode::min);
 
+	/**
+	 * Johannes's 1st public code for printing the tree.
+	 * @param trees The tree to be printed
+	 * @return The string of the tree
+	 */
 	public static String dot(BinomialTreeNode[] trees) {
 		return dot(Arrays.stream(trees).toList());
 	}
 
+	/**
+	 * Johannes's 1st public code for printing the tree.
+	 * @param trees The tree to be printed
+	 * @return The string of the tree
+	 */
 	public static String dot(Collection<BinomialTreeNode> trees) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("digraph {").append(System.lineSeparator());
