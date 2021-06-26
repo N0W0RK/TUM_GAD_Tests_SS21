@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BinomialTreeNodeTester {
+public class BinomialTreeNodeTesterWithVisualisation {
 
     /**
      * Simple tests to see if the smallest element of the nodes are returned or not. <br>
