@@ -165,9 +165,13 @@ public class MinimalAVLTreeTester {
     public void testInsertNumberOfValues() {
         AVLTree tree = new AVLTree();
         tree.insert(42);
-        assertEquals(42, tree.getRoot().getKey(), "you need to implement insert() first");
-        assertEquals(1, count(tree.getRoot()), "expected one element in the tree");
+        try {
+            assertEquals(42, tree.getRoot().getKey(), "root node has wrong value");
+        } catch (NullPointerException exc) {
+            fail("you need to implement insert() first");
+        }
 
+        assertEquals(1, count(tree.getRoot()), "expected one element in the tree");
         Random random = new Random();
         for (int i = 0; i < 999; i++) {
             tree.insert(random.nextInt());
