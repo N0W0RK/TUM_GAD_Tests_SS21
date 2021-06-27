@@ -90,7 +90,7 @@ public class FastResult implements Result {
 
 		int rank = tree.rank();
 
-		res.add(tree.getElement());
+		res.add(tree.min());
 
 		for (int i = 0; i < rank; i++) {
 			res.add(treeToList(tree.getChildWithRank(i)));
