@@ -128,6 +128,10 @@ public class MinimalAVLTreeTester {
         b.setLeft(b2);
         assertFalse(tree.validAVL(), "node B children's keys have right < left");
 
+        b.setLeft(new AVLTreeNode(-3));
+        b.setRight(b2);
+        assertFalse(tree.validAVL(), "all nodes of all subtrees need to be sorted");
+
         b.setLeft(b1);
         b.setRight(null);
         assertFalse(tree.validAVL(), "wrong balance at node B");
