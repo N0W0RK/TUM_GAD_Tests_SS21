@@ -218,6 +218,8 @@ public class AVLTreeTester {
             assertEquals(contained, tree.find(i),
                     "value " + i + (contained ? " was not found but expected" : " was found but not expected"));
         }
+
+        assertEquals(1000, count(tree.getRoot()), "the tree must contain exactly 1000 nodes afterwards");
     }
 
     /**
