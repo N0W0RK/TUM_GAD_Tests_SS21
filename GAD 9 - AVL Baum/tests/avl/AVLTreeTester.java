@@ -181,6 +181,9 @@ public class AVLTreeTester {
             tree.insert(random.nextInt());
             assertEquals(2 + i, count(tree.getRoot()), "expected " + (2 + i) + " nodes in the tree");
         }
+
+        assertTrue(tree.validAVL(),
+                "expecting the tree to be a valid AVL tree, provided the implementation of validAVL is correct");
     }
 
     /**
@@ -207,11 +210,13 @@ public class AVLTreeTester {
             int v = random.nextInt(2000) - 1000;
             values.add(v);
             tree.insert(v);
-            assertTrue(tree.find(v));
+            assertTrue(tree.find(v), "value " + i + " should be in the tree");
         }
 
-        for (int i = -1000; i < 1000; i++) {
-            assertEquals(values.contains(i), tree.find(i));
+        for (int i = -1200; i < 1200; i++) {
+            boolean contained = values.contains(i);
+            assertEquals(contained, tree.find(i),
+                    "value " + i + (contained ? " was not found but expected" : " was found but not expected"));
         }
     }
 
