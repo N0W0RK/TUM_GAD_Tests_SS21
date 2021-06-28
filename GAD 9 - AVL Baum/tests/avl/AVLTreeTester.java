@@ -242,9 +242,9 @@ public class AVLTreeTester {
             while (leftmost.getLeft() != null) {
                 leftmost = leftmost.getLeft();
             }
-            rightmost = tree.getRoot().getLeft();
-            while (rightmost.getLeft() != null) {
-                rightmost = rightmost.getLeft();
+            rightmost = tree.getRoot().getRight();
+            while (rightmost.getRight() != null) {
+                rightmost = rightmost.getRight();
             }
         } catch (NullPointerException exc) {
             fail("NullPointerException: you need to implement insert() first");
