@@ -9,7 +9,7 @@ import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MinimalAVLTreeTester {
+public class AVLTreeTester {
 
     /**
      * Test to check various attributes of an empty AVL tree.
