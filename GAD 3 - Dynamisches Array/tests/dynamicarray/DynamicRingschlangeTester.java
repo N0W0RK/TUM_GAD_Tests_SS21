@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @Author Konrad Gößmann
  */
-public class DynamicaRingschlangeTests {
+public class DynamicRingschlangeTester {
 
     /**
      * Tests examples from the exercise statement for the dynamic array
