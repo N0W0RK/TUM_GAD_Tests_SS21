@@ -90,7 +90,7 @@ public class BinSeaTester {
         TestResult lowResult = new TestResult();
 
         Interval interval = gad.binarysearch.BinSea.search(
-        		array, Interval.fromArrayIndices(7, 1500), lowResult, highResult);
+                array, Interval.fromArrayIndices(7, 1500), lowResult, highResult);
 
         List<Integer> resList = lowResult.getSteps();
 
