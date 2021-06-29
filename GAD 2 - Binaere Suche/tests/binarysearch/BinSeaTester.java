@@ -9,120 +9,117 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BinSeaTester {
 
-	/**
-	 * Tests from examples from exercise 1
-	 */
-	@Test
-	public void aufgabe1() {
+    /**
+     * Tests from examples from exercise 1.
+     */
+    @Test
+    public void aufgabe1() {
+        int[] array = new int[]{2, 7, 7, 42, 69, 1337, 2000, 9001};
 
-		int[] array = new int[] { 2, 7, 7, 42, 69, 1337, 2000, 9001};
+        TestResult result = new TestResult();
 
-		TestResult result = new TestResult();
+        int index = gad.binarysearch.BinSea.search(array, 7, result);
 
-		int index = gad.binarysearch.BinSea.search(array,7,result);
+        List<Integer> resList = result.getSteps();
+        assertEquals(7, array[index], "Found wrong index");
+        assertFalse(resList.size() < 2, "Logged not enough Steps.");
+        assertFalse(resList.size() > 2, "Logged too many Steps.");
+        assertArrayEquals(new Integer[]{3, 1}, resList.toArray(new Integer[resList.size()]), "Logged wrong steps");
 
-		List<Integer> resList = result.getSteps();
-		assertEquals(7, array[index], "Found wrong index");
-		assertFalse(resList.size()<2,"Logged not enough Steps.");
-		assertFalse(resList.size()>2,"Logged too many Steps.");
-		assertArrayEquals(new Integer[]{3,1},resList.toArray(new Integer[resList.size()]), "Logged wrong steps");
+        result = new TestResult();
 
-		result = new TestResult();
+        index = gad.binarysearch.BinSea.search(array, 100, result);
 
-		index = gad.binarysearch.BinSea.search(array,100,result);
+        resList = result.getSteps();
+        assertTrue(index == 4 || index == 5, "Found wrong index");
+        assertFalse(resList.size() < 2, "Logged not enough Steps.");
+        assertFalse(resList.size() > 2, "Logged too many Steps.");
+        assertArrayEquals(new Integer[]{3, 5}, resList.toArray(new Integer[resList.size()]), "Logged wrong steps");
 
-		resList = result.getSteps();
-		assertTrue(index == 4 || index == 5, "Found wrong index");
-		assertFalse(resList.size()<2,"Logged not enough Steps.");
-		assertFalse(resList.size()>2,"Logged too many Steps.");
-		assertArrayEquals(new Integer[]{3,5},resList.toArray(new Integer[resList.size()]), "Logged wrong steps");
+    }
 
-	}
+    /**
+     * Tests from examples from exercise 2.
+     */
+    @Test
+    public void aufgabe2() {
+        int[] array = new int[]{2, 7, 7, 42, 69, 1337, 2000, 9001};
 
-	/**
-	 * Tests from examples from exercise 2
-	 */
-	@Test
-	public void aufgabe2() {
+        TestResult result = new TestResult();
 
-		int[] array = new int[] { 2, 7, 7, 42, 69, 1337, 2000, 9001};
+        int index = gad.binarysearch.BinSea.search(array, 7, false, result);
 
-		TestResult result = new TestResult();
+        List<Integer> resList = result.getSteps();
 
-		int index = gad.binarysearch.BinSea.search(array,7, false, result);
+        assertEquals(2, index, "Found wrong index");
+        assertFalse(resList.size() < 2, "Logged not enough Steps.");
+        assertFalse(resList.size() > 2, "Logged too many Steps.");
+        assertArrayEquals(new Integer[]{3, 1}, resList.toArray(new Integer[resList.size()]), "Logged wrong steps");
 
-		List<Integer> resList = result.getSteps();
+        result = new TestResult();
 
-		assertEquals(2,index, "Found wrong index");
-		assertFalse(resList.size()<2,"Logged not enough Steps.");
-		assertFalse(resList.size()>2,"Logged too many Steps.");
-		assertArrayEquals(new Integer[]{3,1},resList.toArray(new Integer[resList.size()]), "Logged wrong steps");
+        index = gad.binarysearch.BinSea.search(array, 100, true, result);
 
-		result = new TestResult();
+        resList = result.getSteps();
 
-		index = gad.binarysearch.BinSea.search(array,100, true,result);
+        assertEquals(5, index, "Found wrong index");
+        assertFalse(resList.size() < 2, "Logged not enough Steps.");
+        assertFalse(resList.size() > 2, "Logged too many Steps.");
+        assertArrayEquals(new Integer[]{3, 5}, resList.toArray(new Integer[resList.size()]), "Logged wrong steps");
 
-		resList = result.getSteps();
+        result = new TestResult();
 
-		assertEquals(5,index,  "Found wrong index");
-		assertFalse(resList.size()<2,"Logged not enough Steps.");
-		assertFalse(resList.size()>2,"Logged too many Steps.");
-		assertArrayEquals(new Integer[]{3,5},resList.toArray(new Integer[resList.size()]), "Logged wrong steps");
+        index = gad.binarysearch.BinSea.search(array, 1, false, result);
 
-		result = new TestResult();
+        resList = result.getSteps();
 
-		index = gad.binarysearch.BinSea.search(array, 1, false,result);
+        assertEquals(-1, index, "Found wrong index");
+        assertFalse(resList.size() < 2, "Logged not enough Steps.");
+        assertFalse(resList.size() > 2, "Logged too many Steps.");
+        assertArrayEquals(new Integer[]{3, 1}, resList.toArray(new Integer[resList.size()]), "Logged wrong steps");
+    }
 
-		resList = result.getSteps();
+    /**
+     * Tests from examples from exercise 3.
+     */
+    @Test
+    public void aufgabe3() {
+        int[] array = new int[]{2, 7, 7, 42, 69, 1337, 2000, 9001};
 
-		assertEquals(-1,index,  "Found wrong index");
-		assertFalse(resList.size()<2,"Logged not enough Steps.");
-		assertFalse(resList.size()>2,"Logged too many Steps.");
-		assertArrayEquals(new Integer[]{3,1},resList.toArray(new Integer[resList.size()]), "Logged wrong steps");
-	}
+        TestResult highResult = new TestResult();
+        TestResult lowResult = new TestResult();
 
-	/**
-	 * Tests from examples from exercise 3
-	 */
-	@Test
-	public void aufgabe3() {
+        Interval interval = gad.binarysearch.BinSea.search(
+        		array, Interval.fromArrayIndices(7, 1500), lowResult, highResult);
 
-		int[] array = new int[] { 2, 7, 7, 42, 69, 1337, 2000, 9001};
+        List<Integer> resList = lowResult.getSteps();
 
-		TestResult highResult = new TestResult();
-		TestResult lowResult = new TestResult();
+        assertEquals(Interval.fromArrayIndices(1, 5), interval, "Found wrong Interval");
+        assertFalse(resList.size() < 2, "Logged not enough Steps.");
+        assertFalse(resList.size() > 2, "Logged too many Steps.");
+        assertArrayEquals(new Integer[]{3, 1}, resList.toArray(new Integer[resList.size()]), "Logged wrong steps");
 
-		Interval interval = gad.binarysearch.BinSea.search(array,Interval.fromArrayIndices(7,1500),lowResult,highResult);
+        resList = highResult.getSteps();
 
-		List<Integer> resList = lowResult.getSteps();
-
-		assertEquals(Interval.fromArrayIndices(1,5),interval, "Found wrong Interval");
-		assertFalse(resList.size()<2,"Logged not enough Steps.");
-		assertFalse(resList.size()>2,"Logged too many Steps.");
-		assertArrayEquals(new Integer[]{3,1},resList.toArray(new Integer[resList.size()]), "Logged wrong steps");
-
-		resList = highResult.getSteps();
-
-		assertFalse(resList.size()>3, "Logged too manny steps");
-		assertFalse(resList.size()<3, "Logged not enough steps");
-		assertArrayEquals(new Integer[]{3,5,6}, resList.toArray(new Integer[3]), "Logged wrong steps");
+        assertFalse(resList.size() > 3, "Logged too manny steps");
+        assertFalse(resList.size() < 3, "Logged not enough steps");
+        assertArrayEquals(new Integer[]{3, 5, 6}, resList.toArray(new Integer[3]), "Logged wrong steps");
 
 
-		highResult = new TestResult();
-		lowResult = new TestResult();
+        highResult = new TestResult();
+        lowResult = new TestResult();
 
-		interval = gad.binarysearch.BinSea.search(array, Interval.fromArrayIndices(9002,10000), lowResult, highResult);
+        interval = gad.binarysearch.BinSea.search(array, Interval.fromArrayIndices(9002, 10000), lowResult, highResult);
 
-		resList = lowResult.getSteps();
+        resList = lowResult.getSteps();
 
-		assertEquals(Interval.EmptyInterval.getEmptyInterval(), interval, "Found wrong interval");
-		assertFalse(resList.size()>3, "Logged too manny steps");
-		assertFalse(resList.size()<3, "Logged not enough steps");
-		assertArrayEquals(new Integer[]{3,5,6}, resList.toArray(new Integer[3]), "Logged wrong steps");
+        assertEquals(Interval.EmptyInterval.getEmptyInterval(), interval, "Found wrong interval");
+        assertFalse(resList.size() > 3, "Logged too manny steps");
+        assertFalse(resList.size() < 3, "Logged not enough steps");
+        assertArrayEquals(new Integer[]{3, 5, 6}, resList.toArray(new Integer[3]), "Logged wrong steps");
 
-		resList = highResult.getSteps();
+        resList = highResult.getSteps();
 
-		assertEquals(0, resList.size(), "Logged too many steps");
-
-	}
+        assertEquals(0, resList.size(), "Logged too many steps");
+    }
 }
