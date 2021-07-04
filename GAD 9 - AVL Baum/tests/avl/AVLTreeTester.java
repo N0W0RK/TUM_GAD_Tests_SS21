@@ -409,7 +409,7 @@ public class AVLTreeTester {
 			List<Arguments> args = new ArrayList<>();
 			Random random = new Random(69);
 
-			for (int i = 0; i < 7; i++) {
+			for (int i = 0; i < 4; i++) {
 
 				args.add(Arguments.of((int) Math.pow(10, i), random.nextLong()));
 			}
@@ -428,7 +428,10 @@ public class AVLTreeTester {
 				AVLTree tree = new AVLTree();
 				for (int i = 0; i < limit; i++) {
 
-					tree.insert(random.nextInt());
+					int val = random.nextInt();
+					tree.insert(val);
+					assertTrue(tree.find(val));
+					assertTrue(tree.validAVL());
 				}
 			};
 
@@ -448,6 +451,8 @@ public class AVLTreeTester {
 				for (int i = 0; i < limit; i++) {
 
 					tree.insert(start + i);
+					assertTrue(tree.find(start + i));
+					assertTrue(tree.validAVL());
 				}
 			};
 
@@ -467,6 +472,8 @@ public class AVLTreeTester {
 				for (int i = 0; i < limit; i++) {
 
 					tree.insert(start - i);
+					assertTrue(tree.find(start - i));
+					assertTrue(tree.validAVL());
 				}
 			};
 
@@ -486,6 +493,8 @@ public class AVLTreeTester {
 				for (int i = 0; i < limit; i++) {
 
 					tree.insert(val);
+					assertTrue(tree.find(val));
+					assertTrue(tree.validAVL());
 				}
 			};
 
