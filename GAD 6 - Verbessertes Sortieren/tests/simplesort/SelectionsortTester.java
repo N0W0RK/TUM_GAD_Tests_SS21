@@ -1,7 +1,5 @@
 package tests.simplesort;
 
-import gad.simplesort.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,9 +11,10 @@ class SelectionsortTester {
     }
 
     /**
-     * Tests the selection sort based optmisation of simple merge sort
-     * Since the tests are already in that class, it just simply calls them from this class
-     * Note: You may fail these tests if you have a different implementation of logging (There are 2 correct afaik)
+     * Tests the selection sort based optmisation of simple merge sort.
+     * Since the tests are already in that class, it just simply calls them from this class.
+     * Note: You may fail these tests if you have a different implementation of logging (There are 2 correct afaik).
+     *
      * @author Aamin
      */
     @Test
@@ -25,9 +24,10 @@ class SelectionsortTester {
     }
 
     /**
-     * Tests the selection sort based optmisation of merge sort
-     * Since the tests are already in that class, it just simply calls them from this class
-     * Note: You may fail these tests if you have a different implementation of logging (There are 2 correct afaik)
+     * Tests the selection sort based optmisation of merge sort.
+     * Since the tests are already in that class, it just simply calls them from this class.
+     * Note: You may fail these tests if you have a different implementation of logging (There are 2 correct afaik).
+     *
      * @author Aamin
      */
     @Test
@@ -37,8 +37,9 @@ class SelectionsortTester {
     }
 
     /**
-     * Tests the selection sort based optmisation of single pivot quick sort
-     * Since the tests are already in that class, it just simply calls them from this class
+     * Tests the selection sort based optmisation of single pivot quick sort.
+     * Since the tests are already in that class, it just simply calls them from this class.
+     *
      * @author Aamin
      */
     @Test
@@ -55,9 +56,10 @@ class SelectionsortTester {
     }
 
     /**
-     * Tests the selection sort based optmisation of dual pivot quick sort
-     * Since the tests are already in that class, it just simply calls them from this class
-     * Although this is not on artemis directly under selection sort, I added it additionally under selection sort
+     * Tests the selection sort based optmisation of dual pivot quick sort.
+     * Since the tests are already in that class, it just simply calls them from this class.
+     * Although this is not on artemis directly under selection sort, I added it additionally under selection sort.
+     *
      * @author Aamin
      */
     @Test

@@ -23,13 +23,13 @@ class QuicksortTest {
     @DisplayName("Repetitive Random Tests")
     class repetitiveRandomTests {
         /**
-         * The concept is that you can extend the tests as much as you want, by simply adding
-         * new Arguments.arguments in the corresponding Stream. Which place is which parameter
+         * The concept is that you can extend the tests as much as you want, by simply adding.
+         * new Arguments.arguments in the corresponding Stream. Which place is which parameter.
          * is stated in the header.
          */
 
         /**
-         * LAST PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS
+         * LAST PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS.
          */
         static Stream<Arguments> testCorrectSortingLast() {
             return Stream.of(
@@ -43,7 +43,7 @@ class QuicksortTest {
         }
 
         /**
-         * MID PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS
+         * MID PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS.
          */
         static Stream<Arguments> testCorrectSortingMid() {
             return Stream.of(
@@ -57,7 +57,7 @@ class QuicksortTest {
         }
 
         /**
-         * RANDOM PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS
+         * RANDOM PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, MAX_LENGTH, MIN_LENGTH, NUMBERS.
          */
         static Stream<Arguments> testCorrectSortingRandom() {
             return Stream.of(
@@ -71,7 +71,7 @@ class QuicksortTest {
         }
 
         /**
-         * MEDIAN FRONT PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, CONSIDERED_ELEMENTS, MAX_LENGTH, MIN_LENGTH, NUMBERS
+         * MEDIAN FRONT PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, CONSIDERED_ELEMENTS, MAX_LENGTH, MIN_LENGTH, NUMBERS.
          */
         static Stream<Arguments> testCorrectSortingMedianFront() {
             return Stream.of(
@@ -85,7 +85,7 @@ class QuicksortTest {
         }
 
         /**
-         * MEDIAN DISTRIBUTED PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, CONSIDERED_ELEMENTS, MAX_LENGTH, MIN_LENGTH, NUMBERS
+         * MEDIAN DISTRIBUTED PIVOT: SELECTION_SORT_SIZE, SEED, ITERATIONS, CONSIDERED_ELEMENTS, MAX_LENGTH, MIN_LENGTH, NUMBERS.
          */
         static Stream<Arguments> testCorrectSortingMedianDist() {
             return Stream.of(

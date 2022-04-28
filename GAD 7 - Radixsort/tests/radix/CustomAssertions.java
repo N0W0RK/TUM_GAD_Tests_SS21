@@ -7,14 +7,16 @@ import java.util.Arrays;
 
 /**
  * Custom {@link org.junit.jupiter.api.Assertions#assertArrayEquals(int[], int[], String)} implementation to enable easier debugging.
+ *
  * @author Konrad G
  */
 public class CustomAssertions extends Assertions {
 
     /**
      * See {@link CustomAssertions#assertArrayEquals(int[], int[], String)}.
+     *
      * @param expected Expected array
-     * @param actual Actual array
+     * @param actual   Actual array
      */
     public static void assertArrayEquals(int[] expected, int[] actual) {
         assertArrayEquals(expected, actual, (String) null);
@@ -23,9 +25,10 @@ public class CustomAssertions extends Assertions {
     /**
      * Custom {@link org.junit.jupiter.api.Assertions#assertArrayEquals(int[], int[], String)} implementation.
      * The output of {@code assertEquals()} is concatenated after the output of {@code assertArrayEquals()}.
+     *
      * @param expected Expected array
-     * @param actual Actual array
-     * @param message Message to be prepended in front of the error message
+     * @param actual   Actual array
+     * @param message  Message to be prepended in front of the error message
      */
     public static void assertArrayEquals(int[] expected, int[] actual, String message) {
 

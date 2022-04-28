@@ -18,9 +18,10 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using the last pivot
-     * Tests WITHOUT SELECTION SORT OPTIMISATION
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using the last pivot.
+     * Tests WITHOUT SELECTION SORT OPTIMISATION.
+     * Within the curly brackets is the expected log to be found.
+     *
      * @author Aamin
      */
     @Test
@@ -31,7 +32,7 @@ class QuickSortTester {
         FastLoggingResult fastLoggingResult;
         List<String> expectedResult;
 
-        array = new int[] {44, -44, -33, -34, 8, -5, -47, -24, 49, 3, 34};
+        array = new int[]{44, -44, -33, -34, 8, -5, -47, -24, 49, 3, 34};
         sortedArray = new int[]{-47, -44, -34, -33, -24, -5, 3, 8, 34, 44, 49};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -63,7 +64,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {6, 37, 10, 5, -35, -25, -31, 4, -40, 27, 12, 43, -16, 30, -45, -18};
+        array = new int[]{6, 37, 10, 5, -35, -25, -31, 4, -40, 27, 12, 43, -16, 30, -45, -18};
         sortedArray = new int[]{-45, -40, -35, -31, -25, -18, -16, 4, 5, 6, 10, 12, 27, 30, 37, 43};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -104,7 +105,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {-33, 48, 39, -5, -45, -37, -11, 48, -28, -7, -48, -39, 27, 2, 11, 39, 22, 19, -27, -38, -43};
+        array = new int[]{-33, 48, 39, -5, -45, -37, -11, 48, -28, -7, -48, -39, 27, 2, 11, 39, 22, 19, -27, -38, -43};
         sortedArray = new int[]{-48, -45, -43, -39, -38, -37, -33, -28, -27, -11, -7, -5, 2, 11, 19, 22, 27, 39, 39, 48, 48};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -157,7 +158,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {-5, -4, 5, 48, -20, -7, -45, 45, -10, -31, -24, 45, -3, 38, -33, -26, 32, 18, -15, -1, 3, 2, -4, 11, 33, -25};
+        array = new int[]{-5, -4, 5, 48, -20, -7, -45, 45, -10, -31, -24, 45, -3, 38, -33, -26, 32, 18, -15, -1, 3, 2, -4, 11, 33, -25};
         sortedArray = new int[]{-45, -33, -31, -26, -25, -24, -20, -15, -10, -7, -5, -4, -4, -3, -1, 2, 3, 5, 11, 18, 32, 33, 38, 45, 45, 48};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -224,9 +225,10 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using the mid pivot
-     * Tests WITHOUT SELECTION SORT OPTIMISATION
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using the mid pivot.
+     * Tests WITHOUT SELECTION SORT OPTIMISATION.
+     * Within the curly brackets is the expected log to be found.
+     *
      * @author Aamin
      */
     @Test
@@ -237,7 +239,7 @@ class QuickSortTester {
         FastLoggingResult fastLoggingResult;
         List<String> expectedResult;
 
-        array = new int[] {-23, 36, -38, 21, -31, -28, 17, -12, 14, 29, 11};
+        array = new int[]{-23, 36, -38, 21, -31, -28, 17, -12, 14, 29, 11};
         sortedArray = new int[]{-38, -31, -28, -23, -12, 11, 14, 17, 21, 29, 36};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -266,7 +268,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {-45, 22, 43, 29, -17, 29, -29, -14, -7, -42, -23, 31, -33, 7, 0, -41};
+        array = new int[]{-45, 22, 43, 29, -17, 29, -29, -14, -7, -42, -23, 31, -33, 7, 0, -41};
         sortedArray = new int[]{-45, -42, -41, -33, -29, -23, -17, -14, -7, 0, 7, 22, 29, 29, 31, 43};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -304,7 +306,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {11, 9, 14, 47, 45, 30, 16, 0, -44, -35, -29, 36, 12, -48, 16, 4, -13, 1, -50, -41, -11};
+        array = new int[]{11, 9, 14, 47, 45, 30, 16, 0, -44, -35, -29, 36, 12, -48, 16, 4, -13, 1, -50, -41, -11};
         sortedArray = new int[]{-50, -48, -44, -41, -35, -29, -13, -11, 0, 1, 4, 9, 11, 12, 14, 16, 16, 30, 36, 45, 47};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -357,7 +359,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {-45, -10, -11, -9, 29, -20, -45, -39, -47, -11, -6, 8, -18, -32, 19, 24, -31, -21, 1, 9, -46, 6, -34, -7, -17, 39};
+        array = new int[]{-45, -10, -11, -9, 29, -20, -45, -39, -47, -11, -6, 8, -18, -32, 19, 24, -31, -21, 1, 9, -46, 6, -34, -7, -17, 39};
         sortedArray = new int[]{-47, -46, -45, -45, -39, -34, -32, -31, -21, -20, -18, -17, -11, -11, -10, -9, -7, -6, 1, 6, 8, 9, 19, 24, 29, 39};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -420,9 +422,10 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using a random pivot (seed is provided)
-     * Tests WITHOUT SELECTION SORT OPTIMISATION
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using a random pivot (seed is provided).
+     * Tests WITHOUT SELECTION SORT OPTIMISATION.
+     * Within the curly brackets is the expected log to be found.
+     *
      * @author Aamin
      */
     @Test
@@ -433,7 +436,7 @@ class QuickSortTester {
         FastLoggingResult fastLoggingResult;
         List<String> expectedResult;
 
-        array = new int[] {44, -44, -33, -34, 8, -5, -47, -24, 49, 3, 34};
+        array = new int[]{44, -44, -33, -34, 8, -5, -47, -24, 49, 3, 34};
         sortedArray = new int[]{-47, -44, -34, -33, -24, -5, 3, 8, 34, 44, 49};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -462,7 +465,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {6, 37, 10, 5, -35, -25, -31, 4, -40, 27, 12, 43, -16, 30, -45, -18};
+        array = new int[]{6, 37, 10, 5, -35, -25, -31, 4, -40, 27, 12, 43, -16, 30, -45, -18};
         sortedArray = new int[]{-45, -40, -35, -31, -25, -18, -16, 4, 5, 6, 10, 12, 27, 30, 37, 43};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -503,7 +506,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {-33, 48, 39, -5, -45, -37, -11, 48, -28, -7, -48, -39, 27, 2, 11, 39, 22, 19, -27, -38, -43};
+        array = new int[]{-33, 48, 39, -5, -45, -37, -11, 48, -28, -7, -48, -39, 27, 2, 11, 39, 22, 19, -27, -38, -43};
         sortedArray = new int[]{-48, -45, -43, -39, -38, -37, -33, -28, -27, -11, -7, -5, 2, 11, 19, 22, 27, 39, 39, 48, 48};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -553,7 +556,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {-5, -4, 5, 48, -20, -7, -45, 45, -10, -31, -24, 45, -3, 38, -33, -26, 32, 18, -15, -1, 3, 2, -4, 11, 33, -25};
+        array = new int[]{-5, -4, 5, 48, -20, -7, -45, 45, -10, -31, -24, 45, -3, 38, -33, -26, 32, 18, -15, -1, 3, 2, -4, 11, 33, -25};
         sortedArray = new int[]{-45, -33, -31, -26, -25, -24, -20, -15, -10, -7, -5, -4, -4, -3, -1, 2, 3, 5, 11, 18, 32, 33, 38, 45, 45, 48};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -616,9 +619,10 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using YOUR IMPLEMENTATION OF MEDIAN FRONT (Elements to be considered = 3)
-     * Tests WITHOUT SELECTION SORT OPTIMISATION
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using YOUR IMPLEMENTATION OF MEDIAN FRONT (Elements to be considered = 3).
+     * Tests WITHOUT SELECTION SORT OPTIMISATION.
+     * Within the curly brackets is the expected log to be found.
+     *
      * @author Aamin
      */
     @Test
@@ -629,7 +633,7 @@ class QuickSortTester {
         FastLoggingResult fastLoggingResult;
         List<String> expectedResult;
 
-        array = new int[] {-23, 36, -38, 21, -31, -28, 17, -12, 14, 29, 11, -45, 22, 43, 29, -17};
+        array = new int[]{-23, 36, -38, 21, -31, -28, 17, -12, 14, 29, 11, -45, 22, 43, 29, -17};
         sortedArray = new int[]{-45, -38, -31, -28, -23, -17, -12, 11, 14, 17, 21, 22, 29, 29, 36, 43};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -667,7 +671,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {29, -29, -14, -7, -42, -23, 31, -33, 7, 0, -41, 11, 9, 14, 47, 45, 30, 16, 0, -44, -35};
+        array = new int[]{29, -29, -14, -7, -42, -23, 31, -33, 7, 0, -41, 11, 9, 14, 47, 45, 30, 16, 0, -44, -35};
         sortedArray = new int[]{-44, -42, -41, -35, -33, -29, -23, -14, -7, 0, 0, 7, 9, 11, 14, 16, 29, 30, 31, 45, 47};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -714,7 +718,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {-29, 36, 12, -48, 16, 4, -13, 1, -50, -41, -11, -45, -10, -11, -9, 29, -20, -45, -39, -47, -11, -6, 8, -18, -32, 19};
+        array = new int[]{-29, 36, 12, -48, 16, 4, -13, 1, -50, -41, -11, -45, -10, -11, -9, 29, -20, -45, -39, -47, -11, -6, 8, -18, -32, 19};
         sortedArray = new int[]{-50, -48, -47, -45, -45, -41, -39, -32, -29, -20, -18, -13, -11, -11, -11, -10, -9, -6, 1, 4, 8, 12, 16, 19, 29, 36};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -771,9 +775,10 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using YOUR IMPLEMENTATION OF MEDIAN FRONT (Elements to be considered = 5)
-     * Tests WITHOUT SELECTION SORT OPTIMISATION
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using YOUR IMPLEMENTATION OF MEDIAN FRONT (Elements to be considered = 5).
+     * Tests WITHOUT SELECTION SORT OPTIMISATION.
+     * Within the curly brackets is the expected log to be found.
+     *
      * @author Aamin
      */
     @Test
@@ -784,7 +789,7 @@ class QuickSortTester {
         FastLoggingResult fastLoggingResult;
         List<String> expectedResult;
 
-        array = new int[] {-23, 36, -38, 21, -31, -28, 17, -12, 14, 29, 11, -45, 22, 43, 29, -17};
+        array = new int[]{-23, 36, -38, 21, -31, -28, 17, -12, 14, 29, 11, -45, 22, 43, 29, -17};
         sortedArray = new int[]{-45, -38, -31, -28, -23, -17, -12, 11, 14, 17, 21, 22, 29, 29, 36, 43};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -822,7 +827,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {29, -29, -14, -7, -42, -23, 31, -33, 7, 0, -41, 11, 9, 14, 47, 45, 30, 16, 0, -44, -35};
+        array = new int[]{29, -29, -14, -7, -42, -23, 31, -33, 7, 0, -41, 11, 9, 14, 47, 45, 30, 16, 0, -44, -35};
         sortedArray = new int[]{-44, -42, -41, -35, -33, -29, -23, -14, -7, 0, 0, 7, 9, 11, 14, 16, 29, 30, 31, 45, 47};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -869,7 +874,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {-29, 36, 12, -48, 16, 4, -13, 1, -50, -41, -11, -45, -10, -11, -9, 29, -20, -45, -39, -47, -11, -6, 8, -18, -32, 19};
+        array = new int[]{-29, 36, 12, -48, 16, 4, -13, 1, -50, -41, -11, -45, -10, -11, -9, 29, -20, -45, -39, -47, -11, -6, 8, -18, -32, 19};
         sortedArray = new int[]{-50, -48, -47, -45, -45, -41, -39, -32, -29, -20, -18, -13, -11, -11, -11, -10, -9, -6, 1, 4, 8, 12, 16, 19, 29, 36};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -922,7 +927,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {24, -31, -21, 1, 9, -46, 6, -34, -7, -17, 39, -35, 14, -33, 31, -18, 6, 8, -47, 45, 37, 35, 17, -32, -26, -44, -33, -45, -1, 22, 13};
+        array = new int[]{24, -31, -21, 1, 9, -46, 6, -34, -7, -17, 39, -35, 14, -33, 31, -18, 6, 8, -47, 45, 37, 35, 17, -32, -26, -44, -33, -45, -1, 22, 13};
         sortedArray = new int[]{-47, -46, -45, -44, -35, -34, -33, -33, -32, -31, -26, -21, -18, -17, -7, -1, 1, 6, 6, 8, 9, 13, 14, 17, 22, 24, 31, 35, 37, 39, 45};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -988,10 +993,11 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using YOUR IMPLEMENTATION OF DISTRIBUTED MEDIAN (Elements to be considered = 3)
-     * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot
-     * Tests WITHOUT SELECTION SORT OPTIMISATION
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using YOUR IMPLEMENTATION OF DISTRIBUTED MEDIAN (Elements to be considered = 3).
+     * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot.
+     * Tests WITHOUT SELECTION SORT OPTIMISATION.
+     * Within the curly brackets is the expected log to be found.
+     *
      * @author Aamin
      */
     @Test
@@ -1002,7 +1008,7 @@ class QuickSortTester {
         FastLoggingResult fastLoggingResult;
         List<String> expectedResult;
 
-        array = new int[] {-35, -48, 40, -1, 5, 29, -37, -30, -19, -12, 12, 10, 36, 40, -16, 11};
+        array = new int[]{-35, -48, 40, -1, 5, 29, -37, -30, -19, -12, 12, 10, 36, 40, -16, 11};
         sortedArray = new int[]{-48, -37, -35, -30, -19, -16, -12, -1, 5, 10, 11, 12, 29, 36, 40, 40};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -1037,7 +1043,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {-32, 6, 45, -25, 44, 42, 23, -29, 31, 39, -31, 28, 13, -50, -32, 41, -49, 15, 6, -35, -36};
+        array = new int[]{-32, 6, 45, -25, 44, 42, 23, -29, 31, 39, -31, 28, 13, -50, -32, 41, -49, 15, 6, -35, -36};
         sortedArray = new int[]{-50, -49, -36, -35, -32, -32, -31, -29, -25, 6, 6, 13, 15, 23, 28, 31, 39, 41, 42, 44, 45};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -1081,7 +1087,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {2, 34, 1, 23, -3, -25, -37, 10, 39, -24, -46, -32, 34, 8, 26, -48, -14, -36, 28, 2, -31, -13, 31, -40, 20, 5};
+        array = new int[]{2, 34, 1, 23, -3, -25, -37, 10, 39, -24, -46, -32, 34, 8, 26, -48, -14, -36, 28, 2, -31, -13, 31, -40, 20, 5};
         sortedArray = new int[]{-48, -46, -40, -37, -36, -32, -31, -25, -24, -14, -13, -3, 1, 2, 2, 5, 8, 10, 20, 23, 26, 28, 31, 34, 34, 39};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -1134,7 +1140,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {27, -42, -48, 39, -50, 6, -5, 34, -15, -33, 6, 2, 9, -19, -42, -21, -5, -41, -34, 45, 3, 45, 16, -43, 12, 9, -18, 36, -43, 28, -19};
+        array = new int[]{27, -42, -48, 39, -50, 6, -5, 34, -15, -33, 6, 2, 9, -19, -42, -21, -5, -41, -34, 45, 3, 45, 16, -43, 12, 9, -18, 36, -43, 28, -19};
         sortedArray = new int[]{-50, -48, -43, -43, -42, -42, -41, -34, -33, -21, -19, -19, -18, -15, -5, -5, 2, 3, 6, 6, 9, 9, 12, 16, 27, 28, 34, 36, 39, 45, 45};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -1196,14 +1202,14 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-
     }
 
     /**
-     * Tests the quicksort using YOUR IMPLEMENTATION OF DISTRIBUTED MEDIAN (Elements to be considered = 5)
-     * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot
-     * Tests WITHOUT SELECTION SORT OPTIMISATION
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using YOUR IMPLEMENTATION OF DISTRIBUTED MEDIAN (Elements to be considered = 5).
+     * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot.
+     * Tests WITHOUT SELECTION SORT OPTIMISATION.
+     * Within the curly brackets is the expected log to be found.
+     *
      * @author Aamin
      */
     @Test
@@ -1214,7 +1220,7 @@ class QuickSortTester {
         FastLoggingResult fastLoggingResult;
         List<String> expectedResult;
 
-        array = new int[] {-35, -48, 40, -1, 5, 29, -37, -30, -19, -12, 12, 10, 36, 40, -16, 11};
+        array = new int[]{-35, -48, 40, -1, 5, 29, -37, -30, -19, -12, 12, 10, 36, 40, -16, 11};
         sortedArray = new int[]{-48, -37, -35, -30, -19, -16, -12, -1, 5, 10, 11, 12, 29, 36, 40, 40};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -1252,7 +1258,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {-32, 6, 45, -25, 44, 42, 23, -29, 31, 39, -31, 28, 13, -50, -32, 41, -49, 15, 6, -35, -36};
+        array = new int[]{-32, 6, 45, -25, 44, 42, 23, -29, 31, 39, -31, 28, 13, -50, -32, 41, -49, 15, 6, -35, -36};
         sortedArray = new int[]{-50, -49, -36, -35, -32, -32, -31, -29, -25, 6, 6, 13, 15, 23, 28, 31, 39, 41, 42, 44, 45};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -1299,7 +1305,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {2, 34, 1, 23, -3, -25, -37, 10, 39, -24, -46, -32, 34, 8, 26, -48, -14, -36, 28, 2, -31, -13, 31, -40, 20, 5};
+        array = new int[]{2, 34, 1, 23, -3, -25, -37, 10, 39, -24, -46, -32, 34, 8, 26, -48, -14, -36, 28, 2, -31, -13, 31, -40, 20, 5};
         sortedArray = new int[]{-48, -46, -40, -37, -36, -32, -31, -25, -24, -14, -13, -3, 1, 2, 2, 5, 8, 10, 20, 23, 26, 28, 31, 34, 34, 39};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -1352,7 +1358,7 @@ class QuickSortTester {
         assertEquals(expectedResult, fastLoggingResult.getOutputs());
 
 
-        array = new int[] {27, -42, -48, 39, -50, 6, -5, 34, -15, -33, 6, 2, 9, -19, -42, -21, -5, -41, -34, 45, 3, 45, 16, -43, 12, 9, -18, 36, -43, 28, -19};
+        array = new int[]{27, -42, -48, 39, -50, 6, -5, 34, -15, -33, 6, 2, 9, -19, -42, -21, -5, -41, -34, 45, 3, 45, 16, -43, 12, 9, -18, 36, -43, 28, -19};
         sortedArray = new int[]{-50, -48, -43, -43, -42, -42, -41, -34, -33, -21, -19, -19, -18, -15, -5, -5, 2, 3, 6, 6, 9, 9, 12, 16, 27, 28, 34, 36, 39, 45, 45};
         fastLoggingResult = new FastLoggingResult();
         expectedResult = new ArrayList<>();
@@ -1416,9 +1422,10 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using the last pivot
-     * This time the optimisations WITH selection sort is being considered
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using the last pivot.
+     * This time the optimisations WITH selection sort is being considered.
+     * Within the curly brackets is the expected log to be found.
+     *
      * @author Aamin
      */
     @Test
@@ -1585,10 +1592,11 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using the middle index as pivot
-     * This time the optimisations WITH selection sort is being considered
-     * Within the curly brackets is the expected log to be found
-     * @author Aamin
+     * Tests the quicksort using the middle index as pivot.
+     * This time the optimisations WITH selection sort is being considered.
+     * Within the curly brackets is the expected log to be found.
+     *
+     * @author Aamin.
      */
     @Test
     public void testQuickSortOptimisedMidPivot() {
@@ -1763,9 +1771,10 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using a PSEUDO random index as a pivot
-     * This time the optimisations WITH selection sort is being considered
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using a PSEUDO random index as a pivot.
+     * This time the optimisations WITH selection sort is being considered.
+     * Within the curly brackets is the expected log to be found.
+     *
      * @author Aamin
      */
     @Test
@@ -1934,10 +1943,11 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using YOUR IMPLEMENTATION OF MEDIAN FRONT (Elements to be considered = 3)
-     * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot
-     * This time the optimisations WITH selection sort is being considered
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using YOUR IMPLEMENTATION OF MEDIAN FRONT (Elements to be considered = 3).
+     * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot.
+     * This time the optimisations WITH selection sort is being considered.
+     * Within the curly brackets is the expected log to be found.
+     *
      * @author Aamin
      */
     @Test
@@ -2123,10 +2133,11 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using YOUR IMPLEMENTATION OF MEDIAN FRONT (Elements to be considered = 5)
-     * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot
-     * This time the optimisations WITH selection sort is being considered
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using YOUR IMPLEMENTATION OF MEDIAN FRONT (Elements to be considered = 5).
+     * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot.
+     * This time the optimisations WITH selection sort is being considered.
+     * Within the curly brackets is the expected log to be found.
+     *
      * @author Aamin
      */
     @Test
@@ -2296,10 +2307,11 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using YOUR IMPLEMENTATION OF DISTRIBUTED MEDIAN (Elements to be considered = 3)
-     * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot
-     * This time the optimisations WITH selection sort is being considered
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using YOUR IMPLEMENTATION OF DISTRIBUTED MEDIAN (Elements to be considered = 3).
+     * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot.
+     * This time the optimisations WITH selection sort is being considered.
+     * Within the curly brackets is the expected log to be found.
+     *
      * @author Aamin
      */
     @Test
@@ -2474,6 +2486,7 @@ class QuickSortTester {
      * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot
      * This time the optimisations WITH selection sort is being considered
      * Within the curly brackets is the expected log to be found
+     *
      * @author Aamin
      */
     @Test
@@ -2644,9 +2657,10 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the all possible quick sort variations with selection sort optimisation
-     * The same rules for the selection of median apply here
-     * Tests try sorting in between the given indices instead of the entire array
+     * Tests the all possible quick sort variations with selection sort optimisation.
+     * The same rules for the selection of median apply here.
+     * Tests try sorting in between the given indices instead of the entire array.
+     *
      * @author Aamin
      */
     @Test

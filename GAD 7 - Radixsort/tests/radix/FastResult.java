@@ -1,6 +1,7 @@
 package tests.radix;
 
 import gad.radix.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

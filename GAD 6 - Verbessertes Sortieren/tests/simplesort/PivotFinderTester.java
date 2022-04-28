@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-//import static org.junit.jupiter.api.Assertions.*;
 import static tests.simplesort.CustomAssertion.*;
 
 class PivotFinderTester {
@@ -21,8 +20,8 @@ class PivotFinderTester {
     }
 
     /**
-     * Test with random arrays to see if the actual last index is being returned or not
-     * This should've been implemented already
+     * Test with random arrays to see if the actual last index is being returned or not.
+     * This should've been implemented already.
      * @author Aamin
      */
     @Test
@@ -131,8 +130,8 @@ class PivotFinderTester {
     }
 
     /**
-     * Test with random arrays to see if the middle index is being returned or not
-     * If there isn't any specific "middle", the tests expect the left middle to be returned
+     * Test with random arrays to see if the middle index is being returned or not.
+     * If there isn't any specific "middle", the tests expect the left middle to be returned.
      * @author Aamin
      */
     @Test
@@ -242,7 +241,7 @@ class PivotFinderTester {
     }
 
     /**
-     * Test with random arrays to see if a PSEUDO random index is being returned or not
+     * Test with random arrays to see if a PSEUDO random index is being returned or not.
      * @author Aamin
      */
     @Test
@@ -484,7 +483,7 @@ class PivotFinderTester {
     }
 
     /**
-     * The public test from artemis to see if the index of the median within those limits are returned or not
+     * The public test from artemis to see if the index of the median within those limits are returned or not.
      * @author Artemis
      */
     @Test
@@ -502,8 +501,8 @@ class PivotFinderTester {
     }
 
     /**
-     * Test to see if the index of the median within those limits are returned or not
-     * Note: If the median has duplicates, this test expects the FIRST index of the duplicate to be returned
+     * Test to see if the index of the median within those limits are returned or not.
+     * Note: If the median has duplicates, this test expects the FIRST index of the duplicate to be returned.
      * @author Artemis
      */
     @Test
@@ -710,7 +709,7 @@ class PivotFinderTester {
     }
 
     /**
-     * The public test from artemis to see if the index of the median within those distributed limits are returned or not
+     * The public test from artemis to see if the index of the median within those distributed limits are returned or not.
      * @author Artemis
      */
     @Test
@@ -724,8 +723,8 @@ class PivotFinderTester {
     }
 
     /**
-     * The public test from artemis to see if the index of the median within those distributed limits are returned or not
-     * Note: If the median has duplicates, this test expects the FIRST index of the duplicate to be returned
+     * The public test from artemis to see if the index of the median within those distributed limits are returned or not.
+     * Note: If the median has duplicates, this test expects the FIRST index of the duplicate to be returned.
      * @author Artemis
      */
     @Test

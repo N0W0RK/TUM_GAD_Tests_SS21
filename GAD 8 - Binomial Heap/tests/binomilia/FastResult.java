@@ -13,6 +13,7 @@ public class FastResult implements Result {
 
     /**
      * Johannes's 1st public code for printing the tree.
+     *
      * @param trees The tree to be printed
      * @return The string of the tree
      */
@@ -22,6 +23,7 @@ public class FastResult implements Result {
 
     /**
      * Johannes's 1st public code for printing the tree.
+     *
      * @param trees The tree to be printed
      * @return The string of the tree
      */

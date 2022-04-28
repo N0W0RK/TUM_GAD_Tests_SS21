@@ -7,18 +7,18 @@ import java.util.List;
 
 public class TestResult implements Result {
 
-	private List<Integer> steps;
+    private List<Integer> steps;
 
-	public TestResult() {
-		this.steps = new ArrayList<>();
-	}
+    public TestResult() {
+        this.steps = new ArrayList<>();
+    }
 
-	@Override
-	public void addStep(int index) {
-		steps.add(index);
-	}
+    @Override
+    public void addStep(int index) {
+        steps.add(index);
+    }
 
-	public List<Integer> getSteps() {
-		return steps;
-	}
+    public List<Integer> getSteps() {
+        return steps;
+    }
 }

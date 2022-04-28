@@ -84,9 +84,9 @@ public class DynamicRingschlangeTests {
 
 
     /**
-     * Tests from https://zulip.in.tum.de/#narrow/stream/419-GAD-E03-Dynamisches.20Array/topic/Tests/near/176136
+     * Tests from https://zulip.in.tum.de/#narrow/stream/419-GAD-E03-Dynamisches.20Array/topic/Tests/near/176136.
      *
-     * @Author Elias Singer
+     * @author Elias Singer
      */
 
     @Test
@@ -157,7 +157,7 @@ public class DynamicRingschlangeTests {
     /* End of Zulip Tests */
 
     /**
-     * Tests examples from the exercise statement for the dynamic stack
+     * Tests examples from the exercise statement for the dynamic stack.
      */
     @Test
     public void dynamicStackExamples() {

@@ -12,14 +12,14 @@ import org.junit.jupiter.api.Test;
 import gad.binomilia.*;
 
 /**
- *@author Mihir Mahajan
+ * These tests only test if your BinomialHeap/BinomialTree itself works.
+ * They don't test the logging. Still, they may not work if the logging
+ * is incorrect!
+ * <p>
+ * I can not guarantee the correctness or accuracy of these tests. I
+ * hope they help, enjoy!
  *
- *        These tests only test if your BinomialHeap/BinomialTree itself works.
- *        They don't test the logging. Still, they may not work if the logging
- *        is incorrect!
- *
- *        I can not guarantee the correctness or accuracy of these tests. I
- *        hope they help, enjoy!
+ * @author Mihir Mahajan
  */
 
 public class BinomialHeapTester {
@@ -38,10 +38,10 @@ public class BinomialHeapTester {
     void testIllegal() {
         assertThrows(RuntimeException.class, () -> heap.min(),
                 "Please throw an exception when heap is empty, since there can't "
-                + "be a minimal element in an empty heap. (NoSuchElementExeption would be cool)");
+                        + "be a minimal element in an empty heap. (NoSuchElementExeption would be cool)");
         assertThrows(RuntimeException.class, () -> heap.deleteMin(result),
                 "Please throw an exception when heap is empty, since deleteMin() "
-                + "is illegal on an empty heap. (NoSuchElementExeption would be cool)");
+                        + "is illegal on an empty heap. (NoSuchElementExeption would be cool)");
     }
 
     @Test
@@ -106,8 +106,8 @@ public class BinomialHeapTester {
     }
 
     /**
-     * It's possible to get a 100% score, even if this test does not pass. However,
-     * it provides a good first starting point to implement the logging properly.
+     * It's possible to get a 100% score, even if this test does not pass.
+     * However, it provides a good first starting point to implement the logging properly.
      */
     @Test
     void zwischenSchritte() {

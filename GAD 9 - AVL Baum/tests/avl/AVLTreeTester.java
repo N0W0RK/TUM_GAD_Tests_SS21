@@ -73,9 +73,10 @@ public class AVLTreeTester {
     }
 
     /**
-     * Tests to check the validAVL() method. This test only checks
-     * for some of the mandatory attributes the AVL tree needs to
-     * fulfill, e.g. it checks for the balance difference, no
+     * Tests to check the validAVL() method.
+     * This test only checks for some of the mandatory attributes
+     * the AVL tree needs to fulfill.
+     * e.g. it checks for the balance difference, no
      * circular references in it and that some node's values are
      * sorted correctly. Be careful if your implementation depends
      * on certain functionality of insert() to fix your tree
@@ -229,8 +230,8 @@ public class AVLTreeTester {
         }
 
         /**
-         * Test to check if the validAVL() method works for pretty filled
-         * AVL trees. Note that this check can't ensure that your returned
+         * Test to check if the validAVL() method works for pretty filled AVL trees.
+         * Note that this check can't ensure that your returned
          * value is <i>correct</i>, since it provides no valid AVL tree for
          * comparison. But it can force the AVL tree to be definitively
          * wrong, which must be detected by your method of course. The check
@@ -334,8 +335,8 @@ public class AVLTreeTester {
         }
 
         /**
-         * Test to check whether the combination of find() and insert()
-         * work as expected. Note that no tree layout checks are performed
+         * Test to check whether the combination of find() and insert() work as expected.
+         * Note that no tree layout checks are performed
          * by this unit test, it will actually only verify the find()
          * method. But that's enough to make the test fail if insert() does
          * not work. Also note that multiple same keys are not checked.
@@ -365,8 +366,8 @@ public class AVLTreeTester {
         }
 
         /**
-         * Test to check if the tree arranges the lowest key to the
-         * leftmost element. This test uses a total of 255 elements in
+         * Test to check if the tree arranges the lowest key to then leftmost element.
+         * This test uses a total of 255 elements in
          * the tree to try to get a completely filled binary search
          * tree, even though that that's not a strict requirement.
          */

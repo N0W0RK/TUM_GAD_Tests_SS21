@@ -40,7 +40,7 @@ public class BinSeaTester {
     }
 
     /**
-     * Tests from examples from exercise 2
+     * Tests from examples from exercise 2.
      */
     @Test
     public void aufgabe2() {
@@ -82,7 +82,7 @@ public class BinSeaTester {
     }
 
     /**
-     * Tests from examples from exercise 3
+     * Tests from examples from exercise 3.
      */
     @Test
     public void aufgabe3() {

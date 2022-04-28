@@ -10,6 +10,7 @@ public class BinomialTreeNodeTester {
     /**
      * Simple tests to see if the smallest element of the nodes are returned or not. <br>
      * Tests solely {@link BinomialTreeNode#min()}
+     *
      * @author Aamin
      */
     @Test
@@ -80,6 +81,7 @@ public class BinomialTreeNodeTester {
     /**
      * Simple tests to see if the correct rank of the nodes are returned or not. <br>
      * Tests solely {@link BinomialTreeNode#rank()}
+     *
      * @author Aamin
      */
     @Test
@@ -120,6 +122,7 @@ public class BinomialTreeNodeTester {
     /**
      * Relatively more complex tests to see if the correct min and rank of the nodes are returned or not. <br>
      * This test uses {@link BinomialTreeNode#merge(BinomialTreeNode, BinomialTreeNode)} since it is not possible to check for higher ranks without it.
+     *
      * @author Aamin
      */
     @Test
@@ -174,9 +177,12 @@ public class BinomialTreeNodeTester {
     }
 
     /**
+     * <p>
      * Relatively complex tests to see if {@link BinomialTreeNode#merge(BinomialTreeNode, BinomialTreeNode)} returns
      * the correct node as well as if the ranks and mins of the returned nodes are being changed or not. <br>
      * This test uses all the methods of {@link BinomialTreeNode}
+     * </p>
+     *
      * @author Aamin
      */
     @Test
