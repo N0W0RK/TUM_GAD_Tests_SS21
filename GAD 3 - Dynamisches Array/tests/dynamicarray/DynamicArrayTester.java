@@ -7,8 +7,9 @@ import org.junit.jupiter.api.Test;
 import java.util.Random;
 
 /**
- * Tests included from Zulip:
- * https://zulip.in.tum.de/#narrow/stream/419-GAD-E03-Dynamisches.20Array/topic/Tests/near/177724
+ * Tests included from Zulip.
+ * <a href="https://zulip.in.tum.de/#narrow/stream/419-GAD-E03-Dynamisches.20Array/topic/Tests/near/177724">https://zulip.in.tum.de/#narrow/stream/419-GAD-E03-Dynamisches.20Array/topic/Tests/near/177724</a>
+ *
  * @author Aamin
  */
 class DynamicArrayTester {
@@ -18,55 +19,62 @@ class DynamicArrayTester {
 
         try {
             new DynamicArray(4, 4);
-        } catch(IllegalArgumentException ignored) {
+        } catch (IllegalArgumentException ignored) {
             Assertions.fail("IllegalArgumentException was thrown");
         }
 
         try {
             new DynamicArray(-1, 4);
             Assertions.fail("No IllegalArgumentException was thrown");
-        } catch(IllegalArgumentException ignored) {}
+        } catch (IllegalArgumentException ignored) {
+        }
 
         try {
             new DynamicArray(0, 4);
             Assertions.fail("No IllegalArgumentException was thrown");
-        } catch(IllegalArgumentException ignored) {}
+        } catch (IllegalArgumentException ignored) {
+        }
 
         try {
             new DynamicArray(1, 4);
-        } catch(IllegalArgumentException ignored) {
+        } catch (IllegalArgumentException ignored) {
             Assertions.fail("IllegalArgumentException was thrown");
         }
 
         try {
             new DynamicArray(4, -1);
             Assertions.fail("No IllegalArgumentException was thrown");
-        } catch(IllegalArgumentException ignored) {}
+        } catch (IllegalArgumentException ignored) {
+        }
 
         try {
             new DynamicArray(4, 0);
             Assertions.fail("No IllegalArgumentException was thrown");
-        } catch(IllegalArgumentException ignored) {}
+        } catch (IllegalArgumentException ignored) {
+        }
 
         try {
             new DynamicArray(4, 1);
             Assertions.fail("No IllegalArgumentException was thrown");
-        } catch(IllegalArgumentException ignored) {}
+        } catch (IllegalArgumentException ignored) {
+        }
 
         try {
             new DynamicArray(-1, -1);
             Assertions.fail("No IllegalArgumentException was thrown");
-        } catch(IllegalArgumentException ignored) {}
+        } catch (IllegalArgumentException ignored) {
+        }
 
         try {
             new DynamicArray(0, 0);
             Assertions.fail("No IllegalArgumentException was thrown");
-        } catch(IllegalArgumentException ignored) {}
+        } catch (IllegalArgumentException ignored) {
+        }
 
 
         try {
             new DynamicArray(3, 4);
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             Assertions.fail("IllegalArgumentException was thrown");
         }
 
@@ -85,7 +93,8 @@ class DynamicArrayTester {
         try {
             new DynamicArray(420, 69);
             Assertions.fail("No IllegalArgumentException was thrown");
-        } catch (IllegalArgumentException ignored) {}
+        } catch (IllegalArgumentException ignored) {
+        }
 
     }
 
@@ -103,7 +112,7 @@ class DynamicArrayTester {
     }
 
     @Test
-    void DynamicArrayArtemisTest() {
+    void dynamicArrayArtemisTest() {
 
         DynamicArray myArray = new DynamicArray(3, 4);
         Assertions.assertEquals("[]", myArray.toString());
@@ -133,7 +142,7 @@ class DynamicArrayTester {
         Assertions.assertEquals("[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]", myArray.toString());
         Assertions.assertEquals("[0; 1]", interval.toString());
 
-        interval = myArray.reportUsage(new Interval.NonEmptyInterval(5,1), 9);
+        interval = myArray.reportUsage(new Interval.NonEmptyInterval(5, 1), 9);
         Assertions.assertEquals("[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]", myArray.toString());
         Assertions.assertEquals("[5; 1]", interval.toString());
 
@@ -413,7 +422,7 @@ class DynamicArrayTester {
         for (int i = 0; i < 10000; i++) {
 
             if (new Random().nextInt(10) < 7 && index < lastAdded) {
-                Assertions.assertEquals(insertedValues[index++],  ringQueue.remove());
+                Assertions.assertEquals(insertedValues[index++], ringQueue.remove());
             } else {
                 randInt = new Random().nextInt(10000);
                 ringQueue.insert(randInt);
