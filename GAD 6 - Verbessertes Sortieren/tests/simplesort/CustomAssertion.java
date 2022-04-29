@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class CustomAssertion extends Assertions {
 
     /**
-     * Custom assert for multiple expected
+     * Custom assert for multiple expected.
      * @param expected first expected
      * @param expected2 second expected
      * @param actual actual value to be tested
@@ -19,9 +19,10 @@ public class CustomAssertion extends Assertions {
     }
 
     /**
-     * Custom assert for multiple expected
+     * Custom assert for multiple expected.
      * @param expected first expected
      * @param expected2 second expected
+     * @param expected3 third expected
      * @param actual actual value to be tested
      */
     public static void assertEquals(int expected, int expected2, int expected3, int actual) {
@@ -31,7 +32,7 @@ public class CustomAssertion extends Assertions {
     }
 
     /**
-     * Custom assert for multiple expected
+     * Custom assert for multiple expected.
      * @param expected first expected
      * @param expected2 second expected
      * @param actual actual value to be tested
@@ -44,9 +45,10 @@ public class CustomAssertion extends Assertions {
     }
 
     /**
-     * Custom assert for multiple expected
+     * Custom assert for multiple expected.
      * @param expected first expected
      * @param expected2 second expected
+     * @param expected3 third expected
      * @param actual actual value to be tested
      */
     public static void assertArrayEquals(int[] expected, int[] expected2, int[] expected3, int[] actual) {

@@ -57,8 +57,8 @@ class TesterDualQuicksortResult implements Result {
 
     private void analyseLogsOfDualPivot(int[] endResult) {
         if (numbersAtStart == null || endResult == null) {
-            throw new IllegalArgumentException("Array: " + Arrays.toString(endResult) + "\n" + "\nIn range: " + indicesOfLog[0] +
-                    " to " + indicesOfLog[5] + "\n" + "\nLogged partial Arrays without logging startResult or endResult");
+            throw new IllegalArgumentException("Array: " + Arrays.toString(endResult) + "\n" + "\nIn range: " + indicesOfLog[0]
+                    + " to " + indicesOfLog[5] + "\n" + "\nLogged partial Arrays without logging startResult or endResult");
         }
 
         int[] numbersAtStartPartial = Arrays.copyOfRange(numbersAtStart, indicesOfLog[0], indicesOfLog[5] + 1);
