@@ -19,7 +19,7 @@ public class HashTableTester {
      *
      * @author Aamin
      */
-    public static class Prime_Number_Generator {
+    public static class PrimeNumberGenerator {
 
         /**
          * A function to generate random relatively big prime numbers north of 10007.
@@ -79,14 +79,18 @@ public class HashTableTester {
         /**
          * Checks to see if the requested value is prime.
          *
+         * @param inputNum Number to test.
+         * @return true if input is prime.
          * @author Aamin
          */
         private static boolean isNotPrime(int inputNum) {
-            if (inputNum <= 3 || inputNum % 2 == 0)
+            if (inputNum <= 3 || inputNum % 2 == 0) {
                 return inputNum != 2 && inputNum != 3; //this returns false if number is <=1 & true if number = 2 or 3
+            }
             int divisor = 3;
-            while ((divisor <= Math.sqrt(inputNum)) && (inputNum % divisor != 0))
+            while ((divisor <= Math.sqrt(inputNum)) && (inputNum % divisor != 0)) {
                 divisor += 2; //iterates through all possible divisors
+            }
             return inputNum % divisor == 0; //returns true/false
         }
     }
@@ -150,15 +154,17 @@ public class HashTableTester {
         }
 
         for (int i = 0; i < prime; i++) {
-            if (varianceHash[i] == 0)
+            if (varianceHash[i] == 0) {
                 distributionHash[i] = 0.0;
-            else
+            } else {
                 distributionHash[i] = round((((double) offsetHash[i] / varianceHash[i]) * 100.0));
+            }
 
-            if (varianceHashTick[i] == 0)
+            if (varianceHashTick[i] == 0) {
                 distributionHashTick[i] = 0.0;
-            else
+            } else {
                 distributionHashTick[i] = round((((double) offsetHashTick[i] / varianceHashTick[i]) * 100.0));
+            }
         }
 
 
@@ -215,7 +221,7 @@ public class HashTableTester {
     @Test
     public void testHashingInt() {
         //This test is taken from Maximilian from Zulip and modified a bit to be more random and test both hash and hash tick
-        int prime = Prime_Number_Generator.getVerySmallPrime();
+        int prime = PrimeNumberGenerator.getVerySmallPrime();
         DoubleHashInt test = new DoubleHashInt(prime);
         int[] varianceHash = new int[prime];
         int[] varianceHashTick = new int[prime];
@@ -238,9 +244,9 @@ public class HashTableTester {
             }
         }
 
-        assertEquals(0, varianceHashTick[0], "Your HashTick returned a value of 0, according to the lecture script formula, this should not have happened!" +
-                "NOTE: This does not guarantee, that your hash tick may actually be wrong! Artemis tests are final tests" +
-                "Because double hashing scales along h' a case of h'(x) = 0 would not resolve collisions");
+        assertEquals(0, varianceHashTick[0], "Your HashTick returned a value of 0, according to the lecture script formula, this should not have happened!"
+                + "NOTE: This does not guarantee, that your hash tick may actually be wrong! Artemis tests are final tests"
+                + "Because double hashing scales along h' a case of h'(x) = 0 would not resolve collisions");
 
         printStatistics(varianceHash, varianceHashTick, prime, true);
     }
@@ -257,7 +263,7 @@ public class HashTableTester {
     public void testHashingString() {
         //NOTE THIS TEST IS EXTREMELY SLOW (takes roughly 15s on my computer)
         //but I couldn't care less, so just wait, it's still faster than artemis
-        int prime = Prime_Number_Generator.getVerySmallPrime();
+        int prime = PrimeNumberGenerator.getVerySmallPrime();
         DoubleHashString test = new DoubleHashString(prime);
         int[] varianceHash = new int[prime];
         int[] varianceHashTick = new int[prime];
@@ -280,9 +286,9 @@ public class HashTableTester {
             }
         }
 
-        assertEquals(0, varianceHashTick[0], "Your HashTick returned a value of 0, according to the lecture script formula, this should not have happened!" +
-                "NOTE: This does not guarantee, that your hash tick may actually be wrong! Artemis tests are final tests" +
-                "Because double hashing scales along h' a case of h'(x) = 0 would not resolve collisions");
+        assertEquals(0, varianceHashTick[0], "Your HashTick returned a value of 0, according to the lecture script formula, this should not have happened!"
+                + "NOTE: This does not guarantee, that your hash tick may actually be wrong! Artemis tests are final tests"
+                + "Because double hashing scales along h' a case of h'(x) = 0 would not resolve collisions");
 
         printStatistics(varianceHash, varianceHashTick, prime, false);
     }
@@ -297,7 +303,7 @@ public class HashTableTester {
      * @author Aamin
      */
     @Test
-    public void DoubleHashTableHashInteger() {
+    public void doubleHashTableHashInteger() {
         DoubleHashTable<Integer, String> table = new DoubleHashTable<>(17, new IntHashableFactory());
 
         assertEquals(2, table.hash(420, 69));
@@ -329,7 +335,7 @@ public class HashTableTester {
      * @author Aamin
      */
     @Test
-    public void DoubleHashTableHashString() {
+    public void doubleHashTableHashString() {
         DoubleHashTable<String, String> table = new DoubleHashTable<>(97, new StringHashableFactory());
 
         assertEquals(8, table.hash("PGDP", 420));
@@ -355,7 +361,7 @@ public class HashTableTester {
      * @author Aamin
      */
     @Test
-    public void DoubleHashIntegerTable() {
+    public void doubleHashIntegerTable() {
         DoubleHashTable<Integer, Integer> doubleHashTable = new DoubleHashTable<>(67, new IntHashableFactory());
 
         assertEquals(Optional.empty(), doubleHashTable.find(42));
@@ -410,7 +416,7 @@ public class HashTableTester {
      * @author Aamin
      */
     @Test
-    public void DoubleHashStringTable() {
+    public void doubleHashStringTable() {
         DoubleHashTable<String, String> doubleHashTable = new DoubleHashTable<>(67, new StringHashableFactory());
         assertTrue(doubleHashTable.insert("ääääääää", "üüüüüüüüüüüü"));
         assertTrue(doubleHashTable.insert("öööööööö", "ääääääääääää"));
@@ -441,12 +447,16 @@ public class HashTableTester {
         assertFalse(doubleHashTable.insert("I should not be able to insert this", "value"));
     }
 
-    ArrayList<Integer> usedInts = new ArrayList<>();
+    private ArrayList<Integer> usedInts = new ArrayList<>();
 
+    /**
+     * @return A unique random int.
+     */
     public int uniqueRandomInt() {
         int x = ThreadLocalRandom.current().nextInt(0, 900);
-        while (usedInts.contains(x))
+        while (usedInts.contains(x)) {
             x = ThreadLocalRandom.current().nextInt(0, 900);
+        }
         usedInts.add(x);
         return x;
     }
@@ -459,14 +469,16 @@ public class HashTableTester {
         for (int i = 0; i < size; i++) {
             int one = uniqueRandomInt();
             int two = ThreadLocalRandom.current().nextInt(0, 900);
-            if (x.insert(one, two))
+            if (x.insert(one, two)) {
                 success.put(one, two);
+            }
         }
         for (int i = 0; i < 500; i++) {
             int one = ThreadLocalRandom.current().nextInt(0, 900);
             int two = ThreadLocalRandom.current().nextInt(0, 900);
-            if (x.insert(one, two))
+            if (x.insert(one, two)) {
                 success.put(one, two);
+            }
         }
         System.out.println("inserted " + success);
 

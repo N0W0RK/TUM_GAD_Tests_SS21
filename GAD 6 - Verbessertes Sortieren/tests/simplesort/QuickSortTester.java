@@ -2482,10 +2482,10 @@ class QuickSortTester {
     }
 
     /**
-     * Tests the quicksort using YOUR IMPLEMENTATION OF DISTRIBUTED MEDIAN (Elements to be considered = 5)
-     * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot
-     * This time the optimisations WITH selection sort is being considered
-     * Within the curly brackets is the expected log to be found
+     * Tests the quicksort using YOUR IMPLEMENTATION OF DISTRIBUTED MEDIAN (Elements to be considered = 5).
+     * If there are duplicates of the median, this test expects the FIRST MEDIAN to be selected as the pivot.
+     * This time the optimisations WITH selection sort is being considered.
+     * Within the curly brackets is the expected log to be found.
      *
      * @author Aamin
      */

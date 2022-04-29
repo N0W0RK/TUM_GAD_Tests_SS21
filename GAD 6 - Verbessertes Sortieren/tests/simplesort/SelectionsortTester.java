@@ -18,7 +18,7 @@ class SelectionsortTester {
      * @author Aamin
      */
     @Test
-    public void MergesortSimpleTester() {
+    public void mergesortSimpleTester() {
         MergesortSimpleTester mergesortSimpleTester = new MergesortSimpleTester();
         mergesortSimpleTester.mergeSortSimpleOptimised();
     }
@@ -31,7 +31,7 @@ class SelectionsortTester {
      * @author Aamin
      */
     @Test
-    public void MergesortTester() {
+    public void mergesortTester() {
         MergesortTester.FullRunTest fullRunTest = new MergesortTester.FullRunTest();
         fullRunTest.mergeSortOptimised();
     }
@@ -43,7 +43,7 @@ class SelectionsortTester {
      * @author Aamin
      */
     @Test
-    public void SinglePivotQuickSortTester() {
+    public void singlePivotQuickSortTester() {
         QuickSortTester quickSortTester = new QuickSortTester();
         quickSortTester.testQuickSortOptimised();
         quickSortTester.testQuickSortOptimisedMidPivot();
@@ -63,13 +63,13 @@ class SelectionsortTester {
      * @author Aamin
      */
     @Test
-    public void DualPivotQuickSortTester() {
+    public void dualPivotQuickSortTester() {
         DualPivotQuicksortTester.LoggingTest dualPivotQuickSortTester = new DualPivotQuicksortTester().new LoggingTest();
         dualPivotQuickSortTester.optimisedDualPivotQuickSortFirstLastPivot();
         dualPivotQuickSortTester.optimisedDualPivotQuickSortRandomPivot();
         dualPivotQuickSortTester.optimisedDualPivotQuickSortMedianPivot();
         dualPivotQuickSortTester.optimisedDualPivotQuickSortDistributedMedianPivot();
-        dualPivotQuickSortTester.HugeArrayOptimisedDualPivotQuickSort();
+        dualPivotQuickSortTester.hugeArrayOptimisedDualPivotQuickSort();
     }
 
 }
